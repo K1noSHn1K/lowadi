@@ -9,9 +9,8 @@ var KCK_option = 0;
 
 settings();
 
- $(document).ready(function(){
- alert(jQuery.fn.jquery);
- });
+if (horseinit()==true) alert("TRUE")
+	else alert("FALSE");
 
 function set_kck_option()
 	{
