@@ -1,12 +1,3 @@
-// ==UserScript==
-// @name Прогон табуна
-// @description Бот для браузерной игры Lowadi
-// @author HumanoID 
-// @license Mozilla Public License Version 2.0
-// @version 1.2
-// @include http://www.lowadi.com/*
-// @grant none
-// ==/UserScript==
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 0;
 /* Возможные значения:
