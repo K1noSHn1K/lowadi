@@ -9,6 +9,10 @@ var KCK_option = 0;
 
 settings();
 
+ $(document).ready(function(){
+ alert(jQuery.fn.jquery);
+ });
+
 function set_kck_option()
 	{
 		var val = $("#kck_option option:selected").val()
