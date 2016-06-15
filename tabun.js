@@ -9,9 +9,6 @@ var KCK_option = 0;
 
 settings();
 
-if (horseinit()==true) alert("TRUE")
-	else alert("FALSE");
-
 function set_kck_option()
 	{
 		var val = $("#kck_option option:selected").val()
@@ -102,8 +99,6 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 // Программа обычного прогона
 function usualProg()
 {
-if (horseinit()!==true)
-	{
 	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
 	  {
 		var d = document.getElementById('reproduction-body-content').childNodes[3].getElementsByTagName('a');
@@ -139,7 +134,7 @@ if (horseinit()!==true)
 	  // Следующий
 	  var pause7 = pause6 + getRandomPause(900, 2400);
 	setTimeout(prev, pause7);
-	}
+
 }
 // Рост ОРками
 function ORProg()
