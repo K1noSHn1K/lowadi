@@ -547,6 +547,7 @@ function OR()
 
 function settings()
 	{
+		$('body').append('<div class="lwb_logo" style="display:block; position:fixed; width:105px; left:0; top:50px;><img src="https://4.downloader.disk.yandex.ru/preview/de69a179372932c4171ac2c54409abc7bfe41500401e9fbe9e3ca46a9b5ac614/inf/xBiCwUHKJiSc_YVqhWaCSFmShddR_VE-xOrv4AHiJuXFDmvbxxTTC_efC2eDCxw34Cn1KBV6eYjwshXkWifzSg%3D%3D?uid=44579227&filename=robothorseday.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&size=1163x825" /></div>');
 		$('body').append('<div class="lwb" style="display:block; position:fixed; width:105px; height:100px; left:0; top:100px; padding:5px; background-color:rgba(92, 92, 92, 0.6);  border-radius: 0px 20px 20px 0;"></div>');
 		$('.lwb').append('<center><span class="header-currency-label">LowadiBot v1.3</span>  </center>');
 		$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option>	</select>');
