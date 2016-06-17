@@ -85,13 +85,13 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 {
   // Выставление дней
   var pause = 0;
-  pause = pause + getRandomPause(2000, 3500);
+  pause = pause + getRandomPause(1500, 2500);
   setTimeout(eqCenterReg2, pause);
   // Запись
-  var pause1 = pause + getRandomPause(2000, 3500);
+  var pause1 = pause + getRandomPause(1500, 3000);
   setTimeout(eqCenterReg3, pause1);
   // Проверка результата
-  var pause2 = pause1 + getRandomPause(2500, 3500);
+  var pause2 = pause1 + getRandomPause(1500, 3000);
   setTimeout(eqCenterReg4, pause2);
 }
 
@@ -110,29 +110,29 @@ function usualProg()
 	  if (/elevage\/chevaux\/centreInscription\?id=/.test(document.body.innerHTML))
 	  {
 		// Нажатие на кнопку
-		pause = pause + getRandomPause(500, 2800);
+		pause = pause + getRandomPause(500, 1800);
 		setTimeout(eqCenterReg, pause);
 		return;
 	  }  // Чистка
 
-	  var pause1 = pause + getRandomPause(500, 2800);
+	  var pause1 = pause + getRandomPause(500, 1800);
 	setTimeout(groom, pause1);
 	  // Урок
-	  var pause2 = pause1 + getRandomPause(500, 2800);
+	  var pause2 = pause1 + getRandomPause(500, 1800);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(200, 2400);
+	  var pause3 = pause2 + getRandomPause(200, 1400);
 	setTimeout(openFeeding, pause3);
-	  var pause4 = pause3 + getRandomPause(1500, 2800);
+	  var pause4 = pause3 + getRandomPause(1500, 1800);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
-	  var pause5 = pause4 + getRandomPause(200, 2400);
+	  var pause5 = pause4 + getRandomPause(200, 1400);
 	setTimeout(stroke, pause5);
 	  // Спать
 	  var pause6 = pause5 + getRandomPause(500, 2000);
 	setTimeout(sleep, pause6);
 	  // Следующий
-	  var pause7 = pause6 + getRandomPause(900, 2400);
+	  var pause7 = pause6 + getRandomPause(900, 1400);
 	setTimeout(prev, pause7);
 
 }
@@ -152,7 +152,7 @@ function ORProg()
   pause = pause + getRandomPause(500, 800);
   setTimeout(lesson, pause);
   // Корм
-  var pause1 = pause + getRandomPause(2500, 3800);
+  var pause1 = pause + getRandomPause(1500, 3000);
   setTimeout(doEatNorm, pause1);
   // Чистка
   var pause2 = pause1 + getRandomPause(500, 800);
