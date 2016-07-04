@@ -54,7 +54,7 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
     if (chevalAge > 358)
     {
       // Следующий конь
-      var pause = getRandomPause(600, 1200);
+      var pause = getRandomPause(600, 1500);
       setTimeout(prev, pause);
     } 
     else
@@ -110,12 +110,12 @@ function usualProg()
 	  if (/elevage\/chevaux\/centreInscription\?id=/.test(document.body.innerHTML))
 	  {
 		// Нажатие на кнопку
-		pause = pause + getRandomPause(500, 1500);
+		pause = pause + getRandomPause(500, 2000);
 		setTimeout(eqCenterReg, pause);
 		return;
 	  }  // Чистка
 
-	  var pause1 = pause + getRandomPause(500, 1500);
+	  var pause1 = pause + getRandomPause(500, 2000);
 	setTimeout(groom, pause1);
 	  // Урок
 	  var pause2 = pause1 + getRandomPause(500, 1500);
