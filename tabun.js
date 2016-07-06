@@ -547,9 +547,9 @@ function sleep()
 // Ласка
 function stroke()
 {
-  // Если энергии <20
+  // Если энергии <50
   var en = document.getElementById('energie').textContent;
-  if (en < 20)
+  if (en < 50)
   {
     var d = document.getElementById('boutonCaresser');
     if (d !== null)
