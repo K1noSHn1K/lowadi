@@ -131,9 +131,14 @@ function usualProg()
 	  // Спать
 	  var pause6 = pause5 + getRandomPause(500, 1000);
 	setTimeout(sleep, pause6);
-	  // Следующий
-	  var pause7 = pause6 + getRandomPause(900, 1400);
+
+	//Случка 
+	var pause7 = pause6 + getRandomPause(900, 1400);
 	setTimeout(prev, pause7);
+	
+	 // Следующий
+	  var pause8 = pause7 + getRandomPause(900, 1400);
+	setTimeout(sluchka, pause8);
 
 }
 // Рост ОРками
@@ -555,7 +560,7 @@ function settings()
 
 
 
-function sluchka()
+function get_sluchka()
 	{
 	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
 		{
@@ -566,9 +571,12 @@ function sluchka()
 		}
 	}
 
-
-if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
+function sluchka()
 {
-	setTimeout(sluchka(),700);
-	setTimeout(sluchka(),2000);
-}	
+	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
+	{
+		setTimeout(get_sluchka(),200);
+		setTimeout(get_sluchka(),1500);
+	}	
+}
+
