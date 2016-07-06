@@ -555,4 +555,20 @@ function settings()
 
 
 
+function sluchka()
+	{
+	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
+		{
+			$("#reproduction-wrapper").find("span:contains('Покрыть')").click();
+			$("#formMalePublicTypePublic").click();
+			$('#formMalePublicPrice option[value="500"]').prop('selected', true);
+			$("#boutonMaleReproduction").click();
+		}
+	}
+}
 
+if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
+{
+	setTimeout(sluchka(),700);
+	setTimeout(sluchka(),2000);
+}	
