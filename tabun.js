@@ -563,10 +563,10 @@ function get_sluchka()
 	{
 	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
 		{
-			$("#reproduction-wrapper").find("span:contains('Покрыть')").click();
-			$("#formMalePublicTypePublic").click();
-			$('#formMalePublicPrice option[value="500"]').prop('selected', true);
-			$("#boutonMaleReproduction").click();
+			setTimeout($("#reproduction-wrapper").find("span:contains('Покрыть')").click(),100);
+			setTimeout($("#formMalePublicTypePublic").click(),200);
+			setTimeout($('#formMalePublicPrice option[value="500"]').prop('selected', true),300);
+			setTimeout($("#boutonMaleReproduction").click(),400);
 		}
 	}
 
@@ -575,7 +575,7 @@ function sluchka()
 	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
 	{
 		setTimeout(get_sluchka(),200);
-		setTimeout(get_sluchka(),1500);
+	//	setTimeout(get_sluchka(),1500);
 	}	
 }
 
