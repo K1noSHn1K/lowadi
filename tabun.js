@@ -565,7 +565,7 @@ function sluchka()
 			$("#boutonMaleReproduction").click();
 		}
 	}
-}
+
 
 if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
 {
