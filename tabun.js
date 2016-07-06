@@ -137,7 +137,7 @@ function usualProg()
 	setTimeout(prev, pause7);
 	
 	 // Следующий
-	  var pause8 = pause7 + getRandomPause(900, 1400);
+	  var pause8 = pause7 + getRandomPause(1000, 2400);
 	setTimeout(sluchka, pause8);
 
 }
@@ -580,4 +580,4 @@ function sluchka()
 	}	
 }
 
-setTimeout(sluchka,2000);
+
