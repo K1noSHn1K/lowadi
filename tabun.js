@@ -113,9 +113,13 @@ function usualProg()
 		pause = pause + getRandomPause(500, 2000);
 		setTimeout(eqCenterReg, pause);
 		return;
-	  }  // Чистка
+	  }  
 
-	  var pause1 = pause + getRandomPause(500, 2000);
+	//Случка 
+	var pauseS = pause + getRandomPause(900, 1400);
+	setTimeout(prev, pauseS);
+	// Чистка
+	  var pause1 = pauseS + getRandomPause(1500, 2000);
 	setTimeout(groom, pause1);
 	  // Урок
 	  var pause2 = pause1 + getRandomPause(500, 1500);
@@ -131,13 +135,8 @@ function usualProg()
 	  // Спать
 	  var pause6 = pause5 + getRandomPause(500, 1000);
 	setTimeout(sleep, pause6);
-
-	//Случка 
-	var pause7 = pause6 + getRandomPause(900, 1400);
-	setTimeout(prev, pause7);
-	
 	 // Следующий
-	  var pause8 = pause7 + getRandomPause(1000, 2400);
+	  var pause8 = pause7 + getRandomPause(500, 800);
 	setTimeout(sluchka, pause8);
 
 }
