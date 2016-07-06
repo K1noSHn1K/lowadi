@@ -555,6 +555,9 @@ function settings()
 		$('body').append('<div class="lwb" style="display:block; position:fixed; width:105px; height:100px; left:0; top:100px; padding:5px; background-color:rgba(92, 92, 92, 0.6);  border-radius: 0px 20px 20px 0;"></div>');
 		$('.lwb').append('<center><span class="header-currency-label">LowadiBot v1.3.1</span>  </center>');
 		$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option>	</select>');
+		$('.lwb').append('<br><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;">Предлагать случки</span> <input id="slchkbx" name="slchkbx" value="1" type="checkbox">');
+		$('.lwb').append('<br><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;">По цене: </span> <select id="sluchka_option"> <option value="500">500</option> <option value="1000">1000</option> <option value="1500">1500</option> <option value="2000">2000</option> <option value="2500">2500</option> <option value="3000">3000</option> <option value="3500">3500</option> <option value="4000">4000</option> <option value="4500">4500</option> <option value="5000">5000</option> <option value="5500">5500</option> <option value="6000">6000</option> <option value="6500">6500</option> <option value="7000">7000</option> <option value="7500">7500</option>	</select>');
+		
 	}
 
 
