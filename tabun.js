@@ -121,7 +121,7 @@ function usualProg()
 	  var pause2 = pause1 + getRandomPause(500, 1500);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(200, 1000);
+	  var pause3 = pause2 + getRandomPause(500, 1500);
 	setTimeout(openFeeding, pause3);
 	  var pause4 = pause3 + getRandomPause(700, 1500);
 	setTimeout(doEatNorm, pause4);
