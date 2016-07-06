@@ -549,7 +549,7 @@ function settings()
 	{
 		$('body').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 999;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
 		$('body').append('<div class="lwb" style="display:block; position:fixed; width:105px; height:100px; left:0; top:100px; padding:5px; background-color:rgba(92, 92, 92, 0.6);  border-radius: 0px 20px 20px 0;"></div>');
-		$('.lwb').append('<center><span class="header-currency-label">LowadiBot v1.3</span>  </center>');
+		$('.lwb').append('<center><span class="header-currency-label">LowadiBot v1.3.1</span>  </center>');
 		$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option>	</select>');
 	}
 
