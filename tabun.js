@@ -43,9 +43,9 @@ function get_sluchki_option()
 	if(sl_check=="1") 
 		{
 			$('#slchkbx').prop('checked', true);
-			$('#sluchka_option').show();
+			$('.lwb_sl_hide').show();
 		}
-		else  $('#sluchka_option').hide();
+		else  $('.lwb_sl_hide').hide();
 	
 	return value;
 	}	
@@ -84,8 +84,8 @@ $('#sluchka_option').on('change', function() {
 
 $('#slchkbx').on('change', function() {
  set_sluchki_option();
- 	if ($("#slchkbx").prop("checked"))  $('#sluchka_option').show('slow');
- 		else  $('#sluchka_option').hide('slow');
+ 	if ($("#slchkbx").prop("checked"))  $('.lwb_sl_hide').show('slow');
+ 		else  $('.lwb_sl_hide').hide('slow');
 });
 
 if (!localStorage.getItem('lwb_kck')) set_kck_option();
@@ -626,7 +626,7 @@ function settings()
 		$('.lwb').append('<center><span class="header-currency-label" style="color:#fafe6c;"><b>LowadiBot v1.3.2</b>   </span>  </center>');
 		$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option> </select> &nbsp  <span class="lwb_setting" style="cursor:pointer;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings.png" width="20px" title="Показать настройки" /></span>');
 		$('.lwb').append('<br> <div style="padding-top:5px;"></div> <span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Предлагать случки</span></td> <td><input id="slchkbx" name="slchkbx" value="1" type="checkbox">');
-		$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;"> По цене</span> </td> <td> <select id="sluchka_option"> <option value="500">500</option> <option value="1000">1000</option> <option value="1500">1500</option> <option value="2000">2000</option> <option value="2500">2500</option> <option value="3000">3000</option> <option value="3500">3500</option> <option value="4000">4000</option> <option value="4500">4500</option> <option value="5000">5000</option> <option value="5500">5500</option> <option value="6000">6000</option> <option value="6500">6500</option> <option value="7000">7000</option> <option value="7500">7500</option>	</select>');
+		$('.lwb').append('<div class="lwb_sl_hide"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;"> По цене</span>  <select id="sluchka_option"> <option value="500">500</option> <option value="1000">1000</option> <option value="1500">1500</option> <option value="2000">2000</option> <option value="2500">2500</option> <option value="3000">3000</option> <option value="3500">3500</option> <option value="4000">4000</option> <option value="4500">4500</option> <option value="5000">5000</option> <option value="5500">5500</option> <option value="6000">6000</option> <option value="6500">6500</option> <option value="7000">7000</option> <option value="7500">7500</option>	</select></div>');
 		
 		$('body').append('<div class="lwb_settings" style="display: none; position: fixed; width: 400px; height:170px; top: 100px; left: 125px; z-index: 999; padding:5px; background-color:rgba(92, 92, 92, 0.9);  border-radius: 0px 0px 0px 0px;"></div>');
 		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки записи в КСК</h2></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
