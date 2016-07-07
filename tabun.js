@@ -186,12 +186,12 @@ function usualProg()
 	  var pause2 = pause1 + getRandomPause(500, 1500);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(200, 1000);
+	  var pause3 = pause2 + getRandomPause(500, 2500);
 	setTimeout(openFeeding, pause3);
 	  var pause4 = pause3 + getRandomPause(700, 1500);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
-	  var pause5 = pause4 + getRandomPause(200, 1000);
+	  var pause5 = pause4 + getRandomPause(400, 1000);
 	setTimeout(stroke, pause5);
 	  // Спать
 	  var pause6 = pause5 + getRandomPause(500, 1000);
