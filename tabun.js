@@ -40,7 +40,12 @@ function get_sluchki_option()
 	value = localStorage.getItem("lwb_slu");
 	sl_check = localStorage.getItem("lwb_chk");
 	$("#sluchka_option [value='"+value+"']").attr("selected", "selected");
-	if(sl_check=="1") $('#slchkbx').prop('checked', true);
+	if(sl_check=="1") 
+		{
+			$('#slchkbx').prop('checked', true);
+			$('#sluchka_option').show();
+		}
+		else  $('#sluchka_option').hide();
 	
 	return value;
 	}	
@@ -79,6 +84,8 @@ $('#sluchka_option').on('change', function() {
 
 $('#slchkbx').on('change', function() {
  set_sluchki_option();
+ 	if ($("#slchkbx").prop("checked"))  $('#sluchka_option').show('slow');
+ 		else  $('#sluchka_option').hide('slow');
 });
 
 if (!localStorage.getItem('lwb_kck')) set_kck_option();
