@@ -630,8 +630,8 @@ function settings()
 		
 		$('body').append('<div class="lwb_settings" style="display: none; position: fixed; width: 400px; height:170px; top: 100px; left: 125px; z-index: 999; padding:5px; background-color:rgba(92, 92, 92, 0.9);  border-radius: 0px 0px 0px 0px;"></div>');
 		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки записи в КСК</h2></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
-		$('.lwb_settings').append('<div style="background:#fff; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/fourrage_v1828806360.png" /> <input id="settings_fourrage" name="settings_fourrage" value="0" type="checkbox">  Выбирать КСК с фуражом </div>');
-		$('.lwb_settings').append('<div style="background:#fff; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/avoine_v1828806360.png" /> <input id="settings_zerno" name="settings_zerno" value="0" type="checkbox"> Выбирать КСК с зерном </div>');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.77) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/fourrage_v1828806360.png" /> <input id="settings_fourrage" name="settings_fourrage" value="0" type="checkbox">  Выбирать КСК с фуражом </div>');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.77) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/avoine_v1828806360.png" /> <input id="settings_zerno" name="settings_zerno" value="0" type="checkbox"> Выбирать КСК с зерном </div>');
 		$('.lwb_settings').append('<br><center><button id="lwb_savesettings" style="margin: 5px 0 0 0;" onclick="savesettings();" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Сохранить</span></span></span></button></center>');
 
 
