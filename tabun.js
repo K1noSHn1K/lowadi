@@ -95,16 +95,20 @@ loadsettings();
 // ---------------------- Конец настроек ------------------------------->
 
 // Если сайт лагает, и кидает на всех лошадей, то ищем записанную в КСК, но не уложенную спать
-$('.item-relative').each(function(i,elem) { 
-	var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
-	if (text!=undefined)
-		{
-			kon = ($(this).find('.horsename').attr('href'));
-			location.href=kon;
-		}
-		
-});
+function bug_finder()
+{
+	$('.item-relative').each(function(i,elem) { 
+		var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
+		if (text!=undefined)
+			{
+				kon = ($(this).find('.horsename').attr('href'));
+				location.href=kon;
+			}
+			
+	});
+}
 
+setTimeout(bug_finder, 500);
 
 if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 {
