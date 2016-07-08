@@ -94,10 +94,17 @@ SL_option = get_sluchki_option();
 loadsettings();
 // ---------------------- Конец настроек ------------------------------->
 
-if (/www.lowadi.com\/elevage\/chevaux\/\?elevage=all-horses/.test(window.location.href))
-{
- // history.back();
-}
+// Если сайт лагает, и кидает на всех лошадей, то ищем записанную в КСК, но не уложенную спать
+$('.item-relative').each(function(i,elem) { 
+	var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
+	if (text!=undefined)
+		{
+			kon = ($(this).find('.horsename').attr('href'));
+			location.href=kon;
+		}
+		
+});
+
 
 if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 {
@@ -290,8 +297,7 @@ function eqCenterReg4()
     location.reload();
   }
   
-  if (/elevage=all-horses/.test(window.location.href) == true)
-  	history.back();
+
   
 }
 
