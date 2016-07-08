@@ -96,7 +96,7 @@ loadsettings();
 
 if (/www.lowadi.com\/elevage\/chevaux\/\?elevage=all-horses/.test(window.location.href))
 {
-  //history.back();
+  history.back();
 }
 
 if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
