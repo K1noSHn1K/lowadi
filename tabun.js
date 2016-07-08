@@ -289,7 +289,13 @@ function eqCenterReg4()
   {
     location.reload();
   }
-}// Пустая функция
+  
+  if (/elevage=all-horses/.test(window.location.href) == true)
+  	history.back();
+  
+}
+
+// Пустая функция
 
 function pauseFunc()
 {
