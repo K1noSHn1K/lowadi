@@ -214,14 +214,18 @@ function usualProg()
 	  var pause8 = pause7 + getRandomPause(800, 1000);
 	setTimeout(prev, pause8);
 	
-	// Дополнительные случки 	
-	var energy = $("#energie").text();
-	alert(energy);
-	if (energy>42)
+	// Дополнительные случки 
+	var pause9 = pause8 + getRandomPause(function() {
+		var energy = $("#energie").text();
+		alert(energy);
+		if (energy>42)
 		{
-			var pause9 = pause8 + getRandomPause(900, 1400);
+			var pause10 = pause9 + getRandomPause(500, 1000);
 			setTimeout(sluchka, pauseS);	
-		}
+		}	
+		
+	}, 1400);
+
 
 }
 // Рост ОРками
