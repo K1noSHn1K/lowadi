@@ -210,21 +210,24 @@ function usualProg()
 	    var pause7 = pause6 + getRandomPause(200, 400);
 	setTimeout(stroke, pause7);
 	setTimeout(minEnergy,300);
-	 // Следующий
-	  var pause8 = pause7 + getRandomPause(800, 1000);
-	setTimeout(prev, pause8);
 	
 	// Дополнительные случки 
-	var pause9 = pause8 + getRandomPause(function() {
+	var pause8 = pause7 + getRandomPause(500, 1400);	
+	setTimeout(function() {
 		var energy = $("#energie").text();
 		alert(energy);
 		if (energy>42)
 		{
-			var pause10 = pause9 + getRandomPause(500, 1000);
-			setTimeout(sluchka, pauseS);	
+			setTimeout(sluchka, 200);	
 		}	
 		
-	}, 1400);
+	}, pause8);
+	
+	 // Следующий
+	  var pause9 = pause8 + getRandomPause(800, 1300);
+	setTimeout(prev, pause9);
+	
+
 
 
 }
