@@ -215,7 +215,6 @@ function usualProg()
 	var pause8 = pause7 + getRandomPause(500, 1400);	
 	setTimeout(function() {
 		var energy = $("#energie").text();
-		alert(energy);
 		if (energy>42)
 		{
 			setTimeout(sluchka, 200);	
