@@ -114,22 +114,21 @@ function bug_finder()
 		}
 }
 
-//setTimeout(bug_finder, 500);
+setTimeout(bug_finder, 500);
 
 
 if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 {
-	
 		
   // Если конь свежекуплен, останавливаем скрипт
   if (/www.lowadi.com\/elevage\/chevaux\/cheval\?id=[0-9]+\&message=acheter/.test(window.location.href))
   {
     throw 'stop';
   }  
-  
+
   // Если конь не уложен спать
+    //if ($("#boutonCoucher").hasClass("action-disabled") == false)
   if (document.getElementById('countDownWakeUp') == null)
- //if ($("#boutonCoucher").hasClass("action-disabled") == false)
   {
     // Если конь старше 30ти
     if (chevalAge > 358)
@@ -180,7 +179,7 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 // Программа обычного прогона
 function usualProg()
 {
-	localStorage.setItem("horse_status", '0');
+	localStorage.setItem("horse_status", "0");
 	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
 	  {
 		var d = document.getElementById('reproduction-body-content').childNodes[3].getElementsByTagName('a');
@@ -291,7 +290,8 @@ function eqCenterReg()
 }
 function eqCenterReg2()
 {
-	localStorage.setItem("horse_status", '1');
+	localStorage.setItem("horse_status", "1");
+	localStorage.setItem("horse_id", horse_id);
 	// Смотрим настройки, и если надо, то подбираем КСК по заданным параметрам
 	settings_fourrage = localStorage.getItem("settings_fourrage");
 	settings_zerno = localStorage.getItem("settings_zerno");
