@@ -1,6 +1,7 @@
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
 var horse_id = chevalId;
+
 /* Возможные значения:
 0 - 1 день
 1 - 3 дня
@@ -98,15 +99,19 @@ loadsettings();
 // Если сайт лагает, и кидает на всех лошадей, то ищем записанную в КСК, но не уложенную спать
 function bug_finder()
 {
-	$('.item-relative').each(function(i,elem) { 
-		var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
-		if (text!=undefined)
-			{
-				kon = ($(this).find('.horsename').attr('href'));
-				location.href=kon;
-			}
-			
-	});
+	var  horse = localStorage.getItem("horse_status");
+		if (horse=='1')
+		{
+			$('.item-relative').each(function(i,elem) { 
+				var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
+				if (text!=undefined)
+					{
+						kon = ($(this).find('.horsename').attr('href'));
+						location.href=kon;
+					}
+					
+			});
+		}
 }
 
 //setTimeout(bug_finder, 500);
@@ -126,7 +131,6 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
   //if (document.getElementById('countDownWakeUp') == null)
  if ($("#boutonCoucher").hasClass("action-disabled") == false)
   {
-  	alert(horse_id);
     // Если конь старше 30ти
     if (chevalAge > 358)
     {
@@ -176,6 +180,7 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 // Программа обычного прогона
 function usualProg()
 {
+	localStorage.setItem("horse_status", '0');
 	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
 	  {
 		var d = document.getElementById('reproduction-body-content').childNodes[3].getElementsByTagName('a');
@@ -286,6 +291,7 @@ function eqCenterReg()
 }
 function eqCenterReg2()
 {
+	localStorage.setItem("horse_status", '1');
 	// Смотрим настройки, и если надо, то подбираем КСК по заданным параметрам
 	settings_fourrage = localStorage.getItem("settings_fourrage");
 	settings_zerno = localStorage.getItem("settings_zerno");
