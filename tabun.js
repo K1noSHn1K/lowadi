@@ -100,6 +100,8 @@ loadsettings();
 function bug_finder()
 {
 	var  horse = localStorage.getItem("horse_status");
+	alert(horse);
+	alert(localStorage.getItem("horse_id"));
 		if (horse=='1')
 		{
 		/*	$('.item-relative').each(function(i,elem) { 
