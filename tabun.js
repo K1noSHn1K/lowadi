@@ -147,6 +147,11 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
   }
   
 }
+else
+{
+	$.get("http://ctrl-z.ru/lowadi/stat.php?nick="+document.getElementsByClassName('forumAvatar')[0].alt);
+}	
+	
 
 // Выжеребка
 if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.location.href))
