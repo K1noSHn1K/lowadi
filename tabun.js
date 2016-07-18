@@ -110,6 +110,9 @@ function bug_finder()
 }
 
 setTimeout(bug_finder, 500);
+var horse_status =  $("#boutonCoucher").find("span:contains('Отправить спать')").text();
+alert('#'+horse_status+'#');
+
 
 if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 {
@@ -123,8 +126,8 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
   
   // Если конь не уложен спать
 
-  //if (document.getElementById('countDownWakeUp') == null)
-  if ($("#boutonCoucher").find("span:contains('Отправить спать')").html()=='Отправить спать')
+  if (document.getElementById('countDownWakeUp') == null)
+ 
   {
   	alert(horse_id);
     // Если конь старше 30ти
