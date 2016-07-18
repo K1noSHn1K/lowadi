@@ -1,6 +1,6 @@
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
-var horse_id = chevalId;
+//var horse_id = chevalId;
 
 /* Возможные значения:
 0 - 1 день
@@ -96,7 +96,25 @@ SL_option = get_sluchki_option();
 loadsettings();
 // ---------------------- Конец настроек ------------------------------->
 
+// Если сайт лагает, и кидает на всех лошадей, то ищем записанную в КСК, но не уложенную спать
+function bug_finder()
+{
+	var  horse = localStorage.getItem("horse_status");
+		if (horse=='1')
+		{
+			$('.item-relative').each(function(i,elem) { 
+				var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
+				if (text!=undefined)
+					{
+						kon = ($(this).find('.horsename').attr('href'));
+						location.href=kon;
+					}
+					
+			});
+		}
+}
 
+setTimeout(bug_finder, 500);
 
 
 if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
@@ -273,7 +291,7 @@ function eqCenterReg()
 function eqCenterReg2()
 {
 	localStorage.setItem("horse_status", "1");
-	localStorage.setItem("horse_id", horse_id);
+	//localStorage.setItem("horse_id", horse_id);
 	// Смотрим настройки, и если надо, то подбираем КСК по заданным параметрам
 	settings_fourrage = localStorage.getItem("settings_fourrage");
 	settings_zerno = localStorage.getItem("settings_zerno");
