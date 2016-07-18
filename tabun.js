@@ -108,7 +108,7 @@ function bug_finder()
 	});
 }
 
-//setTimeout(bug_finder, 500);
+setTimeout(bug_finder, 500);
 
 if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 {
