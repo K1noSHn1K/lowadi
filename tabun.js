@@ -128,8 +128,8 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
   }  
   
   // Если конь не уложен спать
-  //if (document.getElementById('countDownWakeUp') == null)
- if ($("#boutonCoucher").hasClass("action-disabled") == false)
+  if (document.getElementById('countDownWakeUp') == null)
+ //if ($("#boutonCoucher").hasClass("action-disabled") == false)
   {
     // Если конь старше 30ти
     if (chevalAge > 358)
