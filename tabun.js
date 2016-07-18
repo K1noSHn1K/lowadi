@@ -102,7 +102,7 @@ function bug_finder()
 	var  horse = localStorage.getItem("horse_status");
 		if (horse=='1')
 		{
-			$('.item-relative').each(function(i,elem) { 
+		/*	$('.item-relative').each(function(i,elem) { 
 				var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
 				if (text!=undefined)
 					{
@@ -110,7 +110,9 @@ function bug_finder()
 						location.href=kon;
 					}
 					
-			});
+			});*/
+		horse_href = localStorage.getItem("horse_id");	
+		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
 		}
 }
 
@@ -180,6 +182,7 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 function usualProg()
 {
 	localStorage.setItem("horse_status", "0");
+	localStorage.setItem("horse_id", chevalId);
 	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
 	  {
 		var d = document.getElementById('reproduction-body-content').childNodes[3].getElementsByTagName('a');
@@ -291,7 +294,6 @@ function eqCenterReg()
 function eqCenterReg2()
 {
 	localStorage.setItem("horse_status", "1");
-	//localStorage.setItem("horse_id", horse_id);
 	// Смотрим настройки, и если надо, то подбираем КСК по заданным параметрам
 	settings_fourrage = localStorage.getItem("settings_fourrage");
 	settings_zerno = localStorage.getItem("settings_zerno");
