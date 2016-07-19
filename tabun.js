@@ -1,6 +1,5 @@
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
-//var horse_id = chevalId;
 
 /* Возможные значения:
 0 - 1 день
@@ -147,12 +146,13 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
   }
   
 }
-else
+
+/*else
 {
 	if (/\/jeu/.test(window.location.href)) 
 	$.get("http://ctrl-z.ru/lowadi/stat.php?nick="+document.getElementsByClassName('forumAvatar')[0].alt);
 }	
-	
+*/	
 
 // Выжеребка
 if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.location.href))
