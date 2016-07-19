@@ -1,5 +1,6 @@
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
+
 /* Возможные значения:
 0 - 1 день
 1 - 3 дня
@@ -97,29 +98,37 @@ loadsettings();
 // Если сайт лагает, и кидает на всех лошадей, то ищем записанную в КСК, но не уложенную спать
 function bug_finder()
 {
-	$('.item-relative').each(function(i,elem) { 
-		var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
-		if (text!=undefined)
-			{
-				kon = ($(this).find('.horsename').attr('href'));
-				location.href=kon;
-			}
-			
-	});
+	var  horse = localStorage.getItem("horse_status");
+		if (horse=='1')
+		{
+		/*	$('.item-relative').each(function(i,elem) { 
+				var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
+				if (text!=undefined)
+					{
+						kon = ($(this).find('.horsename').attr('href'));
+						location.href=kon;
+					}
+					
+			});*/
+		horse_href = localStorage.getItem("horse_id");	
+		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
+		}
 }
 
 setTimeout(bug_finder, 500);
 
+
 if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 {
-	
 		
   // Если конь свежекуплен, останавливаем скрипт
   if (/www.lowadi.com\/elevage\/chevaux\/cheval\?id=[0-9]+\&message=acheter/.test(window.location.href))
   {
     throw 'stop';
-  }  // Если конь не уложен спать
+  }  
 
+  // Если конь не уложен спать
+    //if ($("#boutonCoucher").hasClass("action-disabled") == false)
   if (document.getElementById('countDownWakeUp') == null)
   {
     // Если конь старше 30ти
@@ -137,6 +146,13 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
   }
   
 }
+
+/*else
+{
+	if (/\/jeu/.test(window.location.href)) 
+	$.get("http://ctrl-z.ru/lowadi/stat.php?nick="+document.getElementsByClassName('forumAvatar')[0].alt);
+}	
+*/	
 
 // Выжеребка
 if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.location.href))
@@ -171,6 +187,8 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 // Программа обычного прогона
 function usualProg()
 {
+	localStorage.setItem("horse_status", "0");
+	localStorage.setItem("horse_id", chevalId);
 	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
 	  {
 		var d = document.getElementById('reproduction-body-content').childNodes[3].getElementsByTagName('a');
@@ -197,12 +215,12 @@ function usualProg()
 	  var pause2 = pause1 + getRandomPause(500, 1500);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(500, 2500);
+	  var pause3 = pause2 + getRandomPause(200, 1000);
 	setTimeout(openFeeding, pause3);
 	  var pause4 = pause3 + getRandomPause(700, 1500);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
-	  var pause5 = pause4 + getRandomPause(400, 1000);
+	  var pause5 = pause4 + getRandomPause(200, 1000);
 	setTimeout(stroke, pause5);
 	  // Спать
 	  var pause6 = pause5 + getRandomPause(500, 1000);
@@ -210,9 +228,24 @@ function usualProg()
 	    var pause7 = pause6 + getRandomPause(200, 400);
 	setTimeout(stroke, pause7);
 	setTimeout(minEnergy,300);
+	
+	// Дополнительные случки 
+	var pause8 = pause7 + getRandomPause(500, 1400);	
+	setTimeout(function() {
+		var energy = $("#energie").text();
+		if (energy>42)
+		{
+			setTimeout(sluchka, 200);	
+		}	
+		
+	}, pause8);
+	
 	 // Следующий
-	  var pause8 = pause7 + getRandomPause(800, 1000);
-	setTimeout(prev, pause8);
+	  var pause9 = pause8 + getRandomPause(800, 1300);
+	setTimeout(prev, pause9);
+	
+
+
 
 }
 // Рост ОРками
@@ -266,6 +299,7 @@ function eqCenterReg()
 }
 function eqCenterReg2()
 {
+	localStorage.setItem("horse_status", "1");
 	// Смотрим настройки, и если надо, то подбираем КСК по заданным параметрам
 	settings_fourrage = localStorage.getItem("settings_fourrage");
 	settings_zerno = localStorage.getItem("settings_zerno");
@@ -300,7 +334,12 @@ function eqCenterReg4()
   {
     location.reload();
   }
-}// Пустая функция
+  
+
+  
+}
+
+// Пустая функция
 
 function pauseFunc()
 {
@@ -633,8 +672,8 @@ function OR()
 function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 999;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
-		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:115px; height:115px; left:0; top:100px; padding:5px; background-color:rgba(92, 92, 92, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<center><span class="header-currency-label" style="color:#fafe6c;"><b>LowadiBot v1.3.3</b>   </span>  </center>');
+		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:100px; padding:5px; background-color:rgba(92, 92, 92, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
+		$('.lwb').append('<center><span class="header-currency-label" style="color:#fafe6c;"><b>LowadiBot v1.3.5</b>   </span>  </center>');
 		$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option> </select> &nbsp  <span class="lwb_setting" style="cursor:pointer;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings.png" width="20px" title="Показать настройки" /></span>');
 		$('.lwb').append('<br> <div style="padding-top:5px;"></div> <span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Предлагать случки</span></td> <td><input id="slchkbx" name="slchkbx" value="1" type="checkbox">');
 		$('.lwb').append('<div class="lwb_sl_hide"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;"> По цене</span>  <select id="sluchka_option"> <option value="500">500</option> <option value="1000">1000</option> <option value="1500">1500</option> <option value="2000">2000</option> <option value="2500">2500</option> <option value="3000">3000</option> <option value="3500">3500</option> <option value="4000">4000</option> <option value="4500">4500</option> <option value="5000">5000</option> <option value="5500">5500</option> <option value="6000">6000</option> <option value="6500">6500</option> <option value="7000">7000</option> <option value="7500">7500</option>	</select></div>');
