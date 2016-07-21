@@ -1,34 +1,33 @@
+
 $(function(){
 
-$("body").append('
-.go-up, .go-down {
- position: fixed; 
- z-index: 9999; 
- background: #4F4F4F;
- border: 1px solid #ccc;
- border-radius: 5px;
- cursor: pointer;
- color: #fff;
- text-align: center;
- font: normal normal 42px sans-serif;
- text-shadow: 0 1px 2px #000;
- opacity: .3;
- padding: 3px;
- margin-bottom: 5px;
- width: 100px;
- height: 100%;
-}
-
-.right { right: 1px; }
-.left { left: 1px; }
-.go-up { bottom: 1px; top:1px;}
-.go-down { bottom: 1px; top:1px;}
-.go-down:hover,
-.go-up:hover {
- opacity: 0.7;
- box-shadow: 0 5px 0.5em -1px #666;
-}
-');
+$("body").append(
+'<style> .go-up, .go-down {'+
+' position: fixed; '+
+' z-index: 9999; '+
+' background: #4F4F4F;'+
+' border: 1px solid #ccc;'+
+' border-radius: 5px;'+
+' cursor: pointer;'+
+ 'color: #fff;'+
+ 'text-align: center;'+
+' font: normal normal 42px sans-serif;'+
+ 'text-shadow: 0 1px 2px #000;'+
+' opacity: .3;'+
+' padding: 3px;'+
+' margin-bottom: 5px;'+
+' width: 100px;'+
+' height: 100%;'+
+'}'+
+'.right { right: 1px; }'+
+'.left { left: 1px; }'+
+'.go-up { bottom: 1px; top:1px;}'+
+'.go-down { bottom: 1px; top:1px;}'+
+'.go-down:hover,'+
+'.go-up:hover {'+
+ 'opacity: 0.7;'+
+ 'box-shadow: 0 5px 0.5em -1px #666;'+
+'} </style>');
 
 $("#container").append(
 '<div class="go-up right" title="Вверх" id="ToTop">&uarr; </div>'+
@@ -49,23 +48,10 @@ $("#container").append(
  });
  
  
- 
-  if ($(window).scrollTop()>="250") $("#ToTop_").fadeIn("slow")
- $(window).scroll(function(){
-  if ($(window).scrollTop()<="250") $("#ToTop_").fadeOut("slow")
-   else $("#ToTop_").fadeIn("slow")
- });
-
- if ($(window).scrollTop()<=$(document).height()-"999") $("#OnBottom_").fadeIn("slow")
- $(window).scroll(function(){
-  if ($(window).scrollTop()>=$(document).height()-"999") $("#OnBottom_").fadeOut("slow")
-   else $("#OnBottom_").fadeIn("slow")
- });
 
  $("#ToTop").click(function(){$("html,body").animate({scrollTop:0},"slow")})
- $("#ToTop_").click(function(){$("html,body").animate({scrollTop:0},"slow")})
  $("#OnBottom").click(function(){$("html,body").animate({scrollTop:$(document).height()},"slow")})
- $("#OnBottom_").click(function(){$("html,body").animate({scrollTop:$(document).height()},"slow")})
+
 });
 
 
