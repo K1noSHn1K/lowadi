@@ -128,5 +128,6 @@ function fun()
 
 
  setInterval(function(){
-  fun();
+ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
+  	fun();
 }, 1000); 	
