@@ -1,0 +1,73 @@
+function fun()
+	{
+ $(".hud-clock").html(function(index, text) {
+    return text.replace("Лето", "Лето - котлета");
+    });
+	
+    $(".hud-clock").html(function(index, text) {
+    return text.replace("Осень", "Тлен, смерть, разложение");
+    });
+
+    $(".hud-clock").html(function(index, text) {
+    return text.replace("Зима", "Время Старков");
+    });
+
+    $(".hud-clock").html(function(index, text) {
+    return text.replace("Весна", "Птички - цветочки");
+    });	
+	
+    $(".new-console").html(function(index, text) {
+    return text.replace("Покрыть кобылу", "Присунуть");
+    });	
+
+    $(".new-console").html(function(index, text) {
+    return text.replace("Случить кобылу", "Шпекаться");
+    });	
+	
+    $(".new-console").html(function(index, text) {
+    return text.replace("Кормить", "Ом-ном-ном");
+    });	
+
+    $(".new-console").html(function(index, text) {
+    return text.replace("Поить", "Хлебать");
+    });	
+
+    $(".new-console").html(function(index, text) {
+    return text.replace("Смесь", "Порошок");
+    });		
+	
+    $(".new-console").html(function(index, text) {
+    return text.replace("Ласкать", "Приставать");
+    });		
+	
+    $(".new-console").html(function(index, text) {
+    return text.replace("Отправить спать", "Отключить");
+    });		
+	
+	
+    $(".new-console").html(function(index, text) {
+    return text.replace("Морковь", "Овощ");
+    });		
+	
+    $(".new-console").html(function(index, text) {
+    return text.replace("Чистить", "Лепешка");
+    });		
+	
+	
+    $(".new-console").html(function(index, text) {
+    return text.replace("Вырастить", "Пирамида");
+    });			
+	
+	
+    $(".button-text-0").html(function(index, text) {
+    return text.replace("Погладить", "Домогаться");
+    });		
+	
+    $(".tab-action").html(function(index, text) {
+    return text.replace("Мои новости", "Че каво?");
+    });
+				
+	}
+
+
+   fun();	
