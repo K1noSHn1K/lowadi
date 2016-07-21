@@ -127,4 +127,6 @@ function fun()
 	}
 
 
-   fun();	
+ setInterval(function(){
+  fun();
+}, 1000); 	
