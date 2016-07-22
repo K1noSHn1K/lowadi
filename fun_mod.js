@@ -58,7 +58,7 @@ $("#container").append(
 function fun()
 	{
  $(".hud-clock").html(function(index, text) {
-    return text.replace("Лето", "Лето - котлета");
+    return text.replace("Лето", "Лeто - котлета");
     });
 	
     $(".hud-clock").html(function(index, text) {
