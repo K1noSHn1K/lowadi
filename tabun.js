@@ -157,17 +157,22 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 // Выжеребка
 if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.location.href))
 {
-  if (document.body.innerHTML.indexOf('femelle.png') !== - 1)
+  if (document.body.innerHTML.indexOf('женск.') !== - 1)
   {
     document.getElementById('poulain-1').setAttribute('value', 'Кобыла');
   } 
   else document.getElementById('poulain-1').setAttribute('value', 'Жеребец');
-  var d = document.getElementsByTagName('button');
+ 
+ /* var d = document.getElementsByTagName('button');
   if (d[0].getAttribute('type') == 'submit')
   {
     d[0].click();
-  }
-}// Запись в КСК
+  }*/
+  $('#boutonChoisirNom').click();
+}
+
+
+// Запись в КСК
 
 if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.location.href))
 {
