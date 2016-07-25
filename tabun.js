@@ -158,7 +158,8 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.location.href))
 {
  // if (document.body.innerHTML.indexOf('женск.') !== - 1)
- if ($('#page-contents:contains('женск')'))
+ alert($('#page-contents:contains('женск')').text());
+ if ($('#page-contents:contains('женск')').text)
   {
     document.getElementById('poulain-1').setAttribute('value', 'Кобыла');
   } 
