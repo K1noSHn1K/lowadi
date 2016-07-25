@@ -1,3 +1,16 @@
+// ==UserScript==
+// @name Прогон табуна
+// @description Бот для браузерной игры Lowadi
+// @author HumanoID
+// @license Mozilla Public License Version 2.0
+// @version 1.3
+// @include http://www.lowadi.com/*
+// @grant none
+// ==/UserScript==
+
+
+
+	
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
 
@@ -157,7 +170,9 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 // Выжеребка
 if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.location.href))
 {
- if (document.body.innerHTML.indexOf('женск.') !== - 1)
+  if (document.body.innerHTML.indexOf('женск.') !== - 1)
+ //alert($('#page-contents:contains('женск')').text());
+ //if ($('#page-contents:contains('женск')').text)
   {
     document.getElementById('poulain-1').setAttribute('value', 'Кобыла');
   } 
