@@ -700,7 +700,7 @@ function games()
 	if ($('#boutonJouer').text()!=="") 
 	{
 		$('#boutonJouer').click();
-		game = Math.floor(chevalEnergie / 4.2);
+		game = Math.floor(chevalEnergie / 5);
 			if (game>20) game = 20; 
 			game = game-1;
 	
