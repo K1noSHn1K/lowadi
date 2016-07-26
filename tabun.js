@@ -688,6 +688,31 @@ function OR()
   }
 }
 
+// Игра (Для жеребят)
+function games()
+{
+	if ($('#boutonJouer').text()!=="") 
+	{
+		$('#boutonJouer').click();
+		game = Math.floor(chevalEnergie / 4.2);
+			if (game>20) game = 20; 
+	
+		//Если слайдер
+		if (d2.indexOf('centerPlaySlider') !== - 1)
+			{
+				 var spans = document.getElementById('centerPlaySlider').getElementsByTagName('li');
+				    spans[game].className = spans[game].className + ' selected';
+				    spans[game].click();
+				    $('#formCenterPlaySubmit').click();
+			}
+		else
+			{
+				 //document.getElementById('formCenterPlay876aec46bd').options[game].selected = true;
+				 $('#formCenterPlay').find("select [value='"+game+"']").attr("selected", "selected");
+				 
+			}	
+	}
+}
 
 function settings()
 	{
