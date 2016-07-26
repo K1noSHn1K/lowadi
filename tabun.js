@@ -722,7 +722,7 @@ function games()
 			}
 			  var d = document.getElementById('formCenterPlaySubmit');
 				  if (d !== null)
-				    d.click();
+				 setTimeout(d.click(), 300);  
 	}
 	
 	   //Ласка
