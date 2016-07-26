@@ -702,6 +702,7 @@ function games()
 		$('#boutonJouer').click();
 		game = Math.floor(chevalEnergie / 4.2);
 			if (game>20) game = 20; 
+			game = game-1;
 	
 		//Если слайдер
 		if (d2.indexOf('centerPlaySlider') !== - 1)
@@ -719,6 +720,15 @@ function games()
 				 
 			}	
 	}
+	
+	   //Ласка
+            stroke();
+	    // Пить
+	    var d = document.getElementById('boutonBoire');
+	    if (d !== null)
+	    {
+	      d.click();
+	    }
 }
 
 function settings()
