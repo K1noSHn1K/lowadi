@@ -228,7 +228,7 @@ function usualProg()
 	 // Игра, если жеребенок 
 	 var pauseG = pause + getRandomPause(300, 600);
 	 if ($('#boutonJouer').text()!=="")
-	 	setTimeout(game, pauseG);	
+	 	setTimeout(games, pauseG);	
 
 	//Случка 
 	var pauseS = pauseG + getRandomPause(900, 1400);
@@ -696,7 +696,7 @@ function OR()
 // Игра (Для жеребят)
 function games()
 {
-	alert();
+	
 	if ($('#boutonJouer').text()!=="") 
 	{
 		$('#boutonJouer').click();
