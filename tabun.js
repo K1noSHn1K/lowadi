@@ -224,9 +224,14 @@ function usualProg()
 		setTimeout(eqCenterReg, pause);
 		return;
 	  }  
+	 
+	 // Игра, если жеребенок 
+	 var pauseG = pause + getRandomPause(300, 600);
+	 if ($('#boutonJouer').text()!=="")
+	 	setTimeout(game, pauseG);	
 
 	//Случка 
-	var pauseS = pause + getRandomPause(900, 1400);
+	var pauseS = pauseG + getRandomPause(900, 1400);
 	setTimeout(sluchka, pauseS);
 	// Чистка
 	  var pause1 = pauseS + getRandomPause(1500, 2000);
