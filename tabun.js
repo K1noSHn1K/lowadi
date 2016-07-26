@@ -715,6 +715,7 @@ function games()
 			{
 				 //document.getElementById('formCenterPlay876aec46bd').options[game].selected = true;
 				 $('#formCenterPlay').find("select [value='"+game+"']").attr("selected", "selected");
+				 $('#formCenterPlaySubmit').click();
 				 
 			}	
 	}
