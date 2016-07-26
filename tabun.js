@@ -696,6 +696,7 @@ function OR()
 // Игра (Для жеребят)
 function games()
 {
+	alert();
 	if ($('#boutonJouer').text()!=="") 
 	{
 		$('#boutonJouer').click();
