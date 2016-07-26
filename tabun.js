@@ -705,6 +705,7 @@ function games()
 			game = game-1;
 	
 		//Если слайдер
+		var d2 = document.getElementById('care').outerHTML;
 		if (d2.indexOf('centerPlaySlider') !== - 1)
 			{
 				 var spans = document.getElementById('centerPlaySlider').getElementsByTagName('li');
