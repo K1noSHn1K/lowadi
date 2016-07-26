@@ -710,15 +710,18 @@ function games()
 				 var spans = document.getElementById('centerPlaySlider').getElementsByTagName('li');
 				    spans[game].className = spans[game].className + ' selected';
 				    spans[game].click();
-				    $('#formCenterPlaySubmit').click();
+				
 			}
 		else
 			{
 				 //document.getElementById('formCenterPlay876aec46bd').options[game].selected = true;
 				 $('#formCenterPlay').find("select [value='"+game+"']").attr("selected", "selected");
-				 $('#formCenterPlaySubmit').click();
 				 
-			}	
+				 
+			}
+			  var d = document.getElementById('formCenterPlaySubmit');
+				  if (d !== null)
+				    d.click();
 	}
 	
 	   //Ласка
