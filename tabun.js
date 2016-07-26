@@ -700,9 +700,9 @@ function games()
 	if ($('#boutonJouer').text()!=="") 
 	{
 		$('#boutonJouer').click();
-		game = Math.floor(chevalEnergie / 5);
+		game = Math.floor(chevalEnergie / 6);
 			if (game>20) game = 20; 
-			game = game-1;
+			
 	
 		//Если слайдер
 		var d2 = document.getElementById('care').outerHTML;
