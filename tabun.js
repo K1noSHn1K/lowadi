@@ -711,6 +711,7 @@ function games()
 				 var spans = document.getElementById('centerPlaySlider').getElementsByTagName('li');
 				    spans[game].className = spans[game].className + ' selected';
 				    spans[game].click();
+				    $('#formCenterPlay').find("li.selected").click();
 				
 			}
 		else
