@@ -108,6 +108,17 @@ SL_option = get_sluchki_option();
 loadsettings();
 // ---------------------- Конец настроек ------------------------------->
 
+// Парсинг URI
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 // Если сайт лагает, и кидает на всех лошадей, то ищем записанную в КСК, но не уложенную спать
 function bug_finder()
 {
@@ -171,6 +182,10 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 // Выжеребка
 if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.location.href))
 {
+var horseid = getParameterByName('jument');	
+localStorage.setItem("horse_status", "2");
+localStorage.setItem("horse_id", horseid);	
+	
   if (document.body.innerHTML.indexOf('женск.') !== - 1)
  //alert($('#page-contents:contains('женск')').text());
  //if ($('#page-contents:contains('женск')').text)
@@ -178,14 +193,8 @@ if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.locatio
     document.getElementById('poulain-1').setAttribute('value', 'Кобыла');
   } 
   else document.getElementById('poulain-1').setAttribute('value', 'Жеребец');
- 
- /* var d = document.getElementsByTagName('button');
-  if (d[0].getAttribute('type') == 'submit')
-  {
-    d[0].click();
-  }*/
-  	localStorage.setItem("horse_status", "2"); // Статус означает, что лошадь родила
-	localStorage.setItem("horse_id", chevalId);
+
+
   $('#boutonChoisirNom').click();
 }
 
