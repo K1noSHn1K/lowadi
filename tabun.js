@@ -224,14 +224,9 @@ function usualProg()
 		setTimeout(eqCenterReg, pause);
 		return;
 	  }  
-	 
-	 // Игра, если жеребенок 
-	 var pauseG = pause + getRandomPause(300, 600);
-	 if ($('#boutonJouer').text()!=="")
-	 	setTimeout(games, pauseG);	
 
 	//Случка 
-	var pauseS = pauseG + getRandomPause(900, 1400);
+	var pauseS = pause + getRandomPause(900, 1400);
 	setTimeout(sluchka, pauseS);
 	// Чистка
 	  var pause1 = pauseS + getRandomPause(1500, 2000);
@@ -342,8 +337,8 @@ function eqCenterReg3()
   var c = document.getElementsByClassName('odd highlight');
   var d = c[0].getElementsByTagName('button');
   var e = d[KCK_option];
-  if (KCK_option > 1)
-  /*{
+ /* if (KCK_option > 1)
+  {
     var f = e.onclick.toString();
     var onClick = f.substr(f.indexOf('AjaxJSON'));
     onClick = onClick.substr(0, onClick.indexOf('}')) + '}))';
@@ -693,48 +688,6 @@ function OR()
   }
 }
 
-// Игра (Для жеребят)
-function games()
-{
-	
-	if ($('#boutonJouer').text()!=="") 
-	{
-		$('#boutonJouer').click();
-		game = Math.floor(chevalEnergie / 6);
-			if (game>20) game = 20; 
-			
-	
-		//Если слайдер
-		var d2 = document.getElementById('care').outerHTML;
-		if (d2.indexOf('centerPlaySlider') !== - 1)
-			{
-				 var spans = document.getElementById('centerPlaySlider').getElementsByTagName('li');
-				    spans[game].className = spans[game].className + ' selected';
-				    spans[game].click();
-				    $('#formCenterPlay').find("li.selected").click();
-				
-			}
-		else
-			{
-				 //document.getElementById('formCenterPlay876aec46bd').options[game].selected = true;
-				 $('#formCenterPlay').find("select [value='"+game+"']").attr("selected", "selected");
-				 
-				 
-			}
-			  var d = document.getElementById('formCenterPlaySubmit');
-				  if (d !== null)
-				 setTimeout(d.click(), 300);  
-	}
-	
-	   //Ласка
-            stroke();
-	    // Пить
-	    var d = document.getElementById('boutonBoire');
-	    if (d !== null)
-	    {
-	      d.click();
-	    }
-}
 
 function settings()
 	{
