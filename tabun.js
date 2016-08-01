@@ -114,6 +114,8 @@ function bug_finder()
 	var  horse = localStorage.getItem("horse_status");
 		if (horse=='1')
 		{
+		horse_href = localStorage.getItem("horse_id");	
+		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;			
 		/*	$('.item-relative').each(function(i,elem) { 
 				var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
 				if (text!=undefined)
@@ -123,8 +125,7 @@ function bug_finder()
 					}
 					
 			});*/
-		horse_href = localStorage.getItem("horse_id");	
-		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
+
 		}
 }
 
@@ -183,6 +184,8 @@ if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.locatio
   {
     d[0].click();
   }*/
+  	localStorage.setItem("horse_status", "2"); // Статус означает, что лошадь родила
+	localStorage.setItem("horse_id", chevalId);
   $('#boutonChoisirNom').click();
 }
 
@@ -207,6 +210,14 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 // Программа обычного прогона
 function usualProg()
 {
+	// Статус 2 означает, что кобыла родила, и переходим обратно к ней
+	var  horse = localStorage.getItem("horse_status");
+		if (horse=='2')
+		{
+		horse_href = localStorage.getItem("horse_id");	
+		localStorage.setItem("horse_status", "0");
+		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
+		}
 	localStorage.setItem("horse_status", "0");
 	localStorage.setItem("horse_id", chevalId);
 	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
