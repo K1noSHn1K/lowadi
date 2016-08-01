@@ -343,12 +343,12 @@ function eqCenterReg3()
   var d = c[0].getElementsByTagName('button');
   var e = d[KCK_option];
   if (KCK_option > 1)
-  {
+  /*{
     var f = e.onclick.toString();
     var onClick = f.substr(f.indexOf('AjaxJSON'));
     onClick = onClick.substr(0, onClick.indexOf('}')) + '}))';
     e.setAttribute('onclick', onClick);
-  }
+  }*/
   e.click();
 }
 function eqCenterReg4()
