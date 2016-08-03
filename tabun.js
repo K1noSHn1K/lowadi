@@ -21,6 +21,8 @@ var KCK_option = 3;
 3 - 30 дней
 4 - 60 дней */
 
+var SPEED = 0; // Скорость прогона. Время прибавки к базовым задержкам, мс
+
 settings();
 
 // --------------------------- Настройки скрипта --------------------------------->
@@ -67,6 +69,7 @@ function get_sluchki_option()
 
 function savesettings()
 	{
+		var speed = $('input[name=lw_speed]:radio:checked').val();
 		if ($("#settings_fourrage").prop("checked"))
 			var settings_fourrage = "1";	
 				else settings_fourrage = "0";
@@ -75,7 +78,8 @@ function savesettings()
 			var settings_zerno = "1";	
 				else settings_zerno = "0";	
 		localStorage.setItem("settings_fourrage", settings_fourrage);
-		localStorage.setItem("settings_zerno", settings_zerno);		
+		localStorage.setItem("settings_zerno", settings_zerno);	
+		localStorage.setItem("settings_speed", speed);		
 			alert('Сохранено');
 	}	
 	
@@ -83,9 +87,14 @@ function loadsettings()
 	{
 		settings_fourrage = localStorage.getItem("settings_fourrage");
 		settings_zerno = localStorage.getItem("settings_zerno");
+		settings_speed = localStorage.getItem("settings_speed");
 		
 		if (settings_fourrage=="1") $('#settings_fourrage').prop('checked', true);
 		if (settings_zerno=="1") $('#settings_zerno').prop('checked', true);
+		
+		if (settings_speed) $("#"+settings_speed+"").attr("checked", true);
+			else $("#norm").attr("checked", true);
+
 	}	
 	
 $('#kck_option').on('change', function() {
@@ -105,8 +114,23 @@ $('#slchkbx').on('change', function() {
 if (!localStorage.getItem('lwb_kck')) set_kck_option();
 KCK_option = get_kck_option();
 SL_option = get_sluchki_option();
+
+settings_speed = localStorage.getItem("settings_speed");
+if (settings_speed == "norm") SPEED = 600; 
+
 loadsettings();
 // ---------------------- Конец настроек ------------------------------->
+
+// Парсинг URI
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
 // Если сайт лагает, и кидает на всех лошадей, то ищем записанную в КСК, но не уложенную спать
 function bug_finder()
@@ -114,6 +138,8 @@ function bug_finder()
 	var  horse = localStorage.getItem("horse_status");
 		if (horse=='1')
 		{
+		horse_href = localStorage.getItem("horse_id");	
+		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;			
 		/*	$('.item-relative').each(function(i,elem) { 
 				var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
 				if (text!=undefined)
@@ -123,8 +149,7 @@ function bug_finder()
 					}
 					
 			});*/
-		horse_href = localStorage.getItem("horse_id");	
-		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
+
 		}
 }
 
@@ -170,6 +195,10 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 // Выжеребка
 if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.location.href))
 {
+var horseid = getParameterByName('jument');	
+localStorage.setItem("horse_status", "2");
+localStorage.setItem("horse_id", horseid);	
+	
   if (document.body.innerHTML.indexOf('женск.') !== - 1)
  //alert($('#page-contents:contains('женск')').text());
  //if ($('#page-contents:contains('женск')').text)
@@ -177,12 +206,8 @@ if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.locatio
     document.getElementById('poulain-1').setAttribute('value', 'Кобыла');
   } 
   else document.getElementById('poulain-1').setAttribute('value', 'Жеребец');
- 
- /* var d = document.getElementsByTagName('button');
-  if (d[0].getAttribute('type') == 'submit')
-  {
-    d[0].click();
-  }*/
+
+
   $('#boutonChoisirNom').click();
 }
 
@@ -193,13 +218,13 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 {
   // Выставление дней
   var pause = 0;
-  pause = pause + getRandomPause(1000, 2000);
+  pause = pause + getRandomPause(700, 1500+SPEED);
   setTimeout(eqCenterReg2, pause);
   // Запись
-  var pause1 = pause + getRandomPause(700, 2000);
+  var pause1 = pause + getRandomPause(700, 1500+SPEED);
   setTimeout(eqCenterReg3, pause1);
   // Проверка результата
-  var pause2 = pause1 + getRandomPause(700, 2000);
+  var pause2 = pause1 + getRandomPause(700, 1500+SPEED);
   setTimeout(eqCenterReg4, pause2);
 }
 
@@ -207,6 +232,14 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 // Программа обычного прогона
 function usualProg()
 {
+	// Статус 2 означает, что кобыла родила, и переходим обратно к ней
+	var  horse = localStorage.getItem("horse_status");
+		if (horse=='2')
+		{
+		horse_href = localStorage.getItem("horse_id");	
+		localStorage.setItem("horse_status", "0");
+		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
+		}
 	localStorage.setItem("horse_status", "0");
 	localStorage.setItem("horse_id", chevalId);
 	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
@@ -220,37 +253,41 @@ function usualProg()
 	  if (/elevage\/chevaux\/centreInscription\?id=/.test(document.body.innerHTML))
 	  {
 		// Нажатие на кнопку
-		pause = pause + getRandomPause(500, 2000);
+		pause = pause + getRandomPause(500, 1500+SPEED);
 		setTimeout(eqCenterReg, pause);
 		return;
 	  }  
-
+	
+	// Игры с жеребятами
+	//var pauseG = pause + getRandomPause(400, 600+SPEED);
+	//setTimeout(games, pause);	
+	
 	//Случка 
-	var pauseS = pause + getRandomPause(900, 1400);
+	var pauseS = pause + getRandomPause(500, 1200+SPEED);
 	setTimeout(sluchka, pauseS);
 	// Чистка
-	  var pause1 = pauseS + getRandomPause(1500, 2000);
+	  var pause1 = pauseS + getRandomPause(300, 500+SPEED);
 	setTimeout(groom, pause1);
 	  // Урок
-	  var pause2 = pause1 + getRandomPause(500, 1500);
+	  var pause2 = pause1 + getRandomPause(500, 1000+SPEED);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(200, 1000);
+	  var pause3 = pause2 + getRandomPause(200, 800+SPEED);
 	setTimeout(openFeeding, pause3);
-	  var pause4 = pause3 + getRandomPause(700, 1500);
+	  var pause4 = pause3 + getRandomPause(600, 1000+SPEED);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
-	  var pause5 = pause4 + getRandomPause(200, 1000);
+	  var pause5 = pause4 + getRandomPause(200, 900+SPEED);
 	setTimeout(stroke, pause5);
 	  // Спать
-	  var pause6 = pause5 + getRandomPause(500, 1000);
+	  var pause6 = pause5 + getRandomPause(500, 800+SPEED);
 	setTimeout(sleep, pause6);
-	    var pause7 = pause6 + getRandomPause(200, 400);
+	    var pause7 = pause6 + getRandomPause(200, 400+SPEED);
 	setTimeout(stroke, pause7);
 	setTimeout(minEnergy,300);
 	
 	// Дополнительные случки 
-	var pause8 = pause7 + getRandomPause(500, 1400);	
+	var pause8 = pause7 + getRandomPause(500, 1400+SPEED);	
 	setTimeout(function() {
 		var energy = $("#energie").text();
 		if (energy>42)
@@ -261,7 +298,7 @@ function usualProg()
 	}, pause8);
 	
 	 // Следующий
-	  var pause9 = pause8 + getRandomPause(800, 1300);
+	  var pause9 = pause8 + getRandomPause(800, 1300+SPEED);
 	setTimeout(prev, pause9);
 	
 
@@ -303,8 +340,10 @@ function ORProg()
   // Следующий
   var pause4 = pause3 + getRandomPause(900, 1400);
   setTimeout(OR, pause4);
-}// Запись в КСК
+}
 
+
+// Запись в КСК
 function eqCenterReg()
 {
   if (document.body.innerHTML.indexOf('cheval-inscription') !== - 1)
@@ -337,13 +376,13 @@ function eqCenterReg3()
   var c = document.getElementsByClassName('odd highlight');
   var d = c[0].getElementsByTagName('button');
   var e = d[KCK_option];
-  if (KCK_option > 1)
+ /* if (KCK_option > 1)
   {
     var f = e.onclick.toString();
     var onClick = f.substr(f.indexOf('AjaxJSON'));
     onClick = onClick.substr(0, onClick.indexOf('}')) + '}))';
     e.setAttribute('onclick', onClick);
-  }
+  }*/
   e.click();
 }
 function eqCenterReg4()
@@ -393,8 +432,9 @@ function doEatNorm()
   {
     hay = 20000 - hayGiven() * 1000;
     oats = 15000 - oatsGiven() * 1000;
-  }  // Для слайдеров
-
+  }  
+  
+  // Для слайдеров
   if (d2.indexOf('haySlider') !== - 1)
   {
     // Выставляем сено
@@ -691,17 +731,19 @@ function OR()
 
 function settings()
 	{
-		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 999;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
-		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:100px; padding:5px; background-color:rgba(92, 92, 92, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<center><span class="header-currency-label" style="color:#fafe6c;"><b>LowadiBot v1.3.5</b>   </span>  </center>');
-		$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option> </select> &nbsp  <span class="lwb_setting" style="cursor:pointer;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings.png" width="20px" title="Показать настройки" /></span>');
+		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 900;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
+		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>LowadiBot v1.3.6</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option> </select> &nbsp  ');
 		$('.lwb').append('<br> <div style="padding-top:5px;"></div> <span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Предлагать случки</span></td> <td><input id="slchkbx" name="slchkbx" value="1" type="checkbox">');
 		$('.lwb').append('<div class="lwb_sl_hide"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;"> По цене</span>  <select id="sluchka_option"> <option value="500">500</option> <option value="1000">1000</option> <option value="1500">1500</option> <option value="2000">2000</option> <option value="2500">2500</option> <option value="3000">3000</option> <option value="3500">3500</option> <option value="4000">4000</option> <option value="4500">4500</option> <option value="5000">5000</option> <option value="5500">5500</option> <option value="6000">6000</option> <option value="6500">6500</option> <option value="7000">7000</option> <option value="7500">7500</option>	</select></div>');
 		
-		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 400px; height:170px; top: 100px; left: 125px; z-index: 999; padding:5px; background-color:rgba(92, 92, 92, 0.9);  border-radius: 0px 0px 0px 0px;"></div>');
-		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки записи в КСК</h2></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
-		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.77) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/fourrage_v1828806360.png" /> <input id="settings_fourrage" name="settings_fourrage" value="0" type="checkbox">  Выбирать КСК с фуражом </div>');
-		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.77) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/avoine_v1828806360.png" /> <input id="settings_zerno" name="settings_zerno" value="0" type="checkbox"> Выбирать КСК с зерном </div>');
+		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 400px; height:300px; top: 105px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.85);  border-radius: 0px 5px 5px 5px;"></div>');
+		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки</h2> <br> <h3 style="color:#FFF;">Запись в КСК</h3></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/fourrage_v1828806360.png" /> <input id="settings_fourrage" name="settings_fourrage" value="0" type="checkbox">  Выбирать КСК с фуражом </div>');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/avoine_v1828806360.png" /> <input id="settings_zerno" name="settings_zerno" value="0" type="checkbox"> Выбирать КСК с зерном </div>');
+		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Скорость прокачки</h3></center> ');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <input type="radio" name="lw_speed" id="norm" value="norm"> Нормальная<Br> <input type="radio" name="lw_speed" value="fast" id="fast"> Высокая<Br>  </div> ');
 		$('.lwb_settings').append('<br><center><button id="lwb_savesettings" style="margin: 5px 0 0 0;" onclick="savesettings();" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Сохранить</span></span></span></button></center>');
 
 
@@ -736,3 +778,55 @@ function sluchka()
 		setTimeout(get_sluchka(),200);
 	}	
 }
+
+
+function games()
+	{
+		if ($("a").is('#boutonJouer')) {
+			$('#boutonJouer').click();
+			
+				var d2 = document.getElementById('formCenterPlay').innerHTML;
+				// Для слайдеров
+				if (d2.indexOf('centerPlaySlider') !== - 1)
+				{
+					var spans = document.getElementById('centerPlaySlider').getElementsByTagName('li');
+					var i = $('#centerPlaySlider').find('li.disabled').attr("data-number") - 1;
+					spans[i].className = spans[i].className + ' selected';
+					spans[i].click();
+					var hidden = document.getElementById('centerPlaySlider-sliderHidden');
+					hidden.setAttribute('value', i);		
+				}
+				else
+				{
+					if ($('[id^="formCenterPlay"]') !== "")
+						{
+							var en = Math.floor(($('#energie').text())/6);
+						  $('[id^="formCenterPlay"] [value="'+en+'"]').attr('selected', 'selected');
+						}
+				}	
+				
+				$('#formCenterPlaySubmit').click();	
+			
+		// Ласка
+		var d = document.getElementById('boutonCaresser');
+		if (d !== null)
+		{
+		  d.click();
+		}    
+		// Пить
+		var d = document.getElementById('boutonBoire');
+		if (d !== null)
+		{
+		  d.click();
+		}	
+
+		// Морковка
+		var d = document.getElementById('boutonCarotte');
+		if (d !== null)
+		{
+		  d.click();
+		}		
+			
+			}
+		
+	}
