@@ -28,13 +28,13 @@ settings();
 // --------------------------- Настройки скрипта --------------------------------->
 function set_kck_option()
 	{
-		var val = $("#kck_option option:selected").val()
+		var val = $("#kck_option option:selected").val();
 		localStorage.setItem("lwb_kck", val);
 	}
 	
 function set_sluchki_option()
 	{
-		var val = $("#sluchka_option option:selected").val()
+		var val = $("#sluchka_option option:selected").val();
 		if ($("#slchkbx").prop("checked"))
 			var sl_check = "1";
 			else var sl_check = "0";
@@ -124,7 +124,7 @@ settings_speed = localStorage.getItem("settings_speed");
 if (settings_speed == "norm") SPEED = 600; 
 
 if (localStorage.getItem("settings_shablon")) 
-	var settings_shablon = localStorage.getItem("settings_shablon"))
+	var settings_shablon = localStorage.getItem("settings_shablon"));
 if (settings_shablon == "") settings_shablon = "%GENDER%";
 
 loadsettings();
