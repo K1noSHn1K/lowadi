@@ -98,7 +98,7 @@ function loadsettings()
 		
 		if (settings_speed) $("#"+settings_speed+"").attr("checked", true);
 			else $("#norm").attr("checked", true);
-		$("#lw_template").val(setting_shablon);	
+		$("#lw_template").val(settings_shablon);	
 
 	}	
 	
