@@ -238,6 +238,7 @@ function usualProg()
 		{
 			horsename("NAME%GP");
 		}
+	var  horse = localStorage.getItem("horse_status");	
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
 		if (horse=='3')
 		{
