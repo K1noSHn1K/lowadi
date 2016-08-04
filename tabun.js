@@ -236,7 +236,6 @@ function usualProg()
 	var  horse = localStorage.getItem("horse_status");
 		if (horse=='2')
 		{
-			sleep();
 			horsename("NAME%GP");
 		}
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
@@ -244,6 +243,7 @@ function usualProg()
 		{
 			horse_href = localStorage.getItem("horse_id");	
 			localStorage.setItem("horse_status", "0");
+			sleep();
 			location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
 		}
 		
