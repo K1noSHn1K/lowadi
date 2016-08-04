@@ -253,8 +253,8 @@ function usualProg()
 		{
 			horse_href = localStorage.getItem("horse_id");	
 			localStorage.setItem("horse_status", "0");
-			sleep();
-			location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
+			setTimeout(sleep,200);
+			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 800);
 		}
 		
 	localStorage.setItem("horse_status", "0");
