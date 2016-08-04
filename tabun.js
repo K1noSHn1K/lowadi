@@ -236,7 +236,8 @@ function usualProg()
 	var  horse = localStorage.getItem("horse_status");
 		if (horse=='2')
 		{
-		sleep();	
+		sleep();
+		horsename("GENDER%GP");
 		horse_href = localStorage.getItem("horse_id");	
 		localStorage.setItem("horse_status", "0");
 		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
@@ -831,3 +832,84 @@ function games()
 			}
 		
 	}
+	
+function horsename(shablon)
+	{
+	/*
+	Шаблоны для задания имени:
+	
+	NAME - имя коня\кобылы, выбирается из списка
+	GENDER - Пол, значения: Жеребец, Кобыла
+	GENDER_MIN - сокращенный пол: Жер, Коб
+	GP - генетический потенциал
+	SKILLS - навыки
+	
+	*/
+		var out = new Array();
+		var hname = "";
+		var male_names = "Снежок,Агат, Азарт,Адмирал,Авалон,Аверон,Авангард,Алый,Ангел,Амулет";
+		var female_names = "Адель,Агата,Ариэль,Атлантида,Амазонка,Агния,Анна Бель,Афродита";
+			gender = $("#characteristics-body-content").find("td:contains('Пол')").text();
+			gender = gender.replace("Пол: ","");		
+			
+		
+		var a = shablon.split('%');
+		var SH = "NAME,GENDER,GENDER_MIN,GP,SKILLS";
+		var SH_mas = SH.split(',');	
+		
+		
+		
+		for (var i=0; i<a.length; i++)
+			{
+				for (var y=0; y<SH_mas.length; y++)
+					{
+						if (a[i] == SH_mas[y])
+							out[i] = a[i];	
+					}
+			}
+		
+		for (j=0; j<out.length; j++)
+			{
+				if (out[j] == "GENDER") hname+=gender.substring(0,3)+" ";
+					
+				if (out[j] == "NAME")
+					{
+						if (gender=="кобыла") 
+							{
+								var f_names = female_names.split(",");
+								f_name = f_names[Math.floor(Math.random() * (f_names.length - 1)) + 1];	
+								hname+=f_name+" ";
+							}
+							else
+							{	
+								var m_names = male_names.split(",");
+								m_name = m_names[Math.floor(Math.random() * (m_names.length - 1)) + 1];	
+								hname+=m_name+" ";
+							}
+					}
+					
+				if (out[j] == "GP")
+					{
+							gp = $("#genetic-body-content").find(".align-right:first").text();
+							gp = gp.replace("Итог: ","");
+							hname+=gp+" ";
+					}
+					
+				if (out[j] == "SKILLS")
+					{
+						nav = $('#competencesValeur').text();
+						hname+=nav+" ";
+					}
+			}
+	var realname = $('.horse-name').text();
+	realname = realname.slice(0, -1);	
+	if (realname!==hname)
+		{
+			$("#horseNameName").val(hname);	
+			$(".options-button").click();
+			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),500);
+			setTimeout($('#horseName').submit(),1000);	
+		}
+			
+		
+	}	
