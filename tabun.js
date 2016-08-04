@@ -69,6 +69,7 @@ function get_sluchki_option()
 
 function savesettings()
 	{
+		var shablon = $("#lw_template").val();
 		var speed = $('input[name=lw_speed]:radio:checked').val();
 		if ($("#settings_fourrage").prop("checked"))
 			var settings_fourrage = "1";	
@@ -79,12 +80,15 @@ function savesettings()
 				else settings_zerno = "0";	
 		localStorage.setItem("settings_fourrage", settings_fourrage);
 		localStorage.setItem("settings_zerno", settings_zerno);	
-		localStorage.setItem("settings_speed", speed);		
+		localStorage.setItem("settings_speed", speed);	
+		localStorage.setItem("settings_shablon", shablon);
 			alert('Сохранено');
 	}	
 	
 function loadsettings()
 	{
+		settings_shablon = localStorage.getItem("settings_shablon");
+			if (settings_shablon == "") settings_shablon = "%GENDER%";
 		settings_fourrage = localStorage.getItem("settings_fourrage");
 		settings_zerno = localStorage.getItem("settings_zerno");
 		settings_speed = localStorage.getItem("settings_speed");
@@ -94,6 +98,7 @@ function loadsettings()
 		
 		if (settings_speed) $("#"+settings_speed+"").attr("checked", true);
 			else $("#norm").attr("checked", true);
+		$("#lw_template").val(setting_shablon);	
 
 	}	
 	
@@ -117,6 +122,9 @@ SL_option = get_sluchki_option();
 
 settings_speed = localStorage.getItem("settings_speed");
 if (settings_speed == "norm") SPEED = 600; 
+
+settings_shablon = localStorage.getItem("settings_shablon");
+if (settings_shablon == "") settings_shablon = "%GENDER%";
 
 loadsettings();
 // ---------------------- Конец настроек ------------------------------->
