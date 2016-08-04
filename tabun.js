@@ -123,7 +123,8 @@ SL_option = get_sluchki_option();
 settings_speed = localStorage.getItem("settings_speed");
 if (settings_speed == "norm") SPEED = 600; 
 
-var settings_shablon = localStorage.getItem("settings_shablon");
+if (localStorage.getItem("settings_shablon") 
+	var settings_shablon = localStorage.getItem("settings_shablon"))
 if (settings_shablon == "") settings_shablon = "%GENDER%";
 
 loadsettings();
