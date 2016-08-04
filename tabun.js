@@ -753,7 +753,7 @@ function settings()
 		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Скорость прогона</h3></center> ');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <input type="radio" name="lw_speed" id="norm" value="norm"> Нормальная<Br> <input type="radio" name="lw_speed" value="fast" id="fast"> Высокая<Br>  </div> ');
 		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Опции родов</h3></center> ');	
-		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;">Шаблон имени <input type="text" id="lw_template" value="%GENDER%"> <br> Можно назначить шаблон, по которому будут именоваться все рожденные жеребята. Список возможных параметров:  ');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;">Шаблон имени <input type="text" id="lw_template" size="58" value="%GENDER%"> <br> Можно назначить шаблон, по которому будут именоваться все рожденные жеребята. Список возможных параметров:  ');
 		$('.lwb_settings').append('<b>%NAME%</b> - Имя, выбирается одно из нормальных имен в зависимости от пола <br><b>%GENDER%</b> - пол жеребенка (Жеребец или Кобыла)<br><b>%GENDER_MIN%</b> - Сокращенное написание пола (Жер или Коб)<br><b>%GP%</b> - генетический потенциал  <br><b>%SKILLS%</b> - сумма навыков </div> ');
 			
 		$('.lwb_settings').append('<br><center><button id="lwb_savesettings" style="margin: 5px 0 0 0;" onclick="savesettings();" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Сохранить</span></span></span></button></center>');
