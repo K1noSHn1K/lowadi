@@ -781,6 +781,10 @@ $('#lwb_savesettings').click(function(){
   savesettings();	
 });	
 
+$('#lwb_check').click(function(){
+  check_shablon();	
+});
+
 function get_sluchka()
 	{
 	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
