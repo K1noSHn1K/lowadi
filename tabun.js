@@ -232,16 +232,21 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 // Программа обычного прогона
 function usualProg()
 {
-	// Статус 2 означает, что кобыла родила, и переходим обратно к ней
+	// Статус 2 означает, что кобыла родила, переименовываем жеребенка
 	var  horse = localStorage.getItem("horse_status");
 		if (horse=='2')
 		{
-		sleep();
-		horsename("GENDER%GP");
-		horse_href = localStorage.getItem("horse_id");	
-		localStorage.setItem("horse_status", "0");
-		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
+			sleep();
+			horsename("NAME%GP");
 		}
+	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
+		if (horse=='3')
+		{
+			horse_href = localStorage.getItem("horse_id");	
+			localStorage.setItem("horse_status", "0");
+			location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
+		}
+		
 	localStorage.setItem("horse_status", "0");
 	localStorage.setItem("horse_id", chevalId);
 	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
@@ -844,7 +849,7 @@ function horsename(shablon)
 	GP - генетический потенциал
 	SKILLS - навыки
 	
-	*/
+	*/	localStorage.setItem("horse_status", "3");
 		var out = new Array();
 		var hname = "";
 		var male_names = "Снежок,Агат, Азарт,Адмирал,Авалон,Аверон,Авангард,Алый,Ангел,Амулет";
