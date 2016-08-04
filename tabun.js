@@ -123,7 +123,7 @@ SL_option = get_sluchki_option();
 settings_speed = localStorage.getItem("settings_speed");
 if (settings_speed == "norm") SPEED = 600; 
 
-if (localStorage.getItem("settings_shablon") 
+if (localStorage.getItem("settings_shablon")) 
 	var settings_shablon = localStorage.getItem("settings_shablon"))
 if (settings_shablon == "") settings_shablon = "%GENDER%";
 
@@ -245,7 +245,7 @@ function usualProg()
 	var  horse = localStorage.getItem("horse_status");
 		if (horse=='2')
 		{
-			horsename("NAME%GP");
+			horsename(settings_shablon);
 		}
 	var  horse = localStorage.getItem("horse_status");	
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
