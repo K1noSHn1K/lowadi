@@ -762,7 +762,7 @@ function settings()
 		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Скорость прогона</h3></center> ');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <input type="radio" name="lw_speed" id="norm" value="norm"> Нормальная<Br> <input type="radio" name="lw_speed" value="fast" id="fast"> Высокая<Br>  </div> ');
 		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Опции родов</h3></center> ');	
-		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;">Шаблон имени <input type="text" id="lw_template" size="58" value="%GENDER%"> <br> Можно назначить шаблон, по которому будут именоваться все рожденные жеребята. Список возможных параметров:  </div>');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;">Шаблон имени <input type="text" id="lw_template" size="30" value="%GENDER%"> <button id="lwb_check" style="margin: 5px 0 0 0;" onclick="check_shablon()" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Проверить шаблон</span></span></span></button> <br> Можно назначить шаблон, по которому будут именоваться все рожденные жеребята. Список возможных параметров:  </div>');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px; font-size: 11px;"><b>%NAME%</b> - Имя, выбирается одно из нормальных имен в зависимости от пола <br><b>%GENDER%</b> - пол жеребенка (Жеребец или Кобыла)<br><b>%GENDER_MIN%</b> - Сокращенное написание пола (Жер или Коб)<br><b>%GP%</b> - генетический потенциал  <br><b>%SKILLS%</b> - сумма навыков </div> ');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px; font-size: 11px;">  В качестве разделителя между параметрами можно использовать символы: пробел, запятая, <b>-</b>, <b>|</b>  <br> Стоит учесть, что максимальная длина имени не может превышать 20 символов, поэтому перед сохранением рекомендуется нажимать кнопку "Проверить шаблон". <br> <br> <b>Примеры шаблонов: </b> <br>  <b>%NAME% %SKILLS% </b> - будет выглядеть Афродита 77.54 <br> <b>%GENDER|GP%</b> будет выглядеть, как Кобыла|3677.54</div> ');
 			
@@ -941,8 +941,9 @@ function horsename(shablon)
 		
 	}
 	
-function check_shablon(shablon)
+function check_shablon()
 		{
+		var shablon = $("#lw_template").val(); 	
 		var out = new Array();
 		var len = 0;
 		var a = shablon.split('%');
@@ -972,5 +973,7 @@ function check_shablon(shablon)
 				
 			}
 			
-		return len;	
+		if (len<20) alert('Шаблон проверен, длина имени не будет превышать 20 символов, можно использовать');
+		if (len>20) alert("Ошибка! Имя получится более 20 символов, что приведет к ошибкам. Используйте меньше параметров");
+		if (len==20) alert("Мда. 20 символов, возможно и прокатит, но возможно и будут сыпаться ошибки. Лучше попытаться сократить шаблон");
 		}	
