@@ -1002,7 +1002,7 @@ var lic = false;
 
  	for (var h=0; h<l.length; h++)
  		{
- 			if (l[i] == myhash) lic = true;	
+ 			if (l[h] == myhash) lic = true;	
  		}
  		
  if (lic!=true) alert('Купи лицензию!');		
