@@ -3,7 +3,7 @@
 // @description Бот для браузерной игры Lowadi
 // @author HumanoID
 // @license Mozilla Public License Version 2.0
-// @version 1.3
+// @version 1.4
 // @include http://www.lowadi.com/*
 // @grant none
 // ==/UserScript==
@@ -210,7 +210,7 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
     } 
     else
     {
-       if (lic==true) usualProg();
+       if (lic===true) usualProg();
     }
   }
   
@@ -774,7 +774,7 @@ function settings()
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
 		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>LwBot v1.4</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
-		if (lic==true)
+		if (lic===true)
 		{
 			$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option> </select> &nbsp  ');
 			$('.lwb').append('<br> <div style="padding-top:5px;"></div> <span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Предлагать случки</span></td> <td><input id="slchkbx" name="slchkbx" value="1" type="checkbox">');
