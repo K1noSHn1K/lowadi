@@ -10,6 +10,8 @@
 
 
 
+ /* Logins */
+var l = ["745463076"];
 	
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
@@ -25,8 +27,18 @@ var SPEED = 0; // Скорость прогона. Время прибавки �
 
 settings();
 
- /* Logins */
-var l = ["745463076"];
+hash = function (str) {
+  var hash = 0;
+  var str = String(str);
+  if (str.length == 0) return hash;
+  for (i = 0; i < str.length; i++) {
+    char = str.charCodeAt(i);
+    hash = ((hash<<5)-hash)+char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return hash;
+}
+
 
 var myhash = hash(document.getElementsByClassName('forumAvatar')[0].alt);
 var lic = false;
@@ -999,17 +1011,7 @@ function check_shablon()
 		if (len==20) alert("Мда. 20 символов, возможно и прокатит, но возможно и будут сыпаться ошибки. Лучше попытаться сократить шаблон");
 		}	
 
-hash = function (str) {
-  var hash = 0;
-  var str = String(str);
-  if (str.length == 0) return hash;
-  for (i = 0; i < str.length; i++) {
-    char = str.charCodeAt(i);
-    hash = ((hash<<5)-hash)+char;
-    hash = hash & hash; // Convert to 32bit integer
-  }
-  return hash;
-}
+
 
  		
 		
