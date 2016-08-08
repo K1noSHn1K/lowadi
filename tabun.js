@@ -788,8 +788,8 @@ function settings()
 		}
 		else
 		{
-			$('.lwb').append('<p style="color: #fff">Unregistred</p>');
-			$('.lwb').append('<p style="color: #fff">ID: '+myhash+' '+lic+'</p>');
+			$('.lwb').append('<center><p style="color: #fff; " >Unregistred</p></center>');
+			$('.lwb').append('<p style="color: #fff; font-size: 11px">ID: '+hash(document.getElementsByClassName('forumAvatar')[0].alt)+'</p> <p> Контакты для покупки на сайте <a href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
 			
 		}
 		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 570px; height:630px; top: 105px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.85);  border-radius: 0px 5px 5px 5px;"></div>');
