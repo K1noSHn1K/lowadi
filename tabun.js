@@ -792,7 +792,7 @@ function settings()
 			$('.lwb').append('<center><p style="color: #fff; font-size: 11px">ID: '+hash(document.getElementsByClassName('forumAvatar')[0].alt)+'</p></center><br> <p style="color: #fff; font-size: 11px"> Подробнее о боте и контакты для покупки: <a style="color:#F8563B;" href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
 			
 		}
-		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 600px; height:600px; top: 25px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.85);  border-radius: 0px 5px 5px 5px;"></div>');
+		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 600px; height:600px; top: 25px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.95);  border-radius: 0px 5px 5px 5px;"></div>');
 		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки</h2> <br> <h3 style="color:#FFF;">Запись в КСК</h3></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/fourrage_v1828806360.png" /> <input id="settings_fourrage" name="settings_fourrage" value="0" type="checkbox">  Выбирать КСК с фуражом </div>');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/avoine_v1828806360.png" /> <input id="settings_zerno" name="settings_zerno" value="0" type="checkbox"> Выбирать КСК с зерном </div>');
