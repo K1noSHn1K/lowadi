@@ -25,6 +25,17 @@ var SPEED = 0; // Скорость прогона. Время прибавки �
 
 settings();
 
+ /* Logins */
+var l = ["745463076"];
+
+var myhash = hash(document.getElementsByClassName('forumAvatar')[0].alt);
+var lic = false;
+
+ 	for (var h=0; h<l.length; h++)
+ 		{
+ 			if (l[h] == myhash) lic = true;	
+ 		}
+
 // --------------------------- Настройки скрипта --------------------------------->
 function set_kck_option()
 	{
@@ -187,8 +198,7 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
     } 
     else
     {
-      //ORProg();
-      usualProg();
+       if (lic==true) usualProg();
     }
   }
   
@@ -751,10 +761,17 @@ function settings()
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 900;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
 		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>LwBot v1.4</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
-		$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option> </select> &nbsp  ');
-		$('.lwb').append('<br> <div style="padding-top:5px;"></div> <span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Предлагать случки</span></td> <td><input id="slchkbx" name="slchkbx" value="1" type="checkbox">');
-		$('.lwb').append('<div class="lwb_sl_hide"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;"> По цене</span>  <select id="sluchka_option"> <option value="500">500</option> <option value="1000">1000</option> <option value="1500">1500</option> <option value="2000">2000</option> <option value="2500">2500</option> <option value="3000">3000</option> <option value="3500">3500</option> <option value="4000">4000</option> <option value="4500">4500</option> <option value="5000">5000</option> <option value="5500">5500</option> <option value="6000">6000</option> <option value="6500">6500</option> <option value="7000">7000</option> <option value="7500">7500</option>	</select></div>');
 		
+		if (lic==true)
+		{
+			$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option> </select> &nbsp  ');
+			$('.lwb').append('<br> <div style="padding-top:5px;"></div> <span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Предлагать случки</span></td> <td><input id="slchkbx" name="slchkbx" value="1" type="checkbox">');
+			$('.lwb').append('<div class="lwb_sl_hide"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;"> По цене</span>  <select id="sluchka_option"> <option value="500">500</option> <option value="1000">1000</option> <option value="1500">1500</option> <option value="2000">2000</option> <option value="2500">2500</option> <option value="3000">3000</option> <option value="3500">3500</option> <option value="4000">4000</option> <option value="4500">4500</option> <option value="5000">5000</option> <option value="5500">5500</option> <option value="6000">6000</option> <option value="6500">6500</option> <option value="7000">7000</option> <option value="7500">7500</option>	</select></div>');
+		}
+		else
+		{
+			$('.lwb').append('<p>Unregistred</p>');	
+		}
 		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 570px; height:630px; top: 105px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.85);  border-radius: 0px 5px 5px 5px;"></div>');
 		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки</h2> <br> <h3 style="color:#FFF;">Запись в КСК</h3></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/fourrage_v1828806360.png" /> <input id="settings_fourrage" name="settings_fourrage" value="0" type="checkbox">  Выбирать КСК с фуражом </div>');
@@ -994,15 +1011,5 @@ hash = function (str) {
   return hash;
 }
 
- /* Logins */
-var l = ["745463076"];
-
-var myhash = hash(document.getElementsByClassName('forumAvatar')[0].alt);
-var lic = false;
-
- 	for (var h=0; h<l.length; h++)
- 		{
- 			if (l[h] == myhash) lic = true;	
- 		}
  		
- if (lic!=true) alert('Купи лицензию!');		
+		
