@@ -805,7 +805,7 @@ function settings()
 		
 		$('body#global').append('<div class="lwb_chat" style="display: none; position: fixed; width: 570px; height:630px; top: 105px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.85);  border-radius: 0px 5px 5px 5px;"></div>');
 		$('.lwb_chat').append('<center><h2 style="color:#fff;">Обсуждение</h2> </center> <span class="lwb_chat_button" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
-		$('.lwb_chat').append('<div id="disqus_thread"></div> <script>  var disqus_config = function () {     this.page.url = PAGE_URL;       this.page.identifier = PAGE_IDENTIFIER;  };  (function() {     var d = document, s = d.createElement(\'script\');     s.src = \'//lwbot.disqus.com/embed.js\';     s.setAttribute(\'data-timestamp\', +new Date());     (d.head || d.body).appendChild(s); })(); </script> ');	
+		$('.lwb_chat').append('<script id="dsq-count-scr" src="//lwbot.disqus.com/count.js" async></script> <div id="disqus_thread"></div> <script>  var disqus_config = function () {     this.page.url = PAGE_URL;       this.page.identifier = PAGE_IDENTIFIER;  };  (function() {     var d = document, s = d.createElement(\'script\');     s.src = \'//lwbot.disqus.com/embed.js\';     s.setAttribute(\'data-timestamp\', +new Date());     (d.head || d.body).appendChild(s); })(); </script> ');	
 		$('.lwb_settings').append('<br><center><button id="lwb_savesettings" style="margin: 5px 0 0 0;" onclick="savesettings();" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Сохранить</span></span></span></button></center>');
 
 
