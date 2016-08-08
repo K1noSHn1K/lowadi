@@ -41,7 +41,7 @@ function hash(str) {
 function is_lic()
 {
  /* Logins */
-var l = ["745463076!"];	
+var l = ["745463076!", "-1070662598", "-1590179166", "1086423024", "1413503425", "-929053554", "-1664837721", "941561573", "-1090425405", "807721304", "1004972030", "2201053", "745463076"];	
 var myhash = hash(document.getElementsByClassName('forumAvatar')[0].alt);
 var lic = false;
 
