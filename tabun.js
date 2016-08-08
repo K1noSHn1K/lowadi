@@ -25,11 +25,8 @@ var KCK_option = 3;
 var SPEED = 0; // Скорость прогона. Время прибавки к базовым задержкам, мс
 
 settings();
- 
- /* Logins */
-var l = ["745463076"];
 
-hash = function (str) {
+function hash(str) {
   var hash = 0;
   var str = String(str);
   if (str.length == 0) return hash;
@@ -43,6 +40,8 @@ hash = function (str) {
 
 function is_lic()
 {
+ /* Logins */
+var l = ["745463076"];	
 var myhash = hash(document.getElementsByClassName('forumAvatar')[0].alt);
 var lic = false;
 
