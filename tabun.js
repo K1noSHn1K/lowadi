@@ -48,8 +48,6 @@ var lic = false;
  			if (l[h] == myhash) lic = true;	
  		}
  		
- 	if (lic===true) alert('true');
- 	if (lic!=false) alert('no false');
 
 // --------------------------- Настройки скрипта --------------------------------->
 function set_kck_option()
@@ -785,7 +783,9 @@ function settings()
 		}
 		else
 		{
-			$('.lwb').append('<p>Unregistred</p>');	
+			$('.lwb').append('<p color="#fff">Unregistred</p>');
+			$('.lwb').append('<p color="#fff">ID: '+myhash+' '+lic+'</p>');
+			
 		}
 		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 570px; height:630px; top: 105px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.85);  border-radius: 0px 5px 5px 5px;"></div>');
 		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки</h2> <br> <h3 style="color:#FFF;">Запись в КСК</h3></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
