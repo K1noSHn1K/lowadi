@@ -47,6 +47,9 @@ var lic = false;
  		{
  			if (l[h] == myhash) lic = true;	
  		}
+ 		
+ 	if (lic===true) alert('true');
+ 	if (lic!=false) alert('no false');
 
 // --------------------------- Настройки скрипта --------------------------------->
 function set_kck_option()
