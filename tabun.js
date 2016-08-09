@@ -784,7 +784,7 @@ function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 900;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>LwBot v1.4.2</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>LwBot v1.4.2</b></span> <span class="lwb_chat_button" style="cursor:pointer; position:absolute; right:55px; top:3px; z-index:999;"> <h2>!</h2>  </span> <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
@@ -799,6 +799,11 @@ function settings()
 			$('.lwb').append('<center><p style="color: #fff; font-size: 11px">ID: '+hashlogin+' </p>  <p style="color: #fff; font-size: 11px">Login: '+document.getElementsByClassName('forumAvatar')[0].alt+'</p>   </center> <p style="color: #fff; font-size: 11px"> Подробнее о боте и контакты для покупки: <a style="color:#F8563B;" href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
 			
 		}
+		
+		$('body#global').append('<div class="lwb_chat" style="display: none; position: fixed; width: 600px; height:630px; top: 25px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.95);  border-radius: 0px 5px 5px 5px;"></div>');
+		$('.lwb_chat').append('<center><h2 style="color:#fff;">Обсуждения</h2>  <span class="lwb_chat_button" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
+		$('.lwb_chat').append('<div id="disqus_thread"></div>');
+		
 		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 600px; height:630px; top: 25px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.95);  border-radius: 0px 5px 5px 5px;"></div>');
 		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки</h2> <br> <h3 style="color:#FFF;">Запись в КСК</h3></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/fourrage_v1828806360.png" /> <input id="settings_fourrage" name="settings_fourrage" value="0" type="checkbox">  Выбирать КСК с фуражом </div>');
@@ -808,7 +813,7 @@ function settings()
 		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Опции родов</h3></center> ');	
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px;">Шаблон имени <font color="red"><sup>beta</sup></font> <input type="text" id="lw_template" size="38" value="%GENDER%"> &nbsp; <button id="lwb_check" style="margin: 5px 0 0 0;" onclick="check_shablon()" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Проверить шаблон</span></span></span></button> <br> Можно назначить шаблон, по которому будут именоваться все рожденные жеребята. Список возможных параметров:  </div>');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px; font-size: 11px;"><b>%NAME%</b> - Имя, выбирается одно из нормальных имен в зависимости от пола <br><b>%GENDER%</b> - пол жеребенка (Жеребец или Кобыла)<br><b>%GENDER_MIN%</b> - Сокращенное написание пола (Жер или Коб)<br><b>%GP%</b> - генетический потенциал  <br><b>%SKILLS%</b> - сумма навыков </div> ');
-		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px; font-size: 11px;">  В качестве разделителя между параметрами можно использовать символы: пробел, запятая, <b>-</b>, <b>|</b>  <br> Стоит учесть, что максимальная длина имени не может превышать 20 символов, поэтому перед сохранением рекомендуется нажимать кнопку "Проверить шаблон". <br> <br> <b>Примеры шаблонов: </b> <br>  <b>%NAME% %SKILLS% </b> - будет выглядеть Афродита 77.54 <br> <b>%GENDER%|%GP%</b> будет выглядеть, как Кобыла|3677.54</div> <div id="disqus_thread"></div>');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px; font-size: 11px;">  В качестве разделителя между параметрами можно использовать символы: пробел, запятая, <b>-</b>, <b>|</b>  <br> Стоит учесть, что максимальная длина имени не может превышать 20 символов, поэтому перед сохранением рекомендуется нажимать кнопку "Проверить шаблон". <br> <br> <b>Примеры шаблонов: </b> <br>  <b>%NAME% %SKILLS% </b> - будет выглядеть Афродита 77.54 <br> <b>%GENDER%|%GP%</b> будет выглядеть, как Кобыла|3677.54</div> ');
 		
 		$('.lwb_settings').append('<br><center><button id="lwb_savesettings" style="margin: 5px 0 0 0;" onclick="savesettings();" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Сохранить</span></span></span></button></center>');
 
