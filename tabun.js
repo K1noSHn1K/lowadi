@@ -795,7 +795,7 @@ function settings()
 		else
 		{
 			$('.lwb').append('<center><p style="color: #fff; " >Unregistred</p></center>');
-			$('.lwb').append('<center><p style="color: #fff; font-size: 11px">ID: '+murmurhash(document.getElementsByClassName('forumAvatar')[0].alt)+'</p></center><br> <p style="color: #fff; font-size: 11px"> Подробнее о боте и контакты для покупки: <a style="color:#F8563B;" href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
+			$('.lwb').append('<center><p style="color: #fff; font-size: 11px">ID: '+murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5)+'</p></center><br> <p style="color: #fff; font-size: 11px"> Подробнее о боте и контакты для покупки: <a style="color:#F8563B;" href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
 			
 		}
 		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 600px; height:630px; top: 25px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.95);  border-radius: 0px 5px 5px 5px;"></div>');
