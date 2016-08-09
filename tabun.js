@@ -81,7 +81,7 @@ function murmurhash(key, seed) {
 function is_lic()
 {
  /* Logins */
-var l = ["168364849", "739502427", "1449504635", "2863063720", "30978012", "1343307832", "896713312", "4004541233", "3998243183", "814745076", "1652390262", "847179424", "2400030474", "1280791510", "96465151", "304541404", "2671962595", "2785536398", "2595068121", "2912178197", "2835493391", "3026158558", "1499734799"];
+var l = ["168364849", "739502427", "1449504635", "2863063720", "30978012", "1343307832", "896713312", "4004541233", "3998243183", "814745076", "1652390262", "847179424", "1280791510", "96465151", "304541404", "2671962595", "2785536398", "2595068121", "2912178197", "2835493391", "3026158558", "1499734799"];
 var myhash = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
 var lic = false;
 
@@ -794,8 +794,9 @@ function settings()
 		}
 		else
 		{
+			var hashlogin = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);	
 			$('.lwb').append('<center><p style="color: #fff; " >Unregistred</p></center>');
-			$('.lwb').append('<center><p style="color: #fff; font-size: 11px">ID: '+murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5)+'</p></center><br> <p style="color: #fff; font-size: 11px"> Подробнее о боте и контакты для покупки: <a style="color:#F8563B;" href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
+			$('.lwb').append('<center><p style="color: #fff; font-size: 11px">ID: '+hashlogin+' </p>  <p style="color: #fff; font-size: 11px">Login: '+document.getElementsByClassName('forumAvatar')[0].alt+'</p>   </center> <p style="color: #fff; font-size: 11px"> Подробнее о боте и контакты для покупки: <a style="color:#F8563B;" href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
 			
 		}
 		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 600px; height:630px; top: 25px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.95);  border-radius: 0px 5px 5px 5px;"></div>');
