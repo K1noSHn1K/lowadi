@@ -26,23 +26,63 @@ var SPEED = 0; // Скорость прогона. Время прибавки �
 
 settings();
 
-function hash(str) {
-  var hash = 0;
-  var str = String(str);
-  if (str.length == 0) return hash;
-  for (i = 0; i < str.length; i++) {
-    char = str.charCodeAt(i);
-    hash = ((hash<<5)-hash)+char;
-    hash = hash & hash; // Convert to 32bit integer
-  }
-  return hash;
+function murmurhash(key, seed) {
+	var remainder, bytes, h1, h1b, c1, c1b, c2, c2b, k1, i;
+	
+	remainder = key.length & 3; // key.length % 4
+	bytes = key.length - remainder;
+	h1 = seed;
+	c1 = 0xcc9e2d51;
+	c2 = 0x1b873593;
+	i = 0;
+	
+	while (i < bytes) {
+	  	k1 = 
+	  	  ((key.charCodeAt(i) & 0xff)) |
+	  	  ((key.charCodeAt(++i) & 0xff) << 8) |
+	  	  ((key.charCodeAt(++i) & 0xff) << 16) |
+	  	  ((key.charCodeAt(++i) & 0xff) << 24);
+		++i;
+		
+		k1 = ((((k1 & 0xffff) * c1) + ((((k1 >>> 16) * c1) & 0xffff) << 16))) & 0xffffffff;
+		k1 = (k1 << 15) | (k1 >>> 17);
+		k1 = ((((k1 & 0xffff) * c2) + ((((k1 >>> 16) * c2) & 0xffff) << 16))) & 0xffffffff;
+
+		h1 ^= k1;
+        h1 = (h1 << 13) | (h1 >>> 19);
+		h1b = ((((h1 & 0xffff) * 5) + ((((h1 >>> 16) * 5) & 0xffff) << 16))) & 0xffffffff;
+		h1 = (((h1b & 0xffff) + 0x6b64) + ((((h1b >>> 16) + 0xe654) & 0xffff) << 16));
+	}
+	
+	k1 = 0;
+	
+	switch (remainder) {
+		case 3: k1 ^= (key.charCodeAt(i + 2) & 0xff) << 16;
+		case 2: k1 ^= (key.charCodeAt(i + 1) & 0xff) << 8;
+		case 1: k1 ^= (key.charCodeAt(i) & 0xff);
+		
+		k1 = (((k1 & 0xffff) * c1) + ((((k1 >>> 16) * c1) & 0xffff) << 16)) & 0xffffffff;
+		k1 = (k1 << 15) | (k1 >>> 17);
+		k1 = (((k1 & 0xffff) * c2) + ((((k1 >>> 16) * c2) & 0xffff) << 16)) & 0xffffffff;
+		h1 ^= k1;
+	}
+	
+	h1 ^= key.length;
+
+	h1 ^= h1 >>> 16;
+	h1 = (((h1 & 0xffff) * 0x85ebca6b) + ((((h1 >>> 16) * 0x85ebca6b) & 0xffff) << 16)) & 0xffffffff;
+	h1 ^= h1 >>> 13;
+	h1 = ((((h1 & 0xffff) * 0xc2b2ae35) + ((((h1 >>> 16) * 0xc2b2ae35) & 0xffff) << 16))) & 0xffffffff;
+	h1 ^= h1 >>> 16;
+
+	return h1 >>> 0;
 }
 
 function is_lic()
 {
  /* Logins */
-var l = ["745463076!", "-1070662598", "-1590179166", "1086423024", "1413503425", "-929053554", "-1664837721", "941561573", "-1090425405", "807721304", "1004972030", "2201053", "745463076"];	
-var myhash = hash(document.getElementsByClassName('forumAvatar')[0].alt);
+var l = ["711323266", "745463076!", "-1070662598", "-1590179166", "1086423024", "1413503425", "-929053554", "-1664837721", "941561573", "-1090425405", "807721304", "1004972030", "2201053", "745463076", "1312959934", "32628120", "3154774", "-517607045", "3321765", "29427585", "1906445905", "2026272626", "1146895810", "1429858973", "106011149"];	
+var myhash = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
 var lic = false;
 
  	for (var h=0; h<l.length; h++)
@@ -275,7 +315,7 @@ function usualProg()
 		{
 			horsename(settings_shablon);
 		}
-	var  horse = localStorage.getItem("horse_status");	
+	else		
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
 		if (horse=='3')
 		{
@@ -284,7 +324,8 @@ function usualProg()
 			setTimeout(sleep,200);
 			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 800);
 		}
-		
+	else
+		{
 	localStorage.setItem("horse_status", "0");
 	localStorage.setItem("horse_id", chevalId);
 	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
@@ -348,43 +389,7 @@ function usualProg()
 	
 
 
-
 }
-// Рост ОРками
-function ORProg()
-{
-  var pause = 0;
-  // Запись в КСК
-  if (document.body.innerHTML.indexOf('centreInscription') !== - 1)
-  {
-    // Нажатие на кнопку
-    pause = pause + getRandomPause(500, 800);
-    setTimeout(eqCenterReg, pause);
-    return;
-  }  // Урок
-
-  pause = pause + getRandomPause(500, 800);
-  setTimeout(lesson, pause);
-  // Корм
-  var pause1 = pause + getRandomPause(1100, 1800);
-  setTimeout(doEatNorm, pause1);
-  // Чистка
-  var pause2 = pause1 + getRandomPause(500, 800);
-  setTimeout(groom, pause2);
-  // Если энергии <20
-  var en = document.getElementById('energie').textContent;
-  if (en < 20)
-  {
-    // Ласка
-    var pause5 = pause2 + getRandomPause(200, 400);
-    setTimeout(stroke, pause5);
-  }  // Спать
-
-  var pause3 = pause2 + getRandomPause(500, 1000);
-  setTimeout(sleep, pause3);
-  // Следующий
-  var pause4 = pause3 + getRandomPause(900, 1400);
-  setTimeout(OR, pause4);
 }
 
 
@@ -451,8 +456,9 @@ function pauseFunc()
   {
     return;
   }
-}// Корм по норме
+}
 
+// Корм по норме
 function doEatNorm()
 {
   // Если кормим молоком
@@ -789,19 +795,19 @@ function settings()
 		else
 		{
 			$('.lwb').append('<center><p style="color: #fff; " >Unregistred</p></center>');
-			$('.lwb').append('<center><p style="color: #fff; font-size: 11px">ID: '+hash(document.getElementsByClassName('forumAvatar')[0].alt)+'</p></center><br> <p style="color: #fff; font-size: 11px"> Подробнее о боте и контакты для покупки: <a style="color:#F8563B;" href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
+			$('.lwb').append('<center><p style="color: #fff; font-size: 11px">ID: '+murmurhash(document.getElementsByClassName('forumAvatar')[0].alt)+'</p></center><br> <p style="color: #fff; font-size: 11px"> Подробнее о боте и контакты для покупки: <a style="color:#F8563B;" href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
 			
 		}
-		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 570px; height:630px; top: 105px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.85);  border-radius: 0px 5px 5px 5px;"></div>');
+		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 600px; height:630px; top: 25px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.95);  border-radius: 0px 5px 5px 5px;"></div>');
 		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки</h2> <br> <h3 style="color:#FFF;">Запись в КСК</h3></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
-		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/fourrage_v1828806360.png" /> <input id="settings_fourrage" name="settings_fourrage" value="0" type="checkbox">  Выбирать КСК с фуражом </div>');
-		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/avoine_v1828806360.png" /> <input id="settings_zerno" name="settings_zerno" value="0" type="checkbox"> Выбирать КСК с зерном </div>');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/fourrage_v1828806360.png" /> <input id="settings_fourrage" name="settings_fourrage" value="0" type="checkbox">  Выбирать КСК с фуражом </div>');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/avoine_v1828806360.png" /> <input id="settings_zerno" name="settings_zerno" value="0" type="checkbox"> Выбирать КСК с зерном </div>');
 		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Скорость прогона</h3></center> ');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <input type="radio" name="lw_speed" id="norm" value="norm"> Нормальная<Br> <input type="radio" name="lw_speed" value="fast" id="fast"> Высокая<Br>  </div> ');
 		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Опции родов</h3></center> ');	
-		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;">Шаблон имени <font color="red"><sup>beta</sup></font> <input type="text" id="lw_template" size="38" value="%GENDER%"> &nbsp; <button id="lwb_check" style="margin: 5px 0 0 0;" onclick="check_shablon()" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Проверить шаблон</span></span></span></button> <br> Можно назначить шаблон, по которому будут именоваться все рожденные жеребята. Список возможных параметров:  </div>');
-		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px; font-size: 11px;"><b>%NAME%</b> - Имя, выбирается одно из нормальных имен в зависимости от пола <br><b>%GENDER%</b> - пол жеребенка (Жеребец или Кобыла)<br><b>%GENDER_MIN%</b> - Сокращенное написание пола (Жер или Коб)<br><b>%GP%</b> - генетический потенциал  <br><b>%SKILLS%</b> - сумма навыков </div> ');
-		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px; font-size: 11px;">  В качестве разделителя между параметрами можно использовать символы: пробел, запятая, <b>-</b>, <b>|</b>  <br> Стоит учесть, что максимальная длина имени не может превышать 20 символов, поэтому перед сохранением рекомендуется нажимать кнопку "Проверить шаблон". <br> <br> <b>Примеры шаблонов: </b> <br>  <b>%NAME% %SKILLS% </b> - будет выглядеть Афродита 77.54 <br> <b>%GENDER%|%GP%</b> будет выглядеть, как Кобыла|3677.54</div> ');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px;">Шаблон имени <font color="red"><sup>beta</sup></font> <input type="text" id="lw_template" size="38" value="%GENDER%"> &nbsp; <button id="lwb_check" style="margin: 5px 0 0 0;" onclick="check_shablon()" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Проверить шаблон</span></span></span></button> <br> Можно назначить шаблон, по которому будут именоваться все рожденные жеребята. Список возможных параметров:  </div>');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px; font-size: 11px;"><b>%NAME%</b> - Имя, выбирается одно из нормальных имен в зависимости от пола <br><b>%GENDER%</b> - пол жеребенка (Жеребец или Кобыла)<br><b>%GENDER_MIN%</b> - Сокращенное написание пола (Жер или Коб)<br><b>%GP%</b> - генетический потенциал  <br><b>%SKILLS%</b> - сумма навыков </div> ');
+		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px; font-size: 11px;">  В качестве разделителя между параметрами можно использовать символы: пробел, запятая, <b>-</b>, <b>|</b>  <br> Стоит учесть, что максимальная длина имени не может превышать 20 символов, поэтому перед сохранением рекомендуется нажимать кнопку "Проверить шаблон". <br> <br> <b>Примеры шаблонов: </b> <br>  <b>%NAME% %SKILLS% </b> - будет выглядеть Афродита 77.54 <br> <b>%GENDER%|%GP%</b> будет выглядеть, как Кобыла|3677.54</div> ');
 		
 		$('.lwb_settings').append('<br><center><button id="lwb_savesettings" style="margin: 5px 0 0 0;" onclick="savesettings();" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Сохранить</span></span></span></button></center>');
 
@@ -979,8 +985,8 @@ function horsename(shablon)
 		{
 			$("#horseNameName").val(hname);	
 			$(".options-button").click();
-			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),500);
-			setTimeout($('#horseName').submit(),1000);	
+			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),300);
+			setTimeout($('#horseName').submit(),600);	
 		}
 			
 		
