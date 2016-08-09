@@ -275,7 +275,7 @@ function usualProg()
 		{
 			horsename(settings_shablon);
 		}
-	var  horse = localStorage.getItem("horse_status");	
+	else		
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
 		if (horse=='3')
 		{
@@ -284,7 +284,8 @@ function usualProg()
 			setTimeout(sleep,200);
 			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 800);
 		}
-		
+	else
+		{
 	localStorage.setItem("horse_status", "0");
 	localStorage.setItem("horse_id", chevalId);
 	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
@@ -348,43 +349,7 @@ function usualProg()
 	
 
 
-
 }
-// Рост ОРками
-function ORProg()
-{
-  var pause = 0;
-  // Запись в КСК
-  if (document.body.innerHTML.indexOf('centreInscription') !== - 1)
-  {
-    // Нажатие на кнопку
-    pause = pause + getRandomPause(500, 800);
-    setTimeout(eqCenterReg, pause);
-    return;
-  }  // Урок
-
-  pause = pause + getRandomPause(500, 800);
-  setTimeout(lesson, pause);
-  // Корм
-  var pause1 = pause + getRandomPause(1100, 1800);
-  setTimeout(doEatNorm, pause1);
-  // Чистка
-  var pause2 = pause1 + getRandomPause(500, 800);
-  setTimeout(groom, pause2);
-  // Если энергии <20
-  var en = document.getElementById('energie').textContent;
-  if (en < 20)
-  {
-    // Ласка
-    var pause5 = pause2 + getRandomPause(200, 400);
-    setTimeout(stroke, pause5);
-  }  // Спать
-
-  var pause3 = pause2 + getRandomPause(500, 1000);
-  setTimeout(sleep, pause3);
-  // Следующий
-  var pause4 = pause3 + getRandomPause(900, 1400);
-  setTimeout(OR, pause4);
 }
 
 
@@ -451,8 +416,9 @@ function pauseFunc()
   {
     return;
   }
-}// Корм по норме
+}
 
+// Корм по норме
 function doEatNorm()
 {
   // Если кормим молоком
