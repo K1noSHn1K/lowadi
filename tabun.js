@@ -344,12 +344,12 @@ function usualProg()
 		return;
 	  }  
 	
-	// Игры с жеребятами
-	//var pauseG = pause + getRandomPause(400, 600+SPEED);
-	//setTimeout(games, pause);	
+	 //Игры с жеребятами
+	var pauseG = pause + getRandomPause(400, 600+SPEED);
+	setTimeout(games, pause);	
 	
 	//Случка 
-	var pauseS = pause + getRandomPause(500, 1200+SPEED);
+	var pauseS = pauseG + getRandomPause(500, 1200+SPEED);
 	setTimeout(sluchka, pauseS);
 	// Чистка
 	  var pause1 = pauseS + getRandomPause(300, 500+SPEED);
@@ -783,8 +783,8 @@ function OR()
 function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 900;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
-		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:125px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>LwBot v1.4.2</b></span> <span class="lwb_chat_button" style="cursor:pointer; position:absolute; right:30px; top:3px; z-index:999;"> <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/chat.png" width="20px" title="Обсуждения"/>  </span> <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>LwBot v1.4.2</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
@@ -799,11 +799,6 @@ function settings()
 			$('.lwb').append('<center><p style="color: #fff; font-size: 11px">ID: '+hashlogin+' </p>  <p style="color: #fff; font-size: 11px">Login: '+document.getElementsByClassName('forumAvatar')[0].alt+'</p>   </center> <p style="color: #fff; font-size: 11px"> Подробнее о боте и контакты для покупки: <a style="color:#F8563B;" href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
 			
 		}
-		
-		$('body#global').append('<div class="lwb_chat" style="display: none; position: fixed; width: 600px; height:630px; top: 25px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.95);  border-radius: 0px 5px 5px 5px;"></div>');
-		$('.lwb_chat').append('<center><h2 style="color:#fff;">Обсуждения</h2>  <span class="lwb_chat_button" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
-		$('.lwb_chat').append('<div id="disqus_thread"></div>');
-		
 		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 600px; height:630px; top: 25px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.95);  border-radius: 0px 5px 5px 5px;"></div>');
 		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки</h2> <br> <h3 style="color:#FFF;">Запись в КСК</h3></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/fourrage_v1828806360.png" /> <input id="settings_fourrage" name="settings_fourrage" value="0" type="checkbox">  Выбирать КСК с фуражом </div>');
@@ -861,6 +856,9 @@ function sluchka()
 
 function games()
 	{
+	var status = localStorage.getItem("game_id");
+	var horseid = chevalId;
+	if (horseid!=status) {
 		if ($("a").is('#boutonJouer')) {
 			$('#boutonJouer').click();
 			
@@ -883,6 +881,7 @@ function games()
 						  $('[id^="formCenterPlay"] [value="'+en+'"]').attr('selected', 'selected');
 						}
 				}	
+				
 				
 				$('#formCenterPlaySubmit').click();	
 			
@@ -907,6 +906,8 @@ function games()
 		}		
 			
 			}
+	}
+		localStorage.setItem("game_id", horseid);		
 		
 	}
 	
@@ -1038,17 +1039,4 @@ function check_shablon()
 
 
  		
-/*Disqus*/
-
-var disqus_config = function () {
-    this.page.url = "http://lowadi.com";  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = "jeu"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = '//lwbot.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-})();
-/*End Disqus*/
+		
