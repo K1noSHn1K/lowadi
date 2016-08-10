@@ -883,7 +883,7 @@ function games()
 				}	
 				
 				
-				$('#formCenterPlaySubmit').click();	
+			setTimeout($('#formCenterPlaySubmit').click(),800);		
 			
 		// Ласка
 		var d = document.getElementById('boutonCaresser');
