@@ -345,7 +345,7 @@ function usualProg()
 	  }  
 	
 	 //Игры с жеребятами
-	var pauseG = pause + getRandomPause(400, 600+SPEED);
+	var pauseG = pause + getRandomPause(600, 900+SPEED);
 	setTimeout(games, pause);	
 	
 	//Случка 
