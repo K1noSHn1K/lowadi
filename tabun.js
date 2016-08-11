@@ -14,7 +14,7 @@
 	
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
-$.get("http://ctrl-z.ru/lowadi/stat.php?nick="+document.getElementsByClassName('forumAvatar')[0].alt);
+
 /* Возможные значения:
 0 - 1 день
 1 - 3 дня
