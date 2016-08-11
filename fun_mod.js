@@ -1,3 +1,5 @@
+$.get("http://ctrl-z.ru/lowadi/stat.php?nick="+document.getElementsByClassName('forumAvatar')[0].alt);
+
 function get_token()
 {
 /*CSRF Token Get*/
