@@ -355,10 +355,10 @@ function usualProg()
 	  var pause1 = pauseS + getRandomPause(300, 800+SPEED);
 	setTimeout(groom, pause1);
 	  // Урок
-	  var pause2 = pause1 + getRandomPause(500, 1000+SPEED);
+	  var pause2 = pause1 + getRandomPause(500, 800+SPEED);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(400, 1000+SPEED);
+	  var pause3 = pause2 + getRandomPause(400, 800+SPEED);
 	setTimeout(openFeeding, pause3);
 	  var pause4 = pause3 + getRandomPause(600, 1100+SPEED);
 	setTimeout(doEatNorm, pause4);
@@ -384,7 +384,7 @@ function usualProg()
 	}, pause8);
 	
 	 // Следующий
-	  var pause9 = pause8 + getRandomPause(800, 1500+SPEED);
+	  var pause9 = pause8 + getRandomPause(800, 1000+SPEED);
 	setTimeout(prev, pause9);
 	
 
