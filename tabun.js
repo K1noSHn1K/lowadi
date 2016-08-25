@@ -22,7 +22,7 @@ var KCK_option = 3;
 3 - 30 дней
 4 - 60 дней */
 
-var SPEED = 0; // Скорость прогона. Время прибавки к базовым задержкам, мс
+var SPEED = 300; // Скорость прогона. Время прибавки к базовым задержкам, мс
 
 settings();
 
@@ -352,28 +352,28 @@ function usualProg()
 	var pauseS = pause + getRandomPause(500, 1200+SPEED);
 	setTimeout(sluchka, pauseS);
 	// Чистка
-	  var pause1 = pauseS + getRandomPause(300, 500+SPEED);
+	  var pause1 = pauseS + getRandomPause(300, 800+SPEED);
 	setTimeout(groom, pause1);
 	  // Урок
 	  var pause2 = pause1 + getRandomPause(500, 1000+SPEED);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(200, 800+SPEED);
+	  var pause3 = pause2 + getRandomPause(400, 1000+SPEED);
 	setTimeout(openFeeding, pause3);
-	  var pause4 = pause3 + getRandomPause(600, 1000+SPEED);
+	  var pause4 = pause3 + getRandomPause(600, 1100+SPEED);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
-	  var pause5 = pause4 + getRandomPause(200, 900+SPEED);
+	  var pause5 = pause4 + getRandomPause(400, 900+SPEED);
 	setTimeout(stroke, pause5);
 	  // Спать
-	  var pause6 = pause5 + getRandomPause(500, 800+SPEED);
+	  var pause6 = pause5 + getRandomPause(500, 900+SPEED);
 	setTimeout(sleep, pause6);
-	    var pause7 = pause6 + getRandomPause(200, 400+SPEED);
+	    var pause7 = pause6 + getRandomPause(500, 900+SPEED);
 	setTimeout(stroke, pause7);
-	setTimeout(minEnergy,300);
+	setTimeout(minEnergy,pause7+400);
 	
 	// Дополнительные случки 
-	var pause8 = pause7 + getRandomPause(500, 1400+SPEED);	
+	var pause8 = pause7 + getRandomPause(700, 1400+SPEED);	
 	setTimeout(function() {
 		var energy = $("#energie").text();
 		if (energy>42)
@@ -384,7 +384,7 @@ function usualProg()
 	}, pause8);
 	
 	 // Следующий
-	  var pause9 = pause8 + getRandomPause(800, 1300+SPEED);
+	  var pause9 = pause8 + getRandomPause(800, 1500+SPEED);
 	setTimeout(prev, pause9);
 	
 
@@ -784,7 +784,7 @@ function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 900;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>LwBot v1.4.2</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.2</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
