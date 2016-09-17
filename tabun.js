@@ -295,13 +295,13 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 {
   // Выставление дней
   var pause = 0;
-  pause = pause + getRandomPause(700, 1500+SPEED);
+  pause = pause + getRandomPause(800, 1900+SPEED);
   setTimeout(eqCenterReg2, pause);
   // Запись
-  var pause1 = pause + getRandomPause(700, 1500+SPEED);
+  var pause1 = pause + getRandomPause(1000, 2300+SPEED);
   setTimeout(eqCenterReg3, pause1);
   // Проверка результата
-  var pause2 = pause1 + getRandomPause(700, 1500+SPEED);
+  var pause2 = pause1 + getRandomPause(900, 1500+SPEED);
   setTimeout(eqCenterReg4, pause2);
 }
 
