@@ -190,7 +190,7 @@ KCK_option = get_kck_option();
 SL_option = get_sluchki_option();
 
 settings_speed = localStorage.getItem("settings_speed");
-if (settings_speed == "norm") SPEED = 600; 
+if (settings_speed == "norm") SPEED = 900; 
 
 if (localStorage.getItem("settings_shablon")) 
 	var settings_shablon = localStorage.getItem("settings_shablon");
@@ -321,7 +321,7 @@ function usualProg()
 		{
 			horse_href = localStorage.getItem("horse_id");	
 			localStorage.setItem("horse_status", "0");
-			setTimeout(sleep,200);
+			setTimeout(sleep,400);
 			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 800);
 		}
 	else
@@ -352,23 +352,23 @@ function usualProg()
 	var pauseS = pause + getRandomPause(500, 1200+SPEED);
 	setTimeout(sluchka, pauseS);
 	// Чистка
-	  var pause1 = pauseS + getRandomPause(300, 800+SPEED);
+	  var pause1 = pauseS + getRandomPause(700, 1200+SPEED);
 	setTimeout(groom, pause1);
 	  // Урок
-	  var pause2 = pause1 + getRandomPause(500, 800+SPEED);
+	  var pause2 = pause1 + getRandomPause(700, 900+SPEED);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(400, 800+SPEED);
+	  var pause3 = pause2 + getRandomPause(700, 900+SPEED);
 	setTimeout(openFeeding, pause3);
 	  var pause4 = pause3 + getRandomPause(600, 1100+SPEED);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
-	  var pause5 = pause4 + getRandomPause(400, 900+SPEED);
+	  var pause5 = pause4 + getRandomPause(700, 900+SPEED);
 	setTimeout(stroke, pause5);
 	  // Спать
-	  var pause6 = pause5 + getRandomPause(500, 900+SPEED);
+	  var pause6 = pause5 + getRandomPause(700, 900+SPEED);
 	setTimeout(sleep, pause6);
-	    var pause7 = pause6 + getRandomPause(500, 900+SPEED);
+	    var pause7 = pause6 + getRandomPause(700, 900+SPEED);
 	setTimeout(stroke, pause7);
 	setTimeout(minEnergy,pause7+400);
 	
@@ -378,13 +378,13 @@ function usualProg()
 		var energy = $("#energie").text();
 		if (energy>42)
 		{
-			setTimeout(sluchka, 200);	
+			setTimeout(sluchka, 400);	
 		}	
 		
 	}, pause8);
 	
 	 // Следующий
-	  var pause9 = pause8 + getRandomPause(800, 1000+SPEED);
+	  var pause9 = pause8 + getRandomPause(1200, 1500+SPEED);
 	setTimeout(prev, pause9);
 	
 
