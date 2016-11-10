@@ -18,8 +18,8 @@ if (/www.lowadi.com\/classements\/general/.test(window.location.href))
 
 	// Тестовая проверка
 	$.post('http://www.lowadi.com/member/social/doCongratulation', { id: '15108956', csrf_token: TOKEN })
-		.done (function(data) { $('.myrez').append('<p style="color:#fff;"><b>TOKEN OK</b></p>');  })	
-		.fail (function(data) { $('.myrez').append('<p style="color:#fff;">TOKEN ERROR!</p>');   });
+		.done (function(data) { $('.myrez').append('<p style="color:#fff;"><center><b>TOKEN OK</b></center></p>');  })	
+		.fail (function(data) { $('.myrez').append('<p style="color:#fff;"><center><b>TOKEN ERROR!</b></center></p>');   });
 	        
 	
 	
