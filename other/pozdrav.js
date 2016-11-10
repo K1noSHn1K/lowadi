@@ -63,8 +63,14 @@ function murmurhash(key, seed) {
 }
 
 
+//------------------------------------------------>
 var DEF_SEC = 10000;
 var myhash = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
+
+if (myhash=='2400030474') DEF_SEC = 25000;
+
+
+//<-------------------------------------------------
 
 $('body').append('<div class="myrez" style="display:block; position:absolute; width:150px; height:auto; right:0; top:250px; padding:5px; background-color: rgba(0, 0, 0, 0.55);  border-radius: 20px 0px 0px 20;"></div>');
 $('.myrez').append('<p style="color:#fff;">ID: '+myhash+'</p> <hr>');
