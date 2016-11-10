@@ -8,10 +8,21 @@
 // @grant none
 // ==/UserScript== 
 
+var DEF_SEC = 10000;
+
 if (/www.lowadi.com\/classements\/general/.test(window.location.href))
 {
 	var TOKEN = localStorage.getItem("horse_token");	
 	var out = ''; 
+	$('body').append('<div class="myrez" style="display:block; position:absolute; width:150px; height:auto; right:0; top:250px; padding:5px; background-color: rgba(0, 0, 0, 0.55);  border-radius: 20px 0px 0px 20;"></div>');
+
+	// Тестовая проверка
+	$.post('http://www.lowadi.com/member/social/doCongratulation', { id: '15108956', csrf_token: TOKEN })
+		.done (function(data) { $('.myrez').append('<p style="color:#fff;"><b>TOKEN OK</b></p>');  })	
+		.fail (function(data) { $('.myrez').append('<p style="color:#fff;">TOKEN ERROR!</p>');   });
+	        
+	
+	
 	var timerId = setInterval(function() {
 	  $('#lien-player-overall').click()
 	  $('#lien-player-popularity').click();
@@ -19,12 +30,11 @@ if (/www.lowadi.com\/classements\/general/.test(window.location.href))
 
 	setTimeout(function() {
 	  clearInterval(timerId);
-	}, 41000);
+	}, DEF_SEC);
 
-	setTimeout(start, 42000);
+	setTimeout(start, DEF_SEC+1000);
 
-	$('body').append('<div class="myrez" style="display:block; position:absolute; width:120px; height:auto; right:0; top:250px; padding:5px; background-color: rgba(0, 0, 0, 0.55);  border-radius: 20px 0px 0px 20;"></div>');
-}
+	}
 
 
 if (/www.lowadi.com\/joueur\/fiche\/\?id=/.test(window.location.href))
