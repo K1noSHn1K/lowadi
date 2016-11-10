@@ -3,7 +3,7 @@
 // @description Бот поздравлений
 // @author HumanoID
 // @license MIT
-// @version 1.0
+// @version 1.1
 // @include http://www.lowadi.com/*
 // @grant none
 // ==/UserScript== 
@@ -19,9 +19,9 @@ if (/www.lowadi.com\/classements\/general/.test(window.location.href))
 
 	setTimeout(function() {
 	  clearInterval(timerId);
-	}, 40000);
+	}, 41000);
 
-	setTimeout(start, 41000);
+	setTimeout(start, 42000);
 
 	$('body').append('<div class="myrez" style="display:block; position:absolute; width:120px; height:auto; right:0; top:250px; padding:5px; background-color: rgba(0, 0, 0, 0.55);  border-radius: 20px 0px 0px 20;"></div>');
 }
@@ -59,9 +59,10 @@ function start()
 function get_token()
 {
 /*CSRF Token Get*/
-var text = $('.widget-column-3').html();
+var text = $('body').html();
 
 var result = text.split('csrf_token=');
 var result2 = result[1].split('\'');
 return result2[0];
 }
+
