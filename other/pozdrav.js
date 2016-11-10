@@ -65,6 +65,7 @@ function murmurhash(key, seed) {
 
 //------------------------------------------------>
 var DEF_SEC = 10000;
+var COUNTER = 0;
 var myhash = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
 
 if (myhash=='2400030474') DEF_SEC = 25000;
@@ -112,10 +113,11 @@ if (/www.lowadi.com\/joueur\/fiche\/\?id=/.test(window.location.href))
 	
 function send(id)
 	{	
+		COUNTER++;
 		var ids = id.split("=");
 		var tmp_id = ids[1];
 		$.post('http://www.lowadi.com/member/social/doCongratulation', { id: tmp_id, csrf_token: TOKEN })
-		.done (function(data) { $('.myrez').append('<p style="color:#fff;">'+tmp_id+' ok</p>');  })	
+		.done (function(data) { $('.myrez').append('<p style="color:#fff;">'+COUNTER+') '+tmp_id+' ok</p>');  })	
 			.fail (function(data) { $('.myrez').append('<p style="color:#fff;">ERROR!!!</p>');   });
 
 	}
