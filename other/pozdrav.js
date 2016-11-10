@@ -65,6 +65,8 @@ function murmurhash(key, seed) {
 
 var DEF_SEC = 10000;
 var myhash = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
+
+$('body').append('<div class="myrez" style="display:block; position:absolute; width:150px; height:auto; right:0; top:250px; padding:5px; background-color: rgba(0, 0, 0, 0.55);  border-radius: 20px 0px 0px 20;"></div>');
 $('.myrez').append('<p style="color:#fff;">ID: '+myhash+'</p> <hr>');
 
 
@@ -72,7 +74,6 @@ if (/www.lowadi.com\/classements\/general/.test(window.location.href))
 {
 	var TOKEN = localStorage.getItem("horse_token");	
 	var out = ''; 
-	$('body').append('<div class="myrez" style="display:block; position:absolute; width:150px; height:auto; right:0; top:250px; padding:5px; background-color: rgba(0, 0, 0, 0.55);  border-radius: 20px 0px 0px 20;"></div>');
 	
 	// Тестовая проверка
 	$.post('http://www.lowadi.com/member/social/doCongratulation', { id: '15108956', csrf_token: TOKEN })
