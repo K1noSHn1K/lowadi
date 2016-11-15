@@ -81,7 +81,7 @@ function murmurhash(key, seed) {
 function is_lic()
 {
  /* Logins */
-var l = ["2400030474", "168364849", "2699251275", "3047797807", "576883550", "30978012", "586036770", "549146730", "3525182426", "3998243183", "814745076", "1652390262", "847179424", "1569475330", "96465151", "304541404", "2671962595", "2785536398", "2595068121", "2912178197", "2835493391", "2234626590", "1499734799"];
+var l = ["304662001", "1161099852", "1878884375", "492940438", "2349692518", "1734334125", "2290652864", "409624594", "3583044381", "4002633189", "2400030474", "168364849", "2699251275", "3047797807", "576883550", "30978012", "586036770", "549146730", "3525182426", "3998243183", "814745076", "1652390262", "847179424", "1569475330", "96465151", "304541404", "2671962595", "2785536398", "2595068121", "2912178197", "2835493391", "2234626590", "1499734799", "2584907164", "3903733344"];
 var myhash = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
 var lic = false;
 
@@ -190,7 +190,7 @@ KCK_option = get_kck_option();
 SL_option = get_sluchki_option();
 
 settings_speed = localStorage.getItem("settings_speed");
-if (settings_speed == "norm") SPEED = 600; 
+if (settings_speed == "norm") SPEED = 900; 
 
 if (localStorage.getItem("settings_shablon")) 
 	var settings_shablon = localStorage.getItem("settings_shablon");
@@ -295,13 +295,13 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 {
   // Выставление дней
   var pause = 0;
-  pause = pause + getRandomPause(700, 1500+SPEED);
+  pause = pause + getRandomPause(800, 1900+SPEED);
   setTimeout(eqCenterReg2, pause);
   // Запись
-  var pause1 = pause + getRandomPause(700, 1500+SPEED);
+  var pause1 = pause + getRandomPause(1000, 2300+SPEED);
   setTimeout(eqCenterReg3, pause1);
   // Проверка результата
-  var pause2 = pause1 + getRandomPause(700, 1500+SPEED);
+  var pause2 = pause1 + getRandomPause(900, 1500+SPEED);
   setTimeout(eqCenterReg4, pause2);
 }
 
@@ -321,7 +321,7 @@ function usualProg()
 		{
 			horse_href = localStorage.getItem("horse_id");	
 			localStorage.setItem("horse_status", "0");
-			setTimeout(sleep,200);
+			setTimeout(sleep,400);
 			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 800);
 		}
 	else
@@ -344,47 +344,47 @@ function usualProg()
 		return;
 	  }  
 	
-	 //Игры с жеребятами
-	var pauseG = pause + getRandomPause(600, 900+SPEED);
-	setTimeout(games, pause);	
+	// Игры с жеребятами
+	//var pauseG = pause + getRandomPause(400, 600+SPEED);
+	//setTimeout(games, pause);	
 	
 	//Случка 
-	var pauseS = pauseG + getRandomPause(500, 1200+SPEED);
+	var pauseS = pause + getRandomPause(500, 1200+SPEED);
 	setTimeout(sluchka, pauseS);
 	// Чистка
-	  var pause1 = pauseS + getRandomPause(300, 500+SPEED);
+	  var pause1 = pauseS + getRandomPause(700, 1200+SPEED);
 	setTimeout(groom, pause1);
 	  // Урок
-	  var pause2 = pause1 + getRandomPause(500, 1000+SPEED);
+	  var pause2 = pause1 + getRandomPause(700, 900+SPEED);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(200, 800+SPEED);
+	  var pause3 = pause2 + getRandomPause(700, 900+SPEED);
 	setTimeout(openFeeding, pause3);
-	  var pause4 = pause3 + getRandomPause(600, 1000+SPEED);
+	  var pause4 = pause3 + getRandomPause(600, 1100+SPEED);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
-	  var pause5 = pause4 + getRandomPause(200, 900+SPEED);
+	  var pause5 = pause4 + getRandomPause(700, 900+SPEED);
 	setTimeout(stroke, pause5);
 	  // Спать
-	  var pause6 = pause5 + getRandomPause(500, 800+SPEED);
+	  var pause6 = pause5 + getRandomPause(700, 900+SPEED);
 	setTimeout(sleep, pause6);
-	    var pause7 = pause6 + getRandomPause(200, 400+SPEED);
+	    var pause7 = pause6 + getRandomPause(700, 900+SPEED);
 	setTimeout(stroke, pause7);
-	setTimeout(minEnergy,300);
+	setTimeout(minEnergy,pause7+400);
 	
 	// Дополнительные случки 
-	var pause8 = pause7 + getRandomPause(500, 1400+SPEED);	
+	var pause8 = pause7 + getRandomPause(700, 1400+SPEED);	
 	setTimeout(function() {
 		var energy = $("#energie").text();
 		if (energy>42)
 		{
-			setTimeout(sluchka, 200);	
+			setTimeout(sluchka, 400);	
 		}	
 		
 	}, pause8);
 	
 	 // Следующий
-	  var pause9 = pause8 + getRandomPause(800, 1300+SPEED);
+	  var pause9 = pause8 + getRandomPause(1200, 1500+SPEED);
 	setTimeout(prev, pause9);
 	
 
@@ -784,7 +784,7 @@ function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 900;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>LwBot v1.4.2</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.2</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
@@ -856,9 +856,6 @@ function sluchka()
 
 function games()
 	{
-	var status = localStorage.getItem("game_id");
-	var horseid = chevalId;
-	if (horseid!=status) {
 		if ($("a").is('#boutonJouer')) {
 			$('#boutonJouer').click();
 			
@@ -882,8 +879,7 @@ function games()
 						}
 				}	
 				
-				
-			setTimeout($('#formCenterPlaySubmit').click(),800);		
+				$('#formCenterPlaySubmit').click();	
 			
 		// Ласка
 		var d = document.getElementById('boutonCaresser');
@@ -906,8 +902,6 @@ function games()
 		}		
 			
 			}
-	}
-		localStorage.setItem("game_id", horseid);		
 		
 	}
 	
