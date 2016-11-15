@@ -923,11 +923,12 @@ function horsename(shablon)
 	SKILLS - навыки
 	
 	*/		setTimeout(sleep,600);
+			setTimeout(localStorage.setItem("horse_status", "3"), 1000);
 			setTimeout(groom, 1200);
 			setTimeout(openFeeding, 1800);
 			setTimeout(doEatNorm, 2500);
 			
-			localStorage.setItem("horse_status", "3");
+			
 		var out = new Array();
 		var hname = "";
 		var male_names = "Снежок,Агат, Азарт,Авалон,Аверон,Алый,Ангел,Амулет,Вольт,Ветер,Вегас,Вираж,Восток,Викинг,Воланд,Виспер,Вереск,Вирго,Оскар,Оникс,Олимп,Озар,Онис,Ойххо,Орик,Омар,Персик,Прайд,Принц,Пион,Плуто,Памир,Пэйн,Пунш,Плутон,Приор,Пульс,Перри,Пауэр,Пафос,Перчик";
