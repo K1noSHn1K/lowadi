@@ -211,10 +211,11 @@ function getParameterByName(name, url) {
 }
 
 // Если сайт лагает, и кидает на всех лошадей, то ищем записанную в КСК, но не уложенную спать
+// Или если у нас попалась лошадь, которую только что родили и переименовали, то идем к ее мамке
 function bug_finder()
 {
 	var  horse = localStorage.getItem("horse_status");
-		if (horse=='1')
+		if (horse=='1' || horse=='3')
 		{
 		horse_href = localStorage.getItem("horse_id");	
 		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;			
@@ -925,8 +926,8 @@ function horsename(shablon)
 			setTimeout(groom, 1200);
 			setTimeout(openFeeding, 1800);
 			setTimeout(doEatNorm, 2500);
-			localStorage.setItem("horse_status", "0");
-		//localStorage.setItem("horse_status", "3");
+			
+			localStorage.setItem("horse_status", "3");
 		var out = new Array();
 		var hname = "";
 		var male_names = "Снежок,Агат, Азарт,Авалон,Аверон,Алый,Ангел,Амулет,Вольт,Ветер,Вегас,Вираж,Восток,Викинг,Воланд,Виспер,Вереск,Вирго,Оскар,Оникс,Олимп,Озар,Онис,Ойххо,Орик,Омар,Персик,Прайд,Принц,Пион,Плуто,Памир,Пэйн,Пунш,Плутон,Приор,Пульс,Перри,Пауэр,Пафос,Перчик";
