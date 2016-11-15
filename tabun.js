@@ -923,8 +923,8 @@ function horsename(shablon)
 	
 	*/		setTimeout(sleep,600);
 			setTimeout(groom, 1200);
-			setTimeout(openFeeding, 2500);
-			setTimeout(doEatNorm, 3500);
+			setTimeout(openFeeding, 1800);
+			setTimeout(doEatNorm, 2500);
 			localStorage.setItem("horse_status", "0");
 		//localStorage.setItem("horse_status", "3");
 		var out = new Array();
@@ -1001,8 +1001,8 @@ function horsename(shablon)
 		{
 			$("#horseNameName").val(hname);	
 			$(".options-button").click();
-			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),5300);
-			setTimeout($('#horseName').submit(),5600);	
+			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),3500);
+			setTimeout($('#horseName').submit(),4100);	
 		}
 			
 		
