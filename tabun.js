@@ -321,11 +321,12 @@ function usualProg()
 		if (horse=='3')
 		{
 			horse_href = localStorage.getItem("horse_id");	
-			setTimeout(sleep,400);
-			setTimeout(openFeeding, 1000);
-			setTimeout(doEatNorm, 2000);
+			setTimeout(sleep,600);
+			setTimeout(groom, 1200);
+			setTimeout(openFeeding, 2500);
+			setTimeout(doEatNorm, 3500);
 			localStorage.setItem("horse_status", "0");
-			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 4500);
+			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 5000);
 		}
 	else
 		{
