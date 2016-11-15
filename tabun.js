@@ -311,6 +311,7 @@ function usualProg()
 {
 	// Статус 2 означает, что кобыла родила, переименовываем жеребенка
 	var  horse = localStorage.getItem("horse_status");
+		
 		if (horse=='2')
 		{
 			horsename(settings_shablon);
@@ -320,10 +321,10 @@ function usualProg()
 		if (horse=='3')
 		{
 			horse_href = localStorage.getItem("horse_id");	
-			localStorage.setItem("horse_status", "0");
 			setTimeout(sleep,400);
 			setTimeout(openFeeding, 1000);
 			setTimeout(doEatNorm, 2000);
+			localStorage.setItem("horse_status", "0");
 			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 4500);
 		}
 	else
@@ -948,7 +949,12 @@ function horsename(shablon)
 		for (j=0; j<out.length; j++)
 			{
 				if (out[j] == "GENDER") hname+=gender;
-				if (out[j] == "GENDER_MIN") hname+=gender.substring(0,3);
+				if (out[j] == "GENDER_MIN") 
+					{
+					hname+=gender.substring(0,3);
+					if (hname=="кон") hname = "жер";	
+					}
+					
 					
 				if (out[j] == "NAME")
 					{
