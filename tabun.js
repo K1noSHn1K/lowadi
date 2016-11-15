@@ -211,11 +211,10 @@ function getParameterByName(name, url) {
 }
 
 // Если сайт лагает, и кидает на всех лошадей, то ищем записанную в КСК, но не уложенную спать
-// Или если у нас попалась лошадь, которую только что родили и переименовали, то идем к ее мамке
 function bug_finder()
 {
 	var  horse = localStorage.getItem("horse_status");
-		if (horse=='1' || horse=='3')
+		if (horse=='1')
 		{
 		horse_href = localStorage.getItem("horse_id");	
 		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;			
@@ -312,25 +311,20 @@ function usualProg()
 {
 	// Статус 2 означает, что кобыла родила, переименовываем жеребенка
 	var  horse = localStorage.getItem("horse_status");
-		
 		if (horse=='2')
 		{
 			horsename(settings_shablon);
 		}
 	else		
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
-	/*	if (horse=='3')
+		if (horse=='3')
 		{
 			horse_href = localStorage.getItem("horse_id");	
-			setTimeout(sleep,600);
-			setTimeout(groom, 1200);
-			setTimeout(openFeeding, 2500);
-			setTimeout(doEatNorm, 3500);
 			localStorage.setItem("horse_status", "0");
-			alert('now redirect!')
-			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 5000);
-		
-	else*/
+			setTimeout(sleep,400);
+			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 800);
+		}
+	else
 		{
 	localStorage.setItem("horse_status", "0");
 	localStorage.setItem("horse_id", chevalId);
@@ -790,7 +784,7 @@ function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 900;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.3a</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.2</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
@@ -922,13 +916,7 @@ function horsename(shablon)
 	GP - генетический потенциал
 	SKILLS - навыки
 	
-	*/		setTimeout(sleep,600);
-			setTimeout(localStorage.setItem("horse_status", "3"), 1000);
-			setTimeout(groom, 1200);
-			setTimeout(openFeeding, 1800);
-			setTimeout(doEatNorm, 2500);
-			
-			
+	*/	localStorage.setItem("horse_status", "3");
 		var out = new Array();
 		var hname = "";
 		var male_names = "Снежок,Агат, Азарт,Авалон,Аверон,Алый,Ангел,Амулет,Вольт,Ветер,Вегас,Вираж,Восток,Викинг,Воланд,Виспер,Вереск,Вирго,Оскар,Оникс,Олимп,Озар,Онис,Ойххо,Орик,Омар,Персик,Прайд,Принц,Пион,Плуто,Памир,Пэйн,Пунш,Плутон,Приор,Пульс,Перри,Пауэр,Пафос,Перчик";
@@ -958,12 +946,7 @@ function horsename(shablon)
 		for (j=0; j<out.length; j++)
 			{
 				if (out[j] == "GENDER") hname+=gender;
-				if (out[j] == "GENDER_MIN") 
-					{
-					hname+=gender.substring(0,3);
-					if (hname=="кон") hname = "жер";	
-					}
-					
+				if (out[j] == "GENDER_MIN") hname+=gender.substring(0,3);
 					
 				if (out[j] == "NAME")
 					{
@@ -1003,8 +986,8 @@ function horsename(shablon)
 		{
 			$("#horseNameName").val(hname);	
 			$(".options-button").click();
-			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),3500);
-			setTimeout($('#horseName').submit(),4100);	
+			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),300);
+			setTimeout($('#horseName').submit(),600);	
 		}
 			
 		
