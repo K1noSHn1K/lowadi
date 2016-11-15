@@ -948,7 +948,11 @@ function horsename(shablon)
 		for (j=0; j<out.length; j++)
 			{
 				if (out[j] == "GENDER") hname+=gender;
-				if (out[j] == "GENDER_MIN") hname+=gender.substring(0,3);
+				if (out[j] == "GENDER_MIN") 
+				{
+					hname+=gender.substring(0,3);
+					if (hname=="кон") hname = "жер";
+				}	
 					
 				if (out[j] == "NAME")
 					{
