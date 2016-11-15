@@ -322,8 +322,8 @@ function usualProg()
 			horse_href = localStorage.getItem("horse_id");	
 			localStorage.setItem("horse_status", "0");
 			setTimeout(sleep,400);
-			setTimeout(groom, 1000);
-			setTimeout(openFeeding, 2000);
+			setTimeout(openFeeding, 1000);
+			setTimeout(doEatNorm, 2000);
 			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 4500);
 		}
 	else
@@ -786,7 +786,7 @@ function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 900;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.2</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.3</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
