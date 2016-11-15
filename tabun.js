@@ -318,7 +318,7 @@ function usualProg()
 		}
 	else		
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
-		if (horse=='3')
+	/*	if (horse=='3')
 		{
 			horse_href = localStorage.getItem("horse_id");	
 			setTimeout(sleep,600);
@@ -328,8 +328,8 @@ function usualProg()
 			localStorage.setItem("horse_status", "0");
 			alert('now redirect!')
 			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 5000);
-		}
-	else
+		
+	else*/
 		{
 	localStorage.setItem("horse_status", "0");
 	localStorage.setItem("horse_id", chevalId);
@@ -921,7 +921,12 @@ function horsename(shablon)
 	GP - генетический потенциал
 	SKILLS - навыки
 	
-	*/	localStorage.setItem("horse_status", "3");
+	*/		setTimeout(sleep,600);
+			setTimeout(groom, 1200);
+			setTimeout(openFeeding, 2500);
+			setTimeout(doEatNorm, 3500);
+			localStorage.setItem("horse_status", "0");
+		//localStorage.setItem("horse_status", "3");
 		var out = new Array();
 		var hname = "";
 		var male_names = "Снежок,Агат, Азарт,Авалон,Аверон,Алый,Ангел,Амулет,Вольт,Ветер,Вегас,Вираж,Восток,Викинг,Воланд,Виспер,Вереск,Вирго,Оскар,Оникс,Олимп,Озар,Онис,Ойххо,Орик,Омар,Персик,Прайд,Принц,Пион,Плуто,Памир,Пэйн,Пунш,Плутон,Приор,Пульс,Перри,Пауэр,Пафос,Перчик";
@@ -996,8 +1001,8 @@ function horsename(shablon)
 		{
 			$("#horseNameName").val(hname);	
 			$(".options-button").click();
-			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),300);
-			setTimeout($('#horseName').submit(),600);	
+			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),5300);
+			setTimeout($('#horseName').submit(),5600);	
 		}
 			
 		
