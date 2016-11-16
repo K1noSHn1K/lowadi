@@ -3,7 +3,7 @@
 // @description Бот для браузерной игры Lowadi
 // @author HumanoID
 // @license Mozilla Public License Version 2.0
-// @version 1.4
+// @version 1.4.3
 // @include http://www.lowadi.com/*
 // @grant none
 // ==/UserScript==
@@ -322,7 +322,9 @@ function usualProg()
 			horse_href = localStorage.getItem("horse_id");	
 			localStorage.setItem("horse_status", "0");
 			setTimeout(sleep,400);
-			setTimeout(location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href, 800);
+			setTimeout(groom, 800);
+			setTimeout(doEatNorm, 1500);
+			setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href }, 2000);
 		}
 	else
 		{
@@ -782,9 +784,9 @@ function OR()
 
 function settings()
 	{
-		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 105px; top: 30px; left: 20px; z-index: 900;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/robothorseday.png" width="100px"></div>');
+		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 125px; top: 7px; left: 5px; z-index: 900;">	<div class="fear"  style="display: block;position: fixed;width: 15px;height: 10px;top: 50px;left: 70px;"> </div>	<img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/kraken.png" width="120px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.2</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.4</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
@@ -819,6 +821,10 @@ function settings()
 
 $('.lwb_setting').click(function(){
    $('.lwb_settings').toggle("slow");
+});
+
+$('.fear').click(function(){
+   fear();
 });
 
 $('.lwb_chat_button').click(function(){
@@ -946,7 +952,11 @@ function horsename(shablon)
 		for (j=0; j<out.length; j++)
 			{
 				if (out[j] == "GENDER") hname+=gender;
-				if (out[j] == "GENDER_MIN") hname+=gender.substring(0,3);
+				if (out[j] == "GENDER_MIN") 
+				{
+					hname+=gender.substring(0,3);
+					if (hname=="кон") hname = "жер";
+				}	
 					
 				if (out[j] == "NAME")
 					{
@@ -1032,5 +1042,12 @@ function check_shablon()
 
 
 
- 		
+ function fear()
+{
+	
+var audio = new Audio();
+audio.preload = 'auto';
+audio.src = 'https://raw.githubusercontent.com/Crasher69/lowadi/master/z.mp3';
+audio.play();
+}
 		
