@@ -346,12 +346,12 @@ function usualProg()
 		return;
 	  }  
 	
-	// Игры с жеребятами
-	//var pauseG = pause + getRandomPause(400, 600+SPEED);
-	//setTimeout(games, pause);	
+	 Игры с жеребятами
+	var pauseG = pause + getRandomPause(400, 600+SPEED);
+	setTimeout(games, pauseG);	
 	
 	//Случка 
-	var pauseS = pause + getRandomPause(500, 1200+SPEED);
+	var pauseS = pauseG + getRandomPause(500, 1200+SPEED);
 	setTimeout(sluchka, pauseS);
 	// Чистка
 	  var pause1 = pauseS + getRandomPause(700, 1200+SPEED);
@@ -786,7 +786,7 @@ function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 125px; top: 7px; left: 5px; z-index: 900;">	<div class="fear"  style="display: block;position: fixed;width: 15px;height: 10px;top: 50px;left: 70px;"> </div>	<img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/kraken.png" width="120px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.5</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.5b</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
@@ -862,10 +862,10 @@ function sluchka()
 
 function games()
 	{
-		if ($("a").is('#boutonJouer')) {
-			$('#boutonJouer').click();
+		setTimeout(function() {if ($("a").is('#boutonJouer')) {
+			$('#boutonJouer').click()},500);
 			
-				var d2 = document.getElementById('formCenterPlay').innerHTML;
+			setTimeout(function() {	var d2 = document.getElementById('formCenterPlay').innerHTML;
 				// Для слайдеров
 				if (d2.indexOf('centerPlaySlider') !== - 1)
 				{
@@ -886,26 +886,31 @@ function games()
 				}	
 				
 				$('#formCenterPlaySubmit').click();	
-			
+					      },1000);
 		// Ласка
+		setTimeout(function() {		       
 		var d = document.getElementById('boutonCaresser');
 		if (d !== null)
 		{
 		  d.click();
-		}    
+		}  },1500);
+				       
+				       
 		// Пить
+		setTimeout(function() {		       
 		var d = document.getElementById('boutonBoire');
 		if (d !== null)
 		{
 		  d.click();
-		}	
+		}	},2000);
 
 		// Морковка
+		setTimeout(function() {		       
 		var d = document.getElementById('boutonCarotte');
 		if (d !== null)
 		{
 		  d.click();
-		}		
+		}	},2500);	
 			
 			}
 		
