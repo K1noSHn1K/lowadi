@@ -912,7 +912,7 @@ function games()
 		  d.click();
 		}	},2500);	
 			
-			}
+			
 		
 	}
 	
