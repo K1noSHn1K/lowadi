@@ -863,7 +863,7 @@ function sluchka()
 function games()
 	{
 		setTimeout(function() {if ($("a").is('#boutonJouer')) 
-			$('#boutonJouer').click()},500);
+			$('#boutonJouer').click()},700);
 			
 			setTimeout(function() {	var d2 = document.getElementById('formCenterPlay').innerHTML;
 				// Для слайдеров
@@ -886,14 +886,14 @@ function games()
 				}	
 				
 				$('#formCenterPlaySubmit').click();	
-					      },1000);
+					      },1400);
 		// Ласка
 		setTimeout(function() {		       
 		var d = document.getElementById('boutonCaresser');
 		if (d !== null)
 		{
 		  d.click();
-		}  },1500);
+		}  },2000);
 				       
 				       
 		// Пить
@@ -902,7 +902,7 @@ function games()
 		if (d !== null)
 		{
 		  d.click();
-		}	},2000);
+		}	},2500);
 
 		// Морковка
 		setTimeout(function() {		       
@@ -910,7 +910,7 @@ function games()
 		if (d !== null)
 		{
 		  d.click();
-		}	},2500);	
+		}	},3200);	
 			
 			
 		
