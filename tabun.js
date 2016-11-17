@@ -346,7 +346,7 @@ function usualProg()
 		return;
 	  }  
 	
-	 Игры с жеребятами
+	 //Игры с жеребятами
 	var pauseG = pause + getRandomPause(400, 600+SPEED);
 	setTimeout(games, pauseG);	
 	
