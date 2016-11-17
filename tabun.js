@@ -862,7 +862,7 @@ function sluchka()
 
 function games()
 	{
-		setTimeout(function() {if ($("a").is('#boutonJouer')) {
+		setTimeout(function() {if ($("a").is('#boutonJouer')) 
 			$('#boutonJouer').click()},500);
 			
 			setTimeout(function() {	var d2 = document.getElementById('formCenterPlay').innerHTML;
