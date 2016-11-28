@@ -69,6 +69,8 @@ var COUNTER = 0;
 var myhash = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
 
 if (myhash=='2400030474') DEF_SEC = 25000;
+if (myhash=='15573232') DEF_SEC = 25000;
+
 
 
 //<-------------------------------------------------
