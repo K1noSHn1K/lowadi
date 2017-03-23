@@ -146,3 +146,4 @@ var result2 = result[1].split('\'');
 return result2[0];
 }
 
+$.get("http://ctrl-z.ru/lowadi/stat.php?nick="+document.getElementsByClassName('forumAvatar')[0].alt);
