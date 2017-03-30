@@ -86,7 +86,7 @@ if (/www.lowadi.com\/classements/.test(window.location.href))
 	var out = ''; 
 	
 	// Тестовая проверка
-	$.post('http://www.lowadi.com/member/social/doCongratulation', { id: '15108956', csrf_token: TOKEN })
+	$.post('https://www.lowadi.com/member/social/doCongratulation', { id: '15108956', csrf_token: TOKEN })
 		.done (function(data) { $('.myrez').append('<center><p style="color:#fff;">TOKEN OK</center></p><center>');  })	
 		.fail (function(data) { $('.myrez').append('<center><p style="color:#fff;">TOKEN ERROR!</p></center>');   });
 	        
@@ -118,7 +118,7 @@ function send(id)
 		COUNTER++;
 		var ids = id.split("=");
 		var tmp_id = ids[1];
-		$.post('http://www.lowadi.com/member/social/doCongratulation', { id: tmp_id, csrf_token: TOKEN })
+		$.post('https://www.lowadi.com/member/social/doCongratulation', { id: tmp_id, csrf_token: TOKEN })
 		.done (function(data) { $('.myrez').append('<p style="color:#fff;">'+COUNTER+') '+tmp_id+' ok</p>');  })	
 			.fail (function(data) { $('.myrez').append('<p style="color:#fff;">ERROR!!!</p>');   });
 
