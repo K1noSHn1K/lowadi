@@ -80,7 +80,7 @@ $('.myrez').append('<center><p style="color:#fff;"><span style="font-family: Ari
 $('.myrez').append('<center><p style="color:#fff;"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">ID: '+myhash+'</p></center> <hr>');
 
 
-if (/www.lowadi.com\/classements\/general/.test(window.location.href))
+if (/www.lowadi.com\/classements/.test(window.location.href))
 {
 	var TOKEN = localStorage.getItem("horse_token");	
 	var out = ''; 
