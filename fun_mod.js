@@ -115,19 +115,7 @@ function fun()
     return text.replace("Вырастить", "Пирамида");
     });			
 	
-	
-    $(".button-text-0").html(function(index, text) {
-    return text.replace("Погладить", "Домогаться");
-    });	
-		
-    $("new-console").html(function(index, text) {
-    return text.replace("Урок", "В рабство");
-    });			
-	
-    $(".tab-action").html(function(index, text) {
-    return text.replace("Мои новости", "Че каво?");
-    });
-				
+			
 	}
 
 
