@@ -3,7 +3,7 @@
 // @description Бот для браузерной игры Lowadi
 // @author HumanoID
 // @license Mozilla Public License Version 2.0
-// @version 1.4.3
+// @version 1.4.6
 // @include https://www.lowadi.com/*
 // @grant none
 // ==/UserScript==
