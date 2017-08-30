@@ -58,11 +58,11 @@ $("#container").append(
 function fun()
 	{
  $(".hud-clock").html(function(index, text) {
-    return text.replace("Лето", "Лeто - котлета");
+    return text.replace("Лето", "Седьмое пекло");
     });
 	
     $(".hud-clock").html(function(index, text) {
-    return text.replace("Осень", "Тлен, смерть, разложение");
+    return text.replace("Осень", "Зима близко");
     });
 
     $(".hud-clock").html(function(index, text) {
@@ -70,7 +70,7 @@ function fun()
     });
 
     $(".hud-clock").html(function(index, text) {
-    return text.replace("Весна", "Птички - цветочки");
+    return text.replace("Весна", "Пес трется о нога");
     });	
 	
     $(".new-console").html(function(index, text) {
@@ -78,7 +78,7 @@ function fun()
     });	
 
     $(".new-console").html(function(index, text) {
-    return text.replace("Случить кобылу", "Шпекаться");
+    return text.replace("Случить кобылу", "Отдаться");
     });	
 	
     $(".new-console").html(function(index, text) {
@@ -98,7 +98,7 @@ function fun()
     });		
 	
     $(".new-console").html(function(index, text) {
-    return text.replace("Отправить спать", "Отключить");
+    return text.replace("Отправить спать", "Скрыть месяц");
     });		
 	
 	
@@ -113,8 +113,23 @@ function fun()
 	
     $(".new-console").html(function(index, text) {
     return text.replace("Вырастить", "Пирамида");
+    });	
+		
+    $(".new-console").html(function(index, text) {
+    return text.replace("Урок", "Вкалывать");
+    });	
+		
+    $(".new-console").html(function(index, text) {
+    return text.replace("Информация", "Кто ты по жизни?");
+    });	
+		
+   $(".header-currency-label").html(function(index, text) {
+    return text.replace("экю", "Побрякушки");
     });			
 	
+   $(".header-currency-label").html(function(index, text) {
+    return text.replace("пропуск", "Прелести");
+    });				
 			
 	}
 
