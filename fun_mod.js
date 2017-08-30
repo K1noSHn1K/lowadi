@@ -120,8 +120,13 @@ function fun()
     });	
 		
     $(".new-console").html(function(index, text) {
-    return text.replace("Транспортировать железо", "крест");
+    return text.replace("Транспортировать железо", "Крест");
+    });
+		
+    $(".new-console").html(function(index, text) {
+    return text.replace("Транспортировать песок", "Насыпали тут!");
     });	
+				
 		
     $(".new-console").html(function(index, text) {
     return text.replace("Заготовка леса", "Развести костер");
