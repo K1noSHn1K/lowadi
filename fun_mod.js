@@ -120,6 +120,14 @@ function fun()
     });	
 		
     $(".new-console").html(function(index, text) {
+    return text.replace("Транспортировать железо", "крест");
+    });	
+		
+    $(".new-console").html(function(index, text) {
+    return text.replace("Заготовка леса", "Развести костер");
+    });			
+		
+    $(".new-console").html(function(index, text) {
     return text.replace("Информация", "Кто ты по жизни");
     });	
 		
