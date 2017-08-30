@@ -120,7 +120,7 @@ function fun()
     });	
 		
     $(".new-console").html(function(index, text) {
-    return text.replace("Информация", "Кто ты по жизни?");
+    return text.replace("Информация", "Кто ты по жизни");
     });	
 		
    $(".header-currency-label").html(function(index, text) {
