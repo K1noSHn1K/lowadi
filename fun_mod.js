@@ -141,8 +141,16 @@ function fun()
     });			
 	
    $(".header-currency-label").html(function(index, text) {
+    return text.replace("пропусков", "Прелести");
+    });	
+		
+   $(".header-currency-label").html(function(index, text) {
+    return text.replace("пропуска", "Прелести");
+    });		
+		
+   $(".header-currency-label").html(function(index, text) {
     return text.replace("пропуск", "Прелести");
-    });				
+    });		
 			
 	}
 
