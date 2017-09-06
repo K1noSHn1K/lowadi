@@ -4,7 +4,7 @@
 // @author HumanoID
 // @license MIT
 // @version 1.1
-// @include http://www.lowadi.com/*
+// @include https://www.lowadi.com/*
 // @grant none
 // ==/UserScript== 
 
@@ -87,7 +87,7 @@ if (/www.lowadi.com\/classements/.test(window.location.href))
 	var out = ''; 
 	
 	// Тестовая проверка
-	$.post('https://www.lowadi.com/member/social/doCongratulation', { id: '15108956', csrf_token: TOKEN })
+	$.post('https://www.lowadi.com/member/social/doCongratulation', { id: '15108956', hash: TOKEN })
 		.done (function(data) { $('.myrez').append('<center><p style="color:#fff;">TOKEN OK</center></p><center>');  })	
 		.fail (function(data) { $('.myrez').append('<center><p style="color:#fff;">TOKEN ERROR!</p></center>');   });
 	        
@@ -119,7 +119,7 @@ function send(id)
 		COUNTER++;
 		var ids = id.split("=");
 		var tmp_id = ids[1];
-		$.post('https://www.lowadi.com/member/social/doCongratulation', { id: tmp_id, csrf_token: TOKEN })
+		$.post('https://www.lowadi.com/member/social/doCongratulation', { id: tmp_id, hash: TOKEN })
 		.done (function(data) { $('.myrez').append('<p style="color:#fff;">'+COUNTER+') '+tmp_id+' ok</p>');  })	
 			.fail (function(data) { $('.myrez').append('<p style="color:#fff;">ERROR!!!</p>');   });
 
@@ -140,11 +140,8 @@ function start()
 function get_token()
 {
 /*CSRF Token Get*/
-var text = $('body').html();
-
-var result = text.split('csrf_token=');
-var result2 = result[1].split('\'');
-return result2[0];
+var myhash = hash;
+return myhash;
 }
 
 
