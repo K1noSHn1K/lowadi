@@ -390,8 +390,8 @@ function usualProg()
 			
 	  var pause9 = pause8 + getRandomPause(100, 300+SPEED);
 	var pause10 = pause9 + getRandomPause(300, 700+SPEED);	
-	setTimeout(function() { check_sleep; }, pause9);		
-	setTimeout(function() { prev; }, pause10);
+	setTimeout(check_sleep, pause9);		
+	setTimeout(prev, pause10);
 	
 
 
