@@ -351,24 +351,24 @@ function usualProg()
 	//setTimeout(games, pause);	
 	
 	//Случка 
-	var pauseS = pause + getRandomPause(500, 1200+SPEED);
+	var pauseS = pause + getRandomPause(500, 700+SPEED);
 	setTimeout(sluchka, pauseS);
 	// Чистка
-	  var pause1 = pauseS + getRandomPause(600, 1200+SPEED);
+	  var pause1 = pauseS + getRandomPause(100, 200+SPEED);
 	setTimeout(groom, pause1);
 	  // Урок
-	  var pause2 = pause1 + getRandomPause(600, 900+SPEED);
+	  var pause2 = pause1 + getRandomPause(600, 700+SPEED);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(600, 900+SPEED);
+	  var pause3 = pause2 + getRandomPause(600, 700+SPEED);
 	setTimeout(openFeeding, pause3);
-	  var pause4 = pause3 + getRandomPause(600, 1100+SPEED);
+	  var pause4 = pause3 + getRandomPause(600, 700+SPEED);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
-	  var pause5 = pause4 + getRandomPause(600, 900+SPEED);
+	  var pause5 = pause4 + getRandomPause(600, 700+SPEED);
 	setTimeout(stroke, pause5);
 	  // Спать
-	  var pause6 = pause5 + getRandomPause(600, 900+SPEED);
+	  var pause6 = pause5 + getRandomPause(200, 700+SPEED);
 	setTimeout(sleep, pause6);		
 	    var pause7 = pause6 + getRandomPause(600, 900+SPEED);
 	setTimeout(stroke, pause7);
@@ -725,7 +725,7 @@ function groom()
   var d = document.getElementById('boutonPanser');
   if (d !== null)
   {
-    d.click();
+    $('#form-do-groom').submit();
   }
 }
 
@@ -1065,4 +1065,3 @@ audio.preload = 'auto';
 audio.src = 'https://raw.githubusercontent.com/Crasher69/lowadi/master/z.mp3';
 audio.play();
 }
-		
