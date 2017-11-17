@@ -370,7 +370,7 @@ function usualProg()
 	  // Спать
 	  var pause6 = pause5 + getRandomPause(600, 900+SPEED);
 	setTimeout(sleep, pause6);
-	//setTimeout(function() { $('#form-do-night').submit(); }, pause6)
+	//setTimeout(function() { $('#form-do-night').submit(); }, pause6);		
 	    var pause7 = pause6 + getRandomPause(600, 900+SPEED);
 	setTimeout(stroke, pause7);
 	setTimeout(minEnergy,pause7+400);
@@ -387,22 +387,23 @@ function usualProg()
 	}, pause8);
 	
 	 // Следующий
-	  var pause9 = pause8 + getRandomPause(1200, 1500+SPEED);
-	setTimeout(function() { check_sleep; prev; }, pause9);
+			
+	  var pause9 = pause8 + getRandomPause(100, 300+SPEED);
+	var pause10 = pause9 + getRandomPause(300, 700+SPEED);	
+	setTimeout(function() { check_sleep; }, pause9);		
+	setTimeout(function() { prev; }, pause10);
 	
 
 
 }
 }
 
-
 // Проверка сна
 function check_sleep()
 {
 	if ($('#boutonCoucher.action-disabled').length == 0)
-		sleep;
-}
-
+		sleep();
+}	
 
 // Запись в КСК
 function eqCenterReg()
@@ -795,7 +796,7 @@ function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 125px; top: 7px; left: 5px; z-index: 900;">	<div class="fear"  style="display: block;position: fixed;width: 15px;height: 10px;top: 50px;left: 70px;"> </div>	<img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/kraken.png" width="120px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.6</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.4</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
