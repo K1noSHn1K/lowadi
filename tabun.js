@@ -370,7 +370,7 @@ function usualProg()
 	  // Спать
 	  var pause6 = pause5 + getRandomPause(600, 900+SPEED);
 	//setTimeout(sleep, pause6);
-	setTimeout(function() { $('#form-do-night').submit(); }, pause6)		
+	setTimeout(function() { $('#form-do-night').submit(); }, pause6);		
 	    var pause7 = pause6 + getRandomPause(600, 900+SPEED);
 	setTimeout(stroke, pause7);
 	setTimeout(minEnergy,pause7+400);
