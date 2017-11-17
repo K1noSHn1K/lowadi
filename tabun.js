@@ -357,12 +357,12 @@ function usualProg()
 	  var pause1 = pauseS + getRandomPause(100, 200+SPEED);
 	setTimeout(groom, pause1);
 	  // Урок
-	  var pause2 = pause1 + getRandomPause(600, 700+SPEED);
+	  var pause2 = pause1 + getRandomPause(200, 700+SPEED);
 	setTimeout(lesson, pause2);
 	  // Корм
 	  var pause3 = pause2 + getRandomPause(600, 700+SPEED);
 	setTimeout(openFeeding, pause3);
-	  var pause4 = pause3 + getRandomPause(600, 700+SPEED);
+	  var pause4 = pause3 + getRandomPause(400, 800+SPEED);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
 	  var pause5 = pause4 + getRandomPause(600, 700+SPEED);
@@ -388,7 +388,7 @@ function usualProg()
 	 // Следующий
 			
 	  var pause9 = pause8 + getRandomPause(100, 300+SPEED);
-	var pause10 = pause9 + getRandomPause(300, 700+SPEED);	
+	var pause10 = pause9 + getRandomPause(500, 800+SPEED);	
 	setTimeout(check_sleep, pause9);		
 	setTimeout(prev, pause10);
 	
@@ -397,13 +397,18 @@ function usualProg()
 }
 }
 
-// Проверка сна
+// Проверка сна и еды
 function check_sleep()
 {
 	if ($('#boutonCoucher.action-disabled').length == 0)
 	{
 		console.log('Alternate Sleep');
 		sleep();
+	}
+	if ($('.nourrir-entame').length) == 0
+	{
+		setTimeout(openFeeding, 100);
+		setTimeout(doEatNorm, 400);	
 	}
 		
 }	
