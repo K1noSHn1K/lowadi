@@ -388,8 +388,10 @@ function usualProg()
 	
 	 // Следующий
 			
-	  var pause9 = pause8 + getRandomPause(1200, 1500+SPEED);
-	setTimeout(function() { check_sleep; prev; }, pause9);
+	  var pause9 = pause8 + getRandomPause(100, 300+SPEED);
+	var pause10 = pause9 + getRandomPause(300, 700+SPEED);	
+	setTimeout(function() { check_sleep; }, pause9);		
+	setTimeout(function() { prev; }, pause10);
 	
 
 
@@ -400,7 +402,7 @@ function usualProg()
 function check_sleep()
 {
 	if ($('#boutonCoucher.action-disabled').length == 0)
-		sleep;
+		sleep();
 }	
 
 // Запись в КСК
