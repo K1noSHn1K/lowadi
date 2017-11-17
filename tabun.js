@@ -402,7 +402,11 @@ function usualProg()
 function check_sleep()
 {
 	if ($('#boutonCoucher.action-disabled').length == 0)
+	{
+		console.log('Alternate Sleep');
 		sleep();
+	}
+		
 }	
 
 // Запись в КСК
