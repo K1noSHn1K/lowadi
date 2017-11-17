@@ -407,7 +407,7 @@ function check_sleep()
 		console.log('Alternate Sleep');
 		sleep();
 	}
-	if ($('.nourrir-entame').length) == 0)
+	if ($('.nourrir-entame').length == 0)
 	{
 		setTimeout(openFeeding, 100);
 		setTimeout(doEatNorm, 400);	
