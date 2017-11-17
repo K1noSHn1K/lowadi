@@ -354,23 +354,24 @@ function usualProg()
 	var pauseS = pause + getRandomPause(500, 1200+SPEED);
 	setTimeout(sluchka, pauseS);
 	// Чистка
-	  var pause1 = pauseS + getRandomPause(700, 1200+SPEED);
+	  var pause1 = pauseS + getRandomPause(600, 1200+SPEED);
 	setTimeout(groom, pause1);
 	  // Урок
-	  var pause2 = pause1 + getRandomPause(700, 900+SPEED);
+	  var pause2 = pause1 + getRandomPause(600, 900+SPEED);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(700, 900+SPEED);
+	  var pause3 = pause2 + getRandomPause(600, 900+SPEED);
 	setTimeout(openFeeding, pause3);
 	  var pause4 = pause3 + getRandomPause(600, 1100+SPEED);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
-	  var pause5 = pause4 + getRandomPause(700, 900+SPEED);
+	  var pause5 = pause4 + getRandomPause(600, 900+SPEED);
 	setTimeout(stroke, pause5);
 	  // Спать
-	  var pause6 = pause5 + getRandomPause(700, 900+SPEED);
-	setTimeout(sleep, pause6);
-	    var pause7 = pause6 + getRandomPause(700, 900+SPEED);
+	  var pause6 = pause5 + getRandomPause(600, 900+SPEED);
+	//setTimeout(sleep, pause6);
+	setTimeout(function() { $('#form-do-night').submit(); }, pause6)		
+	    var pause7 = pause6 + getRandomPause(600, 900+SPEED);
 	setTimeout(stroke, pause7);
 	setTimeout(minEnergy,pause7+400);
 	
@@ -386,14 +387,21 @@ function usualProg()
 	}, pause8);
 	
 	 // Следующий
+			
 	  var pause9 = pause8 + getRandomPause(1200, 1500+SPEED);
-	setTimeout(prev, pause9);
+	setTimeout(function() { check_sleep; prev; }, pause9);
 	
 
 
 }
 }
 
+// Проверка сна
+function check_sleep()
+{
+	if ($('#boutonCoucher.action-disabled').length == 0)
+		$('#form-do-night').submit();
+}	
 
 // Запись в КСК
 function eqCenterReg()
