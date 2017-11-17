@@ -369,8 +369,7 @@ function usualProg()
 	setTimeout(stroke, pause5);
 	  // Спать
 	  var pause6 = pause5 + getRandomPause(600, 900+SPEED);
-	setTimeout(sleep, pause6);
-	//setTimeout(function() { $('#form-do-night').submit(); }, pause6);		
+	setTimeout(sleep, pause6);		
 	    var pause7 = pause6 + getRandomPause(600, 900+SPEED);
 	setTimeout(stroke, pause7);
 	setTimeout(minEnergy,pause7+400);
@@ -390,8 +389,8 @@ function usualProg()
 			
 	  var pause9 = pause8 + getRandomPause(100, 300+SPEED);
 	var pause10 = pause9 + getRandomPause(300, 700+SPEED);	
-	setTimeout(function() { check_sleep; }, pause9);		
-	setTimeout(function() { prev; }, pause10);
+	setTimeout(check_sleep, pause9);		
+	setTimeout(prev, pause10);
 	
 
 
@@ -402,7 +401,11 @@ function usualProg()
 function check_sleep()
 {
 	if ($('#boutonCoucher.action-disabled').length == 0)
+	{
+		console.log('Alternate Sleep');
 		sleep();
+	}
+		
 }	
 
 // Запись в КСК
@@ -752,7 +755,7 @@ function sleep()
   var d = document.getElementById('boutonCoucher');
   if (d !== null)
   {
-    d.click();
+   $('#form-do-night').submit();
   }
 }
 
@@ -777,7 +780,9 @@ function prev()
   var d = document.getElementById('nav-previous');
   if (d !== null && d.hasAttribute('href'))
   {
-    d.click();
+   var prevlink = $("#nav-previous").attr('href');
+	  location.href="https://www.lowadi.com"+prevlink;
+	  
   }
 }
 
