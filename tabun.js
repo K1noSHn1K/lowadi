@@ -400,7 +400,7 @@ function usualProg()
 function check_sleep()
 {
 	if ($('#boutonCoucher.action-disabled').length == 0)
-		$('#form-do-night').submit();
+		sleep;
 }	
 
 // Запись в КСК
