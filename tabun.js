@@ -774,7 +774,8 @@ function stroke()
     var d = document.getElementById('boutonCaresser');
     if (d !== null)
     {
-      d.click();
+     // d.click();
+	$('#form-do-stroke').submit();    // LAST CHANGE
     }
   }
 }
