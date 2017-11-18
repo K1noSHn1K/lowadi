@@ -291,17 +291,18 @@ localStorage.setItem("horse_id", horseid);
 
 // Запись в КСК
 
+
 if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.location.href))
 {
   // Выставление дней
   var pause = 0;
-  pause = pause + getRandomPause(400, 1500+SPEED);
+  pause = pause + getRandomPause(1000, 2200+SPEED);
   setTimeout(eqCenterReg2, pause);
   // Запись
-  var pause1 = pause + getRandomPause(1000, 2500+SPEED);
+  var pause1 = pause + getRandomPause(1800, 2500+SPEED);
   setTimeout(eqCenterReg3, pause1);
   // Проверка результата
-  var pause2 = pause1 + getRandomPause(900, 1200+SPEED);
+  var pause2 = pause1 + getRandomPause(1000, 2200+SPEED);
   setTimeout(eqCenterReg4, pause2);
 }
 
