@@ -298,7 +298,7 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
   pause = pause + getRandomPause(400, 1500+SPEED);
   setTimeout(eqCenterReg2, pause);
   // Запись
-  var pause1 = pause + getRandomPause(700, 2500+SPEED);
+  var pause1 = pause + getRandomPause(1000, 2500+SPEED);
   setTimeout(eqCenterReg3, pause1);
   // Проверка результата
   var pause2 = pause1 + getRandomPause(900, 1200+SPEED);
@@ -360,9 +360,9 @@ function usualProg()
 	  var pause2 = pause1 + getRandomPause(200, 700+SPEED);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(600, 700+SPEED);
+	  var pause3 = pause2 + getRandomPause(300, 700+SPEED);
 	setTimeout(openFeeding, pause3);
-	  var pause4 = pause3 + getRandomPause(400, 800+SPEED);
+	  var pause4 = pause3 + getRandomPause(500, 800+SPEED);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
 	  var pause5 = pause4 + getRandomPause(600, 700+SPEED);
@@ -370,17 +370,17 @@ function usualProg()
 	  // Спать
 	  var pause6 = pause5 + getRandomPause(200, 700+SPEED);
 	setTimeout(sleep, pause6);		
-	    var pause7 = pause6 + getRandomPause(600, 900+SPEED);
+	    var pause7 = pause6 + getRandomPause(200, 900+SPEED);
 	setTimeout(stroke, pause7);
 	setTimeout(minEnergy,pause7+400);
 	
 	// Дополнительные случки 
-	var pause8 = pause7 + getRandomPause(700, 1400+SPEED);	
+	var pause8 = pause7 + getRandomPause(500, 700+SPEED);	
 	setTimeout(function() {
 		var energy = $("#energie").text();
 		if (energy>42)
 		{
-			setTimeout(sluchka, 400);	
+			setTimeout(sluchka, 200);	
 		}	
 		
 	}, pause8);
