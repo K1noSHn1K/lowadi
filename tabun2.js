@@ -298,7 +298,7 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
   pause = pause + getRandomPause(400, 1500+SPEED);
   setTimeout(eqCenterReg2, pause);
   // Запись
-  var pause1 = pause + getRandomPause(700, 2500+SPEED);
+  var pause1 = pause + getRandomPause(1000, 2500+SPEED);
   setTimeout(eqCenterReg3, pause1);
   // Проверка результата
   var pause2 = pause1 + getRandomPause(900, 1200+SPEED);
@@ -351,18 +351,23 @@ function usualProg()
 	//setTimeout(games, pause);	
 	
 	//Случка 
-	var pauseS = pause + getRandomPause(500, 700+SPEED);
-	setTimeout(sluchka, pauseS);
+	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
+	{
+		var pauseS = pause + getRandomPause(500, 700+SPEED);
+		setTimeout(sluchka, pauseS);
+	}
+	else var pauseS = pause;
+			
 	// Чистка
 	  var pause1 = pauseS + getRandomPause(100, 200+SPEED);
 	setTimeout(groom, pause1);
 	  // Урок
-	  var pause2 = pause1 + getRandomPause(600, 700+SPEED);
+	  var pause2 = pause1 + getRandomPause(200, 700+SPEED);
 	setTimeout(lesson, pause2);
 	  // Корм
-	  var pause3 = pause2 + getRandomPause(600, 700+SPEED);
+	  var pause3 = pause2 + getRandomPause(300, 700+SPEED);
 	setTimeout(openFeeding, pause3);
-	  var pause4 = pause3 + getRandomPause(600, 700+SPEED);
+	  var pause4 = pause3 + getRandomPause(500, 800+SPEED);
 	setTimeout(doEatNorm, pause4);
 	  // Ласка            
 	  var pause5 = pause4 + getRandomPause(600, 700+SPEED);
@@ -370,25 +375,29 @@ function usualProg()
 	  // Спать
 	  var pause6 = pause5 + getRandomPause(200, 700+SPEED);
 	setTimeout(sleep, pause6);		
-	    var pause7 = pause6 + getRandomPause(600, 900+SPEED);
+	    var pause7 = pause6 + getRandomPause(200, 900+SPEED);
 	setTimeout(stroke, pause7);
 	setTimeout(minEnergy,pause7+400);
 	
 	// Дополнительные случки 
-	var pause8 = pause7 + getRandomPause(700, 1400+SPEED);	
+	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
+	{		
+	var pause8 = pause7 + getRandomPause(500, 700+SPEED);	
 	setTimeout(function() {
 		var energy = $("#energie").text();
 		if (energy>42)
 		{
-			setTimeout(sluchka, 400);	
+			setTimeout(sluchka, 200);	
 		}	
 		
 	}, pause8);
-	
+	}
+	else pause8 - pause7;		
+			
 	 // Следующий
 			
 	  var pause9 = pause8 + getRandomPause(100, 300+SPEED);
-	var pause10 = pause9 + getRandomPause(300, 700+SPEED);	
+	var pause10 = pause9 + getRandomPause(500, 800+SPEED);	
 	setTimeout(check_sleep, pause9);		
 	setTimeout(prev, pause10);
 	setTimeout(prev, 20000);
@@ -396,8 +405,6 @@ function usualProg()
 
 }
 }
-
-
 
 // Проверка сна и еды
 function check_sleep()
@@ -776,7 +783,8 @@ function stroke()
     var d = document.getElementById('boutonCaresser');
     if (d !== null)
     {
-      d.click();
+     // d.click();
+	$('#form-do-stroke').submit();    // LAST CHANGE
     }
   }
 }
@@ -808,7 +816,7 @@ function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 125px; top: 7px; left: 5px; z-index: 900;">	<div class="fear"  style="display: block;position: fixed;width: 15px;height: 10px;top: 50px;left: 70px;"> </div>	<img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/kraken.png" width="120px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.4</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.8</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
@@ -1072,3 +1080,4 @@ audio.preload = 'auto';
 audio.src = 'https://raw.githubusercontent.com/Crasher69/lowadi/master/z.mp3';
 audio.play();
 }
+		
