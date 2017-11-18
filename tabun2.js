@@ -741,7 +741,8 @@ function groom()
   var d = document.getElementById('boutonPanser');
   if (d !== null)
   {
-    $('#form-do-groom').submit();
+   // $('#form-do-groom').submit();
+	d.click();	  
   }
 }
 
@@ -771,7 +772,8 @@ function sleep()
   var d = document.getElementById('boutonCoucher');
   if (d !== null)
   {
-   $('#form-do-night').submit();
+   //$('#form-do-night').submit();
+	  d.click();
   }
 }
 
@@ -785,8 +787,8 @@ function stroke()
     var d = document.getElementById('boutonCaresser');
     if (d !== null)
     {
-     // d.click();
-	$('#form-do-stroke').submit();    // LAST CHANGE
+      d.click();
+	//$('#form-do-stroke').submit();    // LAST CHANGE
     }
   }
 }
