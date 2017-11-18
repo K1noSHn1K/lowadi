@@ -412,12 +412,13 @@ function check_sleep()
 {
 	if ($('#boutonCoucher.action-disabled').length == 0)
 	{
+		setTimeout(groom, 100);
 		console.log('Alternate Sleep');
-		sleep();
+		setTimeout(sleep, 200);
 	}
 	if ($('.nourrir-entame').length == 0)
 	{
-		setTimeout(openFeeding, 100);
+		setTimeout(openFeeding, 300);
 		setTimeout(doEatNorm, 400);	
 	}
 		
