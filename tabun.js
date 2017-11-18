@@ -351,8 +351,13 @@ function usualProg()
 	//setTimeout(games, pause);	
 	
 	//Случка 
-	var pauseS = pause + getRandomPause(500, 700+SPEED);
-	setTimeout(sluchka, pauseS);
+	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
+	{
+		var pauseS = pause + getRandomPause(500, 700+SPEED);
+		setTimeout(sluchka, pauseS);
+	}
+	else var pauseS = pause;
+			
 	// Чистка
 	  var pause1 = pauseS + getRandomPause(100, 200+SPEED);
 	setTimeout(groom, pause1);
@@ -375,6 +380,8 @@ function usualProg()
 	setTimeout(minEnergy,pause7+400);
 	
 	// Дополнительные случки 
+	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
+	{		
 	var pause8 = pause7 + getRandomPause(500, 700+SPEED);	
 	setTimeout(function() {
 		var energy = $("#energie").text();
@@ -384,7 +391,9 @@ function usualProg()
 		}	
 		
 	}, pause8);
-	
+	}
+	else pause8 - pause7;		
+			
 	 // Следующий
 			
 	  var pause9 = pause8 + getRandomPause(100, 300+SPEED);
