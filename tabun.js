@@ -392,7 +392,7 @@ function usualProg()
 		
 	}, pause8);
 	}
-	else pause8 - pause7;		
+	else pause8 = pause7;		
 			
 	 // Следующий
 			
