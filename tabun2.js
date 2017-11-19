@@ -354,7 +354,7 @@ function usualProg()
 	//Случка 
 	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
 	{
-		var pauseS = pause + getRandomPause(500, 700+SPEED);
+		var pauseS = pause + getRandomPause(1000, 1200+SPEED);
 		setTimeout(sluchka, pauseS);
 	}
 	else var pauseS = pause;
