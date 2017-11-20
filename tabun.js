@@ -435,7 +435,7 @@ function check_sleep()
 	if ($('.nourrir-entame').length == 0)
 	{
 		setTimeout(openFeeding, 250);
-		setTimeout(doEatNorm, 500);	
+		setTimeout(doEatNorm, 600);	
 	}
 
 	if ($('#boutonCoucher.action-disabled').length == 0)
