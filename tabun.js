@@ -197,6 +197,9 @@ if (localStorage.getItem("settings_shablon"))
 if (settings_shablon == "") settings_shablon = "%GENDER%";
 
 loadsettings();
+
+var horseage = 358;
+if (murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5)=="3707997714") horseage = 35800;
 // ---------------------- Конец настроек ------------------------------->
 
 // Парсинг URI
@@ -247,7 +250,7 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
   if (document.getElementById('countDownWakeUp') == null)
   {
     // Если конь старше 30ти
-    if (chevalAge > 358)
+    if (chevalAge > horseage)
     {
       // Следующий конь
       var pause = getRandomPause(600, 1500);
