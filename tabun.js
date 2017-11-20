@@ -94,7 +94,6 @@ var lic = false;
 }
 
 
-
 // --------------------------- Настройки скрипта --------------------------------->
 function set_kck_option()
 	{
@@ -245,7 +244,6 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
   }  
 
   // Если конь не уложен спать
-    //if ($("#boutonCoucher").hasClass("action-disabled") == false)
   if (document.getElementById('countDownWakeUp') == null)
   {
     // Если конь старше 30ти
@@ -259,6 +257,12 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
     {
        if (is_lic()===true) usualProg();
     }
+  }
+  else
+  {
+	// Вдруг просто произошел глюк, и страница обновилась
+	if (localStorage.getItem("horse_id")==chevalId)
+		usualProg();
   }
   
 }
@@ -297,13 +301,13 @@ if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.locat
 {
   // Выставление дней
   var pause = 0;
-  pause = pause + getRandomPause(1000, 2200+SPEED);
+  pause = pause + getRandomPause(1400, 1500+SPEED);
   setTimeout(eqCenterReg2, pause);
   // Запись
-  var pause1 = pause + getRandomPause(1800, 2500+SPEED);
+  var pause1 = pause + getRandomPause(2000, 2500+SPEED);
   setTimeout(eqCenterReg3, pause1);
   // Проверка результата
-  var pause2 = pause1 + getRandomPause(1000, 2200+SPEED);
+  var pause2 = pause1 + getRandomPause(2000, 2200+SPEED);
   setTimeout(eqCenterReg4, pause2);
 }
 
@@ -326,103 +330,119 @@ function usualProg()
 			setTimeout(sleep,400);
 			setTimeout(groom, 800);
 			setTimeout(doEatNorm, 1500);
-			setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href }, 2000);
+			setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href; }, 2000);
 		}
 	else
 		{
-	localStorage.setItem("horse_status", "0");
-	localStorage.setItem("horse_id", chevalId);
-	  if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
-	  {
-		var d = document.getElementById('reproduction-body-content').childNodes[3].getElementsByTagName('a');
-		d[0].removeAttribute('onclick');
-		d[0].click();
-	  }
-	  var pause = 0;
-	  // Запись в КСК
-	  if (/elevage\/chevaux\/centreInscription\?id=/.test(document.body.innerHTML))
-	  {
-		// Нажатие на кнопку
-		pause = pause + getRandomPause(500, 1500+SPEED);
-		setTimeout(eqCenterReg, pause);
-		return;
-	  }  
+			localStorage.setItem("horse_status", "0");
+			localStorage.setItem("horse_id", chevalId);
+			if (document.body.innerHTML.indexOf('/elevage/chevaux/mettreBas?jument=') != - 1)
+				{
+					var d = document.getElementById('reproduction-body-content').childNodes[3].getElementsByTagName('a');
+					d[0].removeAttribute('onclick');
+					d[0].click();
+				}
+			var pause = 0;
+			// Запись в КСК
+			if (/elevage\/chevaux\/centreInscription\?id=/.test(document.body.innerHTML))
+				{
+					// Нажатие на кнопку
+					pause = pause + getRandomPause(500, 1500+SPEED);
+					setTimeout(eqCenterReg, pause);
+					return;
+				}  
 	
-	// Игры с жеребятами
-	//var pauseG = pause + getRandomPause(400, 600+SPEED);
-	//setTimeout(games, pause);	
 	
-	//Случка 
-	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
-	{
-		var pauseS = pause + getRandomPause(1000, 1200+SPEED);
-		setTimeout(sluchka, pauseS);
-	}
-	else var pauseS = pause;
-			
-	// Чистка
-	  var pause1 = pauseS + getRandomPause(100, 200+SPEED);
-	setTimeout(groom, pause1);
-	  // Урок
-	  var pause2 = pause1 + getRandomPause(200, 700+SPEED);
-	setTimeout(lesson, pause2);
-	  // Корм
-	  var pause3 = pause2 + getRandomPause(300, 700+SPEED);
-	setTimeout(openFeeding, pause3);
-	  var pause4 = pause3 + getRandomPause(500, 800+SPEED);
-	setTimeout(doEatNorm, pause4);
-	  // Ласка            
-	  var pause5 = pause4 + getRandomPause(600, 700+SPEED);
-	setTimeout(stroke, pause5);
-	  // Спать
-	  var pause6 = pause5 + getRandomPause(200, 700+SPEED);
-	setTimeout(sleep, pause6);		
-	    var pause7 = pause6 + getRandomPause(200, 900+SPEED);
-	setTimeout(stroke, pause7);
-	setTimeout(minEnergy,pause7+400);
-	
-	// Дополнительные случки 
-	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
-	{		
-	var pause8 = pause7 + getRandomPause(500, 700+SPEED);	
-	setTimeout(function() {
-		var energy = $("#energie").text();
-		if (energy>42)
-		{
-			setTimeout(sluchka, 200);	
-		}	
-		
-	}, pause8);
-	}
-	else pause8 = pause7;		
-			
-	 // Следующий
-			
-	  var pause9 = pause8 + getRandomPause(100, 300+SPEED);
-	var pause10 = pause9 + getRandomPause(500, 800+SPEED);	
-	setTimeout(check_sleep, pause9);		
-	setTimeout(prev, pause10);
-	setTimeout(prev, 20000);
+				//Случка 
+				if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
+				{
+					var pauseS = pause + getRandomPause(500, 700+SPEED);
+					setTimeout(sluchka, pauseS);
+				}
+				else var pauseS = pause;
+						
+				// Чистка
+				  var pause1 = pauseS + getRandomPause(500, 600);
+				setTimeout(groom, pause1);
+				  // Урок
+				  var pause2 = pause1 + getRandomPause(300, 700+SPEED);
+				setTimeout(lesson, pause2);
+				  // Корм
+				  var pause3 = pause2 + getRandomPause(300, 500+SPEED);
+				setTimeout(openFeeding, pause3);
+				  var pause4 = pause3 + getRandomPause(400, 500+SPEED);
+				setTimeout(doEatNorm, pause4);
+				  // Ласка
+				
+				if (chevalEnergie<50) {
+				  var pause5 = pause4 + getRandomPause(900, 1000+SPEED);
+					setTimeout(stroke, pause5);
+					}
+				else 	var pause5 = pause4+400;
+				
+				
+				  // Спать
+				  var pause6 = pause5 + getRandomPause(400, 700+SPEED);
+				setTimeout(sleep, pause6);		
+				  
+				
+				if (chevalEnergie<40)	{
+					var pause7 = pause6 + getRandomPause(400, 900+SPEED);
+					setTimeout(minEnergy,pause7);
+				}
+					else pause7 = pause6+200;
+					
+				// Дополнительные случки 
+				
+				if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
+				{	
+					if (chevalEnergie>42) 
+					{
+						var pause8 = pause7 + getRandomPause(500, 700+SPEED);	
+						setTimeout(function() {
+						var energy = $("#energie").text();
+						if (energy>42)
+						{
+							setTimeout(sluchka, 200);	
+						}	
+						
+						}, pause8);
+					}
+				}
+				else pause8 = pause7;		
+						
+				 // Следующий
+						
+				var pause9 = pause8 + getRandomPause(100, 200+SPEED);
+				var pause10 = pause9 + getRandomPause(1000, 1100+SPEED);	
+				setTimeout(check_sleep, pause9);		
+				setTimeout(prev, pause10+SPEED);
+				setTimeout(prev, 20000);
 
 
+		}
 }
-}
 
-// Проверка сна и еды
+// Проверка сна, еды, чистки
 function check_sleep()
 {
-	if ($('#boutonCoucher.action-disabled').length == 0)
-	{
-		setTimeout(groom, 100);
-		console.log('Alternate Sleep');
-		setTimeout(sleep, 200);
-	}
+	if ($('.action.action-style-4.panser.action-disabled').length==0)
+		{
+			console.log('Alternate groom');
+			setTimeout(groom, 100);
+		}
+
 	if ($('.nourrir-entame').length == 0)
 	{
-		setTimeout(openFeeding, 300);
-		setTimeout(doEatNorm, 400);	
+		setTimeout(openFeeding, 250);
+		setTimeout(doEatNorm, 500);	
 	}
-		
+
+	if ($('#boutonCoucher.action-disabled').length == 0)
+	{
+		console.log('Alternate Sleep');
+		setTimeout(sleep, 800);
+	}		
 }	
 
 // Запись в КСК
@@ -471,7 +491,7 @@ function eqCenterReg4()
 {
   // Проверка результата
   // Если не записано, записать
-  if (/message=centreOk/.test(window.location.href) != true)
+  if (/message=centreOk/.test(window.location.href) !== true)
   {
     location.reload();
   }
@@ -789,7 +809,6 @@ function stroke()
     if (d !== null)
     {
       d.click();
-	//$('#form-do-stroke').submit();    // LAST CHANGE
     }
   }
 }
@@ -797,11 +816,16 @@ function stroke()
 // Предыдущий
 function prev()
 {
+if ($('#boutonCoucher.action-disabled').length == 0)
+		{
+			setTimeout(sleep, 100);
+		}
+		
   var d = document.getElementById('nav-previous');
   if (d !== null && d.hasAttribute('href'))
   {
    var prevlink = $("#nav-previous").attr('href');
-	  location.href="https://www.lowadi.com"+prevlink;
+	setTimeout(function() {location.href="https://www.lowadi.com"+prevlink;}, 300);
 	  
   }
 }
@@ -821,7 +845,7 @@ function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 125px; top: 7px; left: 5px; z-index: 900;">	<div class="fear"  style="display: block;position: fixed;width: 15px;height: 10px;top: 50px;left: 70px;"> </div>	<img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/kraken.png" width="120px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.8</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.9</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 		
 		if (is_lic()===true)
 		{
@@ -887,11 +911,13 @@ function get_sluchka()
 
 function sluchka()
 {
+if (chevalEnergie>45) {
 	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
 	{
 		if ($("#slchkbx").prop("checked"))
 		setTimeout(get_sluchka(),200);
 	}	
+}
 }
 
 
@@ -1086,3 +1112,4 @@ audio.src = 'https://raw.githubusercontent.com/Crasher69/lowadi/master/z.mp3';
 audio.play();
 }
 		
+
