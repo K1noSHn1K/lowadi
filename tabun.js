@@ -94,6 +94,7 @@ var lic = false;
 }
 
 
+
 // --------------------------- Настройки скрипта --------------------------------->
 function set_kck_option()
 	{
@@ -291,6 +292,7 @@ localStorage.setItem("horse_id", horseid);
 
 // Запись в КСК
 
+
 if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.location.href))
 {
   // Выставление дней
@@ -353,7 +355,7 @@ function usualProg()
 	//Случка 
 	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
 	{
-		var pauseS = pause + getRandomPause(500, 700+SPEED);
+		var pauseS = pause + getRandomPause(1000, 1200+SPEED);
 		setTimeout(sluchka, pauseS);
 	}
 	else var pauseS = pause;
@@ -421,7 +423,7 @@ function check_sleep()
 		setTimeout(doEatNorm, 400);	
 	}
 		
-}		
+}	
 
 // Запись в КСК
 function eqCenterReg()
@@ -740,7 +742,8 @@ function groom()
   var d = document.getElementById('boutonPanser');
   if (d !== null)
   {
-    $('#form-do-groom').submit();
+   // $('#form-do-groom').submit();
+	d.click();	  
   }
 }
 
@@ -770,7 +773,8 @@ function sleep()
   var d = document.getElementById('boutonCoucher');
   if (d !== null)
   {
-   $('#form-do-night').submit();
+   //$('#form-do-night').submit();
+	  d.click();
   }
 }
 
@@ -784,8 +788,8 @@ function stroke()
     var d = document.getElementById('boutonCaresser');
     if (d !== null)
     {
-     // d.click();
-	$('#form-do-stroke').submit();    // LAST CHANGE
+      d.click();
+	//$('#form-do-stroke').submit();    // LAST CHANGE
     }
   }
 }
