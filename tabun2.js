@@ -197,6 +197,9 @@ if (localStorage.getItem("settings_shablon"))
 if (settings_shablon == "") settings_shablon = "%GENDER%";
 
 loadsettings();
+
+var horseage = 358;
+if (murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5)=="3707997714") horseage = 35800;
 // ---------------------- Конец настроек ------------------------------->
 
 // Парсинг URI
@@ -247,11 +250,11 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
   if (document.getElementById('countDownWakeUp') == null)
   {
     // Если конь старше 30ти
-    if (chevalAge > 358)
+    if (chevalAge > horseage)
     {
       // Следующий конь
       var pause = getRandomPause(600, 1500);
-      setTimeout(prev, pause);
+      setTimeout(prev1, pause);
     } 
     else
     {
@@ -382,15 +385,15 @@ function usualProg()
 				
 				
 				  // Спать
-				  var pause6 = pause5 + getRandomPause(400, 700+SPEED);
+				  var pause6 = pause5 + getRandomPause(500, 700+SPEED);
 				setTimeout(sleep, pause6);		
 				  
 				
 				if (chevalEnergie<40)	{
-					var pause7 = pause6 + getRandomPause(400, 900+SPEED);
+					var pause7 = pause6 + getRandomPause(500, 900+SPEED);
 					setTimeout(minEnergy,pause7);
 				}
-					else pause7 = pause6+200;
+					else pause7 = pause6+300;
 					
 				// Дополнительные случки 
 				
@@ -818,8 +821,23 @@ function prev()
 {
 if ($('#boutonCoucher.action-disabled').length == 0)
 		{
-			setTimeout(sleep, 100);
+			setTimeout(sleep, 200);
 		}
+		
+  var d = document.getElementById('nav-previous');
+  if (d !== null && d.hasAttribute('href'))
+  {
+   var prevlink = $("#nav-previous").attr('href');
+	setTimeout(function() {location.href="https://www.lowadi.com"+prevlink;}, 500);
+	  
+  }
+}
+
+
+
+// Предыдущий
+function prev1()
+{
 		
   var d = document.getElementById('nav-previous');
   if (d !== null && d.hasAttribute('href'))
@@ -829,6 +847,7 @@ if ($('#boutonCoucher.action-disabled').length == 0)
 	  
   }
 }
+
 
 // Рост ОР
 function OR()
