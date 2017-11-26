@@ -190,7 +190,7 @@ KCK_option = get_kck_option();
 SL_option = get_sluchki_option();
 
 settings_speed = localStorage.getItem("settings_speed");
-if (settings_speed == "norm") SPEED = 500; 
+if (settings_speed == "norm") SPEED = 900; 
 
 if (localStorage.getItem("settings_shablon")) 
 	var settings_shablon = localStorage.getItem("settings_shablon");
