@@ -334,7 +334,8 @@ function usualProg()
 			setTimeout(sleep,900);
 			setTimeout(openFeeding, 1200);
 			setTimeout(doEatNorm, 1600);
-			setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href; }, 2100);
+			setTimeout(sleep,2100);
+			setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href; }, 2500);
 		}
 	else
 		{
