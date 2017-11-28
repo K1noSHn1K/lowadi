@@ -199,7 +199,8 @@ if (settings_shablon == "") settings_shablon = "%GENDER%";
 loadsettings();
 
 var horseage = 358;
-if (murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5)=="3707997714") horseage = 35800;
+var myid = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
+if (myid=="3707997714" || myid=="606006511") horseage = 35800;
 // ---------------------- Конец настроек ------------------------------->
 
 // Парсинг URI
