@@ -68,7 +68,7 @@ var DEF_SEC = 10000;
 var COUNTER = 0;
 var myhash = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
 
-if (myhash=='606006511') DEF_SEC = 55000;
+if (myhash=='606006511') DEF_SEC = 65000;
 if (myhash=='563189825') DEF_SEC = 25000;
 if (myhash=='661228372') DEF_SEC = 35000;
 if (myhash=='2400030474') DEF_SEC = 25000;
