@@ -329,13 +329,14 @@ function usualProg()
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
 		if (horse=='3')
 		{
+			localStorage.setItem("horse_status", "0");
 			horse_href = localStorage.getItem("horse_id");	
 			setTimeout(groom, 500);
 			setTimeout(sleep,900);
 			setTimeout(openFeeding, 1200);
 			setTimeout(doEatNorm, 1600);
 			setTimeout(sleep,2200);
-			localStorage.setItem("horse_status", "0");
+			
 			setTimeout(check_sleep, 2500);
 			setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href; }, 3500);
 		}
