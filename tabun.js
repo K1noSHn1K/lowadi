@@ -323,7 +323,7 @@ function usualProg()
 	var  horse = localStorage.getItem("horse_status");
 		if (horse=='2')
 		{
-			setTimeout(horsename(settings_shablon),300);
+			horsename(settings_shablon);
 		}
 	else		
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
