@@ -336,7 +336,6 @@ function usualProg()
 			setTimeout(openFeeding, 1200);
 			setTimeout(doEatNorm, 1600);
 			setTimeout(sleep,2200);
-			
 			setTimeout(check_sleep, 2500);
 			setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href; }, 3500);
 		}
@@ -1081,8 +1080,8 @@ function horsename(shablon)
 		{
 			$("#horseNameName").val(hname);	
 			$(".options-button").click();
-			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),500);
-			setTimeout($('#horseName').submit(),800);	
+			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),1000);
+			setTimeout($('#horseName').submit(),2000);	
 		}
 			
 		
@@ -1135,4 +1134,3 @@ audio.preload = 'auto';
 audio.src = 'https://raw.githubusercontent.com/Crasher69/lowadi/master/z.mp3';
 audio.play();
 }
-		
