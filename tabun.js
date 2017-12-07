@@ -323,20 +323,21 @@ function usualProg()
 	var  horse = localStorage.getItem("horse_status");
 		if (horse=='2')
 		{
-			horsename(settings_shablon);
+			setTimeout(horsename(settings_shablon),300);
 		}
 	else		
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
 		if (horse=='3')
 		{
 			horse_href = localStorage.getItem("horse_id");	
-			localStorage.setItem("horse_status", "0");
-			setTimeout(groom, 300);
+			setTimeout(groom, 500);
 			setTimeout(sleep,900);
 			setTimeout(openFeeding, 1200);
 			setTimeout(doEatNorm, 1600);
-			setTimeout(sleep,2100);
-			setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href; }, 2500);
+			setTimeout(sleep,2200);
+			localStorage.setItem("horse_status", "0");
+			setTimeout(check_sleep, 2500);
+			setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href; }, 3500);
 		}
 	else
 		{
@@ -1079,8 +1080,8 @@ function horsename(shablon)
 		{
 			$("#horseNameName").val(hname);	
 			$(".options-button").click();
-			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),300);
-			setTimeout($('#horseName').submit(),600);	
+			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),500);
+			setTimeout($('#horseName').submit(),800);	
 		}
 			
 		
@@ -1134,4 +1135,3 @@ audio.src = 'https://raw.githubusercontent.com/Crasher69/lowadi/master/z.mp3';
 audio.play();
 }
 		
-
