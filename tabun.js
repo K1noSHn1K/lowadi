@@ -372,24 +372,24 @@ function usualProg()
 				  var pause1 = pauseS + getRandomPause(500, 600);
 				setTimeout(groom, pause1);
 				  // Урок
-				  var pause2 = pause1 + getRandomPause(300, 700+SPEED);
+				  var pause2 = pause1 + getRandomPause(400, 700+SPEED);
 				setTimeout(lesson, pause2);
 				  // Корм
-				  var pause3 = pause2 + getRandomPause(300, 500+SPEED);
+				  var pause3 = pause2 + getRandomPause(400, 500+SPEED);
 				setTimeout(openFeeding, pause3);
 				  var pause4 = pause3 + getRandomPause(400, 500+SPEED);
 				setTimeout(doEatNorm, pause4);
 				  // Ласка
 
 				if (chevalEnergie<50) {
-				  var pause5 = pause4 + getRandomPause(900, 1000+SPEED);
+				  var pause5 = pause4 + getRandomPause(300, 400+SPEED);
 					setTimeout(stroke, pause5);
 					}
 				else 	var pause5 = pause4+400;
 
 
 				  // Спать
-				  var pause6 = pause5 + getRandomPause(500, 700+SPEED);
+				  var pause6 = pause5 + getRandomPause(300, 500+SPEED);
 				setTimeout(sleep, pause6);
 
 
@@ -766,12 +766,10 @@ function lesson()
 // Чистка
 function groom()
 {
-  var d = document.getElementById('boutonPanser');
-  if (d !== null)
+$(function()
   {
-   // $('#form-do-groom').submit();
-	d.click();
-  }
+    $("#form-do-groom").submit();
+    return false; });
 }
 
 // Если энергии меньше 40, то
@@ -780,29 +778,25 @@ function minEnergy()
   if (chevalEnergie < 40)
   {
     // Ласка
-    var d = document.getElementById('boutonCaresser');
-    if (d !== null)
-    {
-      d.click();
-    }
+$(function()
+  {
+    $("#form-do-stroke").submit();
+    return false; });
 	// Пить
-    var d = document.getElementById('boutonBoire');
-    if (d !== null)
-    {
-      d.click();
-    }
+$(function()
+  {
+    $("#form-do-drink").submit();
+    return false; });
   }
 }
 
 // Сон
 function sleep()
 {
-  var d = document.getElementById('boutonCoucher');
-  if (d !== null)
+$(function()
   {
-   //$('#form-do-night').submit();
-	  d.click();
-  }
+    $("#form-do-night").submit();
+    return false; });
 }
 
 // Ласка
@@ -815,7 +809,10 @@ function stroke()
     var d = document.getElementById('boutonCaresser');
     if (d !== null)
     {
-      d.click();
+      $(function()
+  {
+    $("#form-do-stroke").submit();
+    return false; });
     }
   }
 }
@@ -1134,3 +1131,4 @@ audio.preload = 'auto';
 audio.src = 'https://raw.githubusercontent.com/Crasher69/lowadi/master/z.mp3';
 audio.play();
 }
+
