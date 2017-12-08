@@ -100,60 +100,60 @@ function set_kck_option()
 		var val = $("#kck_option option:selected").val();
 		localStorage.setItem("lwb_kck", val);
 	}
-	
+
 function set_sluchki_option()
 	{
 		var val = $("#sluchka_option option:selected").val();
 		if ($("#slchkbx").prop("checked"))
 			var sl_check = "1";
 			else var sl_check = "0";
-		localStorage.setItem("lwb_slu", val);	
-		localStorage.setItem("lwb_chk", sl_check);	
-	}	
-	
-function get_kck_option()	
+		localStorage.setItem("lwb_slu", val);
+		localStorage.setItem("lwb_chk", sl_check);
+	}
+
+function get_kck_option()
 	{
 	value = localStorage.getItem("lwb_kck");
 	$("#kck_option [value='"+value+"']").attr("selected", "selected");
-	
+
 	return value;
 	}
-	
-	
-function get_sluchki_option()	
+
+
+function get_sluchki_option()
 	{
 	value = localStorage.getItem("lwb_slu");
 	sl_check = localStorage.getItem("lwb_chk");
 	$("#sluchka_option [value='"+value+"']").attr("selected", "selected");
-	if(sl_check=="1") 
+	if(sl_check=="1")
 		{
 			$('#slchkbx').prop('checked', true);
 			$('.lwb_sl_hide').show();
 		}
 		else  $('.lwb_sl_hide').hide();
-	
+
 	return value;
-	}	
-	
+	}
+
 
 function savesettings()
 	{
 		var shablon = $("#lw_template").val();
 		var speed = $('input[name=lw_speed]:radio:checked').val();
 		if ($("#settings_fourrage").prop("checked"))
-			var settings_fourrage = "1";	
+			var settings_fourrage = "1";
 				else settings_fourrage = "0";
-				
+
 		if ($("#settings_zerno").prop("checked"))
-			var settings_zerno = "1";	
-				else settings_zerno = "0";	
+			var settings_zerno = "1";
+				else settings_zerno = "0";
 		localStorage.setItem("settings_fourrage", settings_fourrage);
-		localStorage.setItem("settings_zerno", settings_zerno);	
-		localStorage.setItem("settings_speed", speed);	
+		localStorage.setItem("settings_zerno", settings_zerno);
+		localStorage.setItem("settings_speed", speed);
 		localStorage.setItem("settings_shablon", shablon);
 			alert('Сохранено');
-	}	
-	
+	}
+
 function loadsettings()
 	{
 		settings_shablon = localStorage.getItem("settings_shablon");
@@ -161,16 +161,16 @@ function loadsettings()
 		settings_fourrage = localStorage.getItem("settings_fourrage");
 		settings_zerno = localStorage.getItem("settings_zerno");
 		settings_speed = localStorage.getItem("settings_speed");
-		
+
 		if (settings_fourrage=="1") $('#settings_fourrage').prop('checked', true);
 		if (settings_zerno=="1") $('#settings_zerno').prop('checked', true);
-		
+
 		if (settings_speed) $("#"+settings_speed+"").attr("checked", true);
 			else $("#norm").attr("checked", true);
-		$("#lw_template").val(settings_shablon);	
+		$("#lw_template").val(settings_shablon);
 
-	}	
-	
+	}
+
 $('#kck_option').on('change', function() {
  set_kck_option();
 });
@@ -190,9 +190,9 @@ KCK_option = get_kck_option();
 SL_option = get_sluchki_option();
 
 settings_speed = localStorage.getItem("settings_speed");
-if (settings_speed == "norm") SPEED = 900; 
+if (settings_speed == "norm") SPEED = 900;
 
-if (localStorage.getItem("settings_shablon")) 
+if (localStorage.getItem("settings_shablon"))
 	var settings_shablon = localStorage.getItem("settings_shablon");
 if (settings_shablon == "") settings_shablon = "%GENDER%";
 
@@ -220,16 +220,16 @@ function bug_finder()
 	var  horse = localStorage.getItem("horse_status");
 		if (horse=='1')
 		{
-		horse_href = localStorage.getItem("horse_id");	
-		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;			
-		/*	$('.item-relative').each(function(i,elem) { 
+		horse_href = localStorage.getItem("horse_id");
+		location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href;
+		/*	$('.item-relative').each(function(i,elem) {
 				var text = $(this).find("[data-tooltip='Размещена в комплексе']").html();
 				if (text!=undefined)
 					{
 						kon = ($(this).find('.horsename').attr('href'));
 						location.href=kon;
 					}
-					
+
 			});*/
 
 		}
@@ -240,12 +240,12 @@ setTimeout(bug_finder, 500);
 
 if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 {
-		
+
   // Если конь свежекуплен, останавливаем скрипт
   if (/www.lowadi.com\/elevage\/chevaux\/cheval\?id=[0-9]+\&message=acheter/.test(window.location.href))
   {
     throw 'stop';
-  }  
+  }
 
   // Если конь не уложен спать
   if (document.getElementById('countDownWakeUp') == null)
@@ -256,7 +256,7 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
       // Следующий конь
       var pause = getRandomPause(600, 1500);
       setTimeout(prev1, pause);
-    } 
+    }
     else
     {
        if (is_lic()===true) usualProg();
@@ -268,33 +268,33 @@ if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href))
 	if (localStorage.getItem("horse_id")==chevalId)
 		usualProg();
   }
-  
+
 }
 
 /*else
 {
-	if (/\/jeu/.test(window.location.href)) 
+	if (/\/jeu/.test(window.location.href))
 	$.get("http://ctrl-z.ru/lowadi/stat.php?nick="+document.getElementsByClassName('forumAvatar')[0].alt);
-}	
-*/	
+}
+*/
 
 // Выжеребка
 if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.location.href))
 {
-var horseid = getParameterByName('jument');	
+var horseid = getParameterByName('jument');
 localStorage.setItem("horse_status", "2");
-localStorage.setItem("horse_id", horseid);	
-	
+localStorage.setItem("horse_id", horseid);
+
   if (document.body.innerHTML.indexOf('женск.') !== - 1)
  //alert($('#page-contents:contains('женск')').text());
  //if ($('#page-contents:contains('женск')').text)
   {
     document.getElementById('poulain-1').setAttribute('value', 'Кобыла');
-  } 
+  }
   else document.getElementById('poulain-1').setAttribute('value', 'Жеребец');
 
 
-  $('#boutonChoisirNom').click();
+  setTimeout(function() { $('#boutonChoisirNom').click(); }, 700 );
 }
 
 
@@ -325,12 +325,12 @@ function usualProg()
 		{
 			horsename(settings_shablon);
 		}
-	else		
-	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле	
+	else
+	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле
 		if (horse=='3')
 		{
 			localStorage.setItem("horse_status", "0");
-			horse_href = localStorage.getItem("horse_id");	
+			horse_href = localStorage.getItem("horse_id");
 			setTimeout(groom, 500);
 			setTimeout(sleep,900);
 			setTimeout(openFeeding, 1200);
@@ -357,17 +357,17 @@ function usualProg()
 					pause = pause + getRandomPause(500, 1500+SPEED);
 					setTimeout(eqCenterReg, pause);
 					return;
-				}  
-	
-	
-				//Случка 
+				}
+
+
+				//Случка
 				if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
 				{
 					var pauseS = pause + getRandomPause(500, 700+SPEED);
 					setTimeout(sluchka, pauseS);
 				}
 				else var pauseS = pause;
-						
+
 				// Чистка
 				  var pause1 = pauseS + getRandomPause(500, 600);
 				setTimeout(groom, pause1);
@@ -380,49 +380,49 @@ function usualProg()
 				  var pause4 = pause3 + getRandomPause(400, 500+SPEED);
 				setTimeout(doEatNorm, pause4);
 				  // Ласка
-				
+
 				if (chevalEnergie<50) {
 				  var pause5 = pause4 + getRandomPause(900, 1000+SPEED);
 					setTimeout(stroke, pause5);
 					}
 				else 	var pause5 = pause4+400;
-				
-				
+
+
 				  // Спать
 				  var pause6 = pause5 + getRandomPause(500, 700+SPEED);
-				setTimeout(sleep, pause6);		
-				  
-				
+				setTimeout(sleep, pause6);
+
+
 				if (chevalEnergie<40)	{
 					var pause7 = pause6 + getRandomPause(500, 900+SPEED);
 					setTimeout(minEnergy,pause7);
 				}
 					else pause7 = pause6+300;
-					
-				// Дополнительные случки 
-				
+
+				// Дополнительные случки
+
 				if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
-				{	
-					if (chevalEnergie>42) 
+				{
+					if (chevalEnergie>42)
 					{
-						var pause8 = pause7 + getRandomPause(500, 700+SPEED);	
+						var pause8 = pause7 + getRandomPause(500, 700+SPEED);
 						setTimeout(function() {
 						var energy = $("#energie").text();
 						if (energy>42)
 						{
-							setTimeout(sluchka, 200);	
-						}	
-						
+							setTimeout(sluchka, 200);
+						}
+
 						}, pause8);
 					}
 				}
-				else pause8 = pause7;		
-						
+				else pause8 = pause7;
+
 				 // Следующий
-						
+
 				var pause9 = pause8 + getRandomPause(100, 200+SPEED);
-				var pause10 = pause9 + getRandomPause(1000, 1100+SPEED);	
-				setTimeout(check_sleep, pause9);		
+				var pause10 = pause9 + getRandomPause(1000, 1100+SPEED);
+				setTimeout(check_sleep, pause9);
 				setTimeout(prev, pause10+SPEED);
 				setTimeout(prev, 20000);
 
@@ -442,21 +442,21 @@ function check_sleep()
 	if ($('.nourrir-entame').length == 0)
 	{
 		setTimeout(openFeeding, 250);
-		setTimeout(doEatNorm, 600);	
+		setTimeout(doEatNorm, 600);
 	}
 
 	if ($('#boutonCoucher.action-disabled').length == 0)
 	{
 		console.log('Alternate Sleep');
 		setTimeout(sleep, 800);
-	}		
-}	
+	}
+}
 
 // Запись в КСК
 function eqCenterReg()
 {
   if (document.body.innerHTML.indexOf('cheval-inscription') !== - 1)
-  {	
+  {
     // Нажимаем на кнопку
     var d = document.getElementById('cheval-inscription').firstChild;
     if (d !== null)
@@ -473,7 +473,7 @@ function eqCenterReg2()
 	settings_zerno = localStorage.getItem("settings_zerno");
 	if (settings_fourrage == "1") setTimeout($('#fourrageCheckbox').click(),200);
 	if (settings_zerno == "1") setTimeout($('#avoineCheckbox').click(),400);
-	
+
   // Сортировка
   var c = document.getElementsByClassName('grid-cell spacer-small-top spacer-small-bottom');
   var d = c[KCK_option].getElementsByTagName('a');
@@ -502,9 +502,9 @@ function eqCenterReg4()
   {
     location.reload();
   }
-  
 
-  
+
+
 }
 
 // Пустая функция
@@ -542,8 +542,8 @@ function doEatNorm()
   {
     hay = 20000 - hayGiven() * 1000;
     oats = 15000 - oatsGiven() * 1000;
-  }  
-  
+  }
+
   // Для слайдеров
   if (d2.indexOf('haySlider') !== - 1)
   {
@@ -584,10 +584,10 @@ function doEatNorm()
   if (d !== null)
   {
     d.click();
-    
+
   }
 
-  
+
 }
 function openFeeding()
 {
@@ -627,7 +627,7 @@ function oatsToGive()
     if (oats_to_give > 15000) oats_to_give = 15000;
     // Норма сена
     return oats_to_give;
-  } 
+  }
   else return 0;
 }
 
@@ -770,7 +770,7 @@ function groom()
   if (d !== null)
   {
    // $('#form-do-groom').submit();
-	d.click();	  
+	d.click();
   }
 }
 
@@ -784,7 +784,7 @@ function minEnergy()
     if (d !== null)
     {
       d.click();
-    }    
+    }
 	// Пить
     var d = document.getElementById('boutonBoire');
     if (d !== null)
@@ -827,13 +827,13 @@ if ($('#boutonCoucher.action-disabled').length == 0)
 		{
 			setTimeout(sleep, 200);
 		}
-		
+
   var d = document.getElementById('nav-previous');
   if (d !== null && d.hasAttribute('href'))
   {
    var prevlink = $("#nav-previous").attr('href');
 	setTimeout(function() {location.href="https://www.lowadi.com"+prevlink;}, 500);
-	  
+
   }
 }
 
@@ -842,13 +842,13 @@ if ($('#boutonCoucher.action-disabled').length == 0)
 // Предыдущий
 function prev1()
 {
-		
+
   var d = document.getElementById('nav-previous');
   if (d !== null && d.hasAttribute('href'))
   {
    var prevlink = $("#nav-previous").attr('href');
 	setTimeout(function() {location.href="https://www.lowadi.com"+prevlink;}, 300);
-	  
+
   }
 }
 
@@ -869,7 +869,7 @@ function settings()
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 125px; top: 7px; left: 5px; z-index: 900;">	<div class="fear"  style="display: block;position: fixed;width: 15px;height: 10px;top: 50px;left: 70px;"> </div>	<img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/kraken.png" width="120px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
 		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.4.9</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
-		
+
 		if (is_lic()===true)
 		{
 			$('.lwb').append('<span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">Запись в КСК</span>	 <select id="kck_option"> <option value="0">1 день</option>	<option value="1">3 дня</option>	<option value="2">10 дней</option>	<option selected value="3">30 дней</option> </select> &nbsp  ');
@@ -878,10 +878,10 @@ function settings()
 		}
 		else
 		{
-			var hashlogin = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);	
+			var hashlogin = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
 			$('.lwb').append('<center><p style="color: #fff; " >Unregistred</p></center>');
 			$('.lwb').append('<center><p style="color: #fff; font-size: 11px">ID: '+hashlogin+' </p>  <p style="color: #fff; font-size: 11px">Login: '+document.getElementsByClassName('forumAvatar')[0].alt+'</p>   </center> <p style="color: #fff; font-size: 11px"> Подробнее о боте и контакты для покупки: <a style="color:#F8563B;" href="http://lowadibot.ctrl-z.ru/">lowadibot.ctrl-z.ru</a></p>');
-			
+
 		}
 		$('body#global').append('<div class="lwb_settings" style="display: none; position: fixed; width: 600px; height:630px; top: 25px; left: 130px; z-index: 999; padding:5px; background-color:rgba(0, 0, 0, 0.95);  border-radius: 0px 5px 5px 5px;"></div>');
 		$('.lwb_settings').append('<center><h2 style="color:#fff;">Настройки</h2> <br> <h3 style="color:#FFF;">Запись в КСК</h3></center> <span class="lwb_setting" style="position:absolute;  right:5px; top:2px; color:#fff; cursor:pointer;"><b>X</b></span>');
@@ -889,11 +889,11 @@ function settings()
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px;"> <img src="http://www.lowadi.com/media/equideo/image/produits/20/avoine_v1828806360.png" /> <input id="settings_zerno" name="settings_zerno" value="0" type="checkbox"> Выбирать КСК с зерном </div>');
 		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Скорость прогона</h3></center> ');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:10px;"> <input type="radio" name="lw_speed" id="norm" value="norm"> Нормальная<Br> <input type="radio" name="lw_speed" value="fast" id="fast"> Высокая<Br>  </div> ');
-		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Опции родов</h3></center> ');	
+		$('.lwb_settings').append('<center> <br> <h3 style="color:#FFF;">Опции родов</h3></center> ');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px;">Шаблон имени <font color="red"><sup>beta</sup></font> <input type="text" id="lw_template" size="38" value="%GENDER%"> &nbsp; <button id="lwb_check" style="margin: 5px 0 0 0;" onclick="check_shablon()" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Проверить шаблон</span></span></span></button> <br> Можно назначить шаблон, по которому будут именоваться все рожденные жеребята. Список возможных параметров:  </div>');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px; font-size: 11px;"><b>%NAME%</b> - Имя, выбирается одно из нормальных имен в зависимости от пола <br><b>%GENDER%</b> - пол жеребенка (Жеребец или Кобыла)<br><b>%GENDER_MIN%</b> - Сокращенное написание пола (Жер или Коб)<br><b>%GP%</b> - генетический потенциал  <br><b>%SKILLS%</b> - сумма навыков </div> ');
 		$('.lwb_settings').append('<div style="background: rgba(255, 255, 255, 0.85) none repeat scroll 0% 0%; padding:5px; font-size: 11px;">  В качестве разделителя между параметрами можно использовать символы: пробел, запятая, <b>-</b>, <b>|</b>  <br> Стоит учесть, что максимальная длина имени не может превышать 20 символов, поэтому перед сохранением рекомендуется нажимать кнопку "Проверить шаблон". <br> <br> <b>Примеры шаблонов: </b> <br>  <b>%NAME% %SKILLS% </b> - будет выглядеть Афродита 77.54 <br> <b>%GENDER%|%GP%</b> будет выглядеть, как Кобыла|3677.54</div> ');
-		
+
 		$('.lwb_settings').append('<br><center><button id="lwb_savesettings" style="margin: 5px 0 0 0;" onclick="savesettings();" class="button button-style-0"><span class="button-align-0"><span class="button-inner-0"><span class="button-text-0">Сохранить</span></span></span></button></center>');
 
 
@@ -912,18 +912,18 @@ $('.fear').click(function(){
 $('.lwb_chat_button').click(function(){
    $('.lwb_chat').toggle("slow");
 });
-	
+
 $('#lwb_savesettings').click(function(){
-  savesettings();	
-});	
+  savesettings();
+});
 
 $('#lwb_check').click(function(){
-  check_shablon();	
+  check_shablon();
 });
 
 function get_sluchka()
 	{
-	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
+	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
 		{
 			setTimeout($("#reproduction-wrapper").find("span:contains('Покрыть')").click(),100);
 			setTimeout($("#formMalePublicTypePublic").click(),200);
@@ -935,11 +935,11 @@ function get_sluchka()
 function sluchka()
 {
 if (chevalEnergie>45) {
-	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="") 
+	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
 	{
 		if ($("#slchkbx").prop("checked"))
 		setTimeout(get_sluchka(),200);
-	}	
+	}
 }
 }
 
@@ -948,7 +948,7 @@ function games()
 	{
 		if ($("a").is('#boutonJouer')) {
 			$('#boutonJouer').click();
-			
+
 				var d2 = document.getElementById('formCenterPlay').innerHTML;
 				// Для слайдеров
 				if (d2.indexOf('centerPlaySlider') !== - 1)
@@ -958,7 +958,7 @@ function games()
 					spans[i].className = spans[i].className + ' selected';
 					spans[i].click();
 					var hidden = document.getElementById('centerPlaySlider-sliderHidden');
-					hidden.setAttribute('value', i);		
+					hidden.setAttribute('value', i);
 				}
 				else
 				{
@@ -967,61 +967,61 @@ function games()
 							var en = Math.floor(($('#energie').text())/6);
 						  $('[id^="formCenterPlay"] [value="'+en+'"]').attr('selected', 'selected');
 						}
-				}	
-				
-				$('#formCenterPlaySubmit').click();	
-			
+				}
+
+				$('#formCenterPlaySubmit').click();
+
 		// Ласка
 		var d = document.getElementById('boutonCaresser');
 		if (d !== null)
 		{
 		  d.click();
-		}    
+		}
 		// Пить
 		var d = document.getElementById('boutonBoire');
 		if (d !== null)
 		{
 		  d.click();
-		}	
+		}
 
 		// Морковка
 		var d = document.getElementById('boutonCarotte');
 		if (d !== null)
 		{
 		  d.click();
-		}		
-			
+		}
+
 			}
-		
+
 	}
-	
+
 function horsename(shablon)
 	{
 	/*
 	Шаблоны для задания имени:
-	
+
 	NAME - имя коня\кобылы, выбирается из списка
 	GENDER - Пол, значения: Жеребец, Кобыла
 	GENDER_MIN - сокращенный пол: Жер, Коб
 	GP - генетический потенциал
 	SKILLS - навыки
-	
+
 	*/	localStorage.setItem("horse_status", "3");
 		var out = new Array();
 		var hname = "";
 		var male_names = "Снежок,Агат, Азарт,Авалон,Аверон,Алый,Ангел,Амулет,Вольт,Ветер,Вегас,Вираж,Восток,Викинг,Воланд,Виспер,Вереск,Вирго,Оскар,Оникс,Олимп,Озар,Онис,Ойххо,Орик,Омар,Персик,Прайд,Принц,Пион,Плуто,Памир,Пэйн,Пунш,Плутон,Приор,Пульс,Перри,Пауэр,Пафос,Перчик";
 		var female_names = "Адель,Агата,Ариэль,Агния,Анна,Бель,Волна,Веста,Вега,Ваниль,Верба,Вики,Вирия,Викси,Вуди,Вария,Варна,Ветта,Вилма,Вупи,Виола,Оззи,Осень,Омега,Опера,Офея,Ола,Олли,Окси,Прага,Пайпер,Персия,Пурга,Прима,Проза,Пеппи,Помпея,Пепер,Палада,Призма,Павия,Пенни";
-	
+
 			gender = $("#characteristics-body-content").find("td:contains('Пол')").text();
-			gender = gender.replace("Пол: ","");		
-			
-		
+			gender = gender.replace("Пол: ","");
+
+
 		var a = shablon.split('%');
 		var SH = "NAME,GENDER,GENDER_MIN,GP,SKILLS";
-		var SH_mas = SH.split(',');	
-		
-		
-		
+		var SH_mas = SH.split(',');
+
+
+
 		for (var i=0; i<a.length; i++)
 			{
 				for (var y=0; y<SH_mas.length; y++)
@@ -1032,70 +1032,70 @@ function horsename(shablon)
 							out[i] = a[i];
 					}
 			}
-		
+
 		for (j=0; j<out.length; j++)
 			{
 				if (out[j] == "GENDER") hname+=gender;
-				if (out[j] == "GENDER_MIN") 
+				if (out[j] == "GENDER_MIN")
 				{
 					hname+=gender.substring(0,3);
 					if (hname=="кон") hname = "жер";
-				}	
-					
+				}
+
 				if (out[j] == "NAME")
 					{
-						if (gender=="кобыла") 
+						if (gender=="кобыла")
 							{
 								var f_names = female_names.split(",");
-								f_name = f_names[Math.floor(Math.random() * (f_names.length - 1)) + 1];	
+								f_name = f_names[Math.floor(Math.random() * (f_names.length - 1)) + 1];
 								hname+=f_name+" ";
 							}
 							else
-							{	
+							{
 								var m_names = male_names.split(",");
-								m_name = m_names[Math.floor(Math.random() * (m_names.length - 1)) + 1];	
+								m_name = m_names[Math.floor(Math.random() * (m_names.length - 1)) + 1];
 								hname+=m_name+" ";
 							}
 					}
-					
+
 				if (out[j] == "GP")
 					{
 							gp = $("#genetic-body-content").find(".align-right:first").text();
 							gp = gp.replace("Итог: ","");
 							hname+=gp+" ";
 					}
-					
+
 				if (out[j] == "SKILLS")
 					{
 						nav = $('#competencesValeur').text();
 						hname+=nav+" ";
 					}
-					
-				if(out[j] == " " || out[j] == "|" || out[j] == "," || out[j] == "-")	
-					hname+=out[j];	
+
+				if(out[j] == " " || out[j] == "|" || out[j] == "," || out[j] == "-")
+					hname+=out[j];
 			}
 	var realname = $('.horse-name').text();
-	realname = realname.slice(0, -1);	
+	realname = realname.slice(0, -1);
 	if (realname!==hname)
 		{
-			$("#horseNameName").val(hname);	
+			$("#horseNameName").val(hname);
 			$(".options-button").click();
 			setTimeout($('.options-menu').find("a:contains('Изменить')").click(),1000);
-			setTimeout($('#horseName').submit(),2000);	
+			setTimeout($('#horseName').submit(),2000);
 		}
-			
-		
+
+
 	}
-	
+
 function check_shablon()
 		{
-		var shablon = $("#lw_template").val(); 	
+		var shablon = $("#lw_template").val();
 		var out = new Array();
 		var len = 0;
 		var a = shablon.split('%');
 		var SH = "NAME,GENDER,GENDER_MIN,GP,SKILLS";
-		var SH_mas = SH.split(',');	
-		
+		var SH_mas = SH.split(',');
+
 		for (var i=0; i<a.length; i++)
 			{
 				for (var y=0; y<SH_mas.length; y++)
@@ -1106,8 +1106,8 @@ function check_shablon()
 							out[i] = a[i];
 					}
 			}
-			
-			
+
+
 			for (j=0; j<out.length; j++)
 			{
 				if (out[j] == "GENDER") len+=7;
@@ -1115,20 +1115,20 @@ function check_shablon()
 				if (out[j] == "NAME") len+=6;
 				if (out[j] == "GP") len+=7;
 				if (out[j] == "SKILLS") len+=7;
-				if(out[j] == " " || out[j] == "|" || out[j] == "," || out[j] == "-") len+=1;	
-				
+				if(out[j] == " " || out[j] == "|" || out[j] == "," || out[j] == "-") len+=1;
+
 			}
-			
+
 		if (len<20) alert('Шаблон проверен, все ок!');
 		if (len>20) alert("Ошибка! Имя получится более 20 символов, что приведет к ошибкам. Используйте меньше параметров");
 		if (len==20) alert("Мда. 20 символов, возможно и прокатит, но возможно и будут сыпаться ошибки. Лучше попытаться сократить шаблон");
-		}	
+		}
 
 
 
  function fear()
 {
-	
+
 var audio = new Audio();
 audio.preload = 'auto';
 audio.src = 'https://raw.githubusercontent.com/Crasher69/lowadi/master/z.mp3';
