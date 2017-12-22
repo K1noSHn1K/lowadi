@@ -363,13 +363,13 @@ function usualProg()
 				//Случка
 				if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
 				{
-					var pauseS = pause + getRandomPause(500, 700+SPEED);
+					var pauseS = pause + getRandomPause(300, 400+SPEED);
 					setTimeout(sluchka, pauseS);
 				}
 				else var pauseS = pause;
 
 				// Чистка
-				  var pause1 = pauseS + getRandomPause(500, 600);
+				  var pause1 = pauseS + getRandomPause(700, 900);
 				setTimeout(groom, pause1);
 				  // Урок
 				  var pause2 = pause1 + getRandomPause(400, 700+SPEED);
