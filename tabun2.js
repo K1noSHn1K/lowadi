@@ -375,9 +375,9 @@ function usualProg()
 				  var pause2 = pause1 + getRandomPause(400, 700+SPEED);
 				setTimeout(lesson, pause2);
 				  // Корм
-				  var pause3 = pause2 + getRandomPause(400, 500+SPEED);
+				  var pause3 = pause2 + getRandomPause(500, 600+SPEED);
 				setTimeout(openFeeding, pause3);
-				  var pause4 = pause3 + getRandomPause(400, 500+SPEED);
+				  var pause4 = pause3 + getRandomPause(500, 600+SPEED);
 				setTimeout(doEatNorm, pause4);
 				  // Ласка
 
