@@ -418,10 +418,11 @@ function usualProg()
 				}
 				else pause8 = pause7;
 
-				 // Следующий
-
-				var pause9 = pause8 + getRandomPause(100, 200+SPEED);
+				 
+				var pause8_1 = pause8 + getRandomPause(100, 200+SPEED);
+				var pause9 = pause8_1 + getRandomPause(100, 200+SPEED);
 				var pause10 = pause9 + getRandomPause(1000, 1100+SPEED);
+				setTimeout(function() { if (chevalEnergie<22 || chevalSante<80) mash(); }, pause8_1+SPEED);
 				setTimeout(check_sleep, pause9);
 				setTimeout(prev, pause10+SPEED);
 				setTimeout(prev, 20000);
@@ -849,6 +850,12 @@ function prev1()
   }
 }
 
+
+function mash()
+{
+	if ($('.action.action-style-4.mash.action-disabled').length==0)
+	$('#form-do-eat-treat-mash').submit();
+}
 
 // Рост ОР
 function OR()
