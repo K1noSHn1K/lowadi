@@ -94,6 +94,7 @@ var lic = false;
 }
 
 
+
 // --------------------------- Настройки скрипта --------------------------------->
 function set_kck_option()
 	{
@@ -331,7 +332,7 @@ function usualProg()
 		{
 			localStorage.setItem("horse_status", "0");
 			horse_href = localStorage.getItem("horse_id");
-			setTimeout(groom, 500);
+			setTimeout(groom, 700);
 			setTimeout(sleep,900);
 			setTimeout(openFeeding, 1200);
 			setTimeout(doEatNorm, 1600);
@@ -363,21 +364,21 @@ function usualProg()
 				//Случка
 				if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="")
 				{
-					var pauseS = pause + getRandomPause(300, 400+SPEED);
+					var pauseS = pause + getRandomPause(400, 500+SPEED);
 					setTimeout(sluchka, pauseS);
 				}
 				else var pauseS = pause;
 
 				// Чистка
-				  var pause1 = pauseS + getRandomPause(700, 900);
+				  var pause1 = pauseS + getRandomPause(500, 600);
 				setTimeout(groom, pause1);
 				  // Урок
-				  var pause2 = pause1 + getRandomPause(400, 700+SPEED);
+				  var pause2 = pause1 + getRandomPause(400, 600+SPEED);
 				setTimeout(lesson, pause2);
 				  // Корм
-				  var pause3 = pause2 + getRandomPause(400, 500+SPEED);
+				  var pause3 = pause2 + getRandomPause(500, 600+SPEED);
 				setTimeout(openFeeding, pause3);
-				  var pause4 = pause3 + getRandomPause(400, 500+SPEED);
+				  var pause4 = pause3 + getRandomPause(500, 600+SPEED);
 				setTimeout(doEatNorm, pause4);
 				  // Ласка
 
@@ -418,10 +419,11 @@ function usualProg()
 				}
 				else pause8 = pause7;
 
-				 // Следующий
-
-				var pause9 = pause8 + getRandomPause(100, 200+SPEED);
+				 
+				var pause8_1 = pause8 + getRandomPause(100, 200+SPEED);
+				var pause9 = pause8_1 + getRandomPause(100, 200+SPEED);
 				var pause10 = pause9 + getRandomPause(1000, 1100+SPEED);
+				setTimeout(function() { if (chevalEnergie<22 || chevalSante<80) mash(); }, pause8_1+SPEED);
 				setTimeout(check_sleep, pause9);
 				setTimeout(prev, pause10+SPEED);
 				setTimeout(prev, 20000);
@@ -850,6 +852,12 @@ function prev1()
 }
 
 
+function mash()
+{
+	if ($('.action.action-style-4.mash.action-disabled').length==0)
+	$('#form-do-eat-treat-mash').submit();
+}
+
 // Рост ОР
 function OR()
 {
@@ -865,7 +873,7 @@ function settings()
 	{
 		$('body#global').append('<div class="lwb_logo" style="display: block; position: fixed; width: 125px; top: 7px; left: 5px; z-index: 900;">	<div class="fear"  style="display: block;position: fixed;width: 15px;height: 10px;top: 50px;left: 70px;"> </div>	<img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/kraken.png" width="120px"></div>');
 		$('body#global').append('<div class="lwb" style="display:block; position:fixed; width:120px; height:115px; left:0; top:105px; padding:5px; background-color:rgba(0, 0, 0, 0.7);  border-radius: 0px 0px 20px 0;"></div>');
-		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.5.0</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
+		$('.lwb').append('<span class="header-currency-label" style="color:#fafe6c;  z-index:990;"><b>KrakeN v1.5.1</b></span>   <span class="lwb_setting" style="cursor:pointer; position:absolute; right:5px; top:3px; z-index:999;">  <img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/settings-n.png" width="20px" title="Показать настройки" /></span>');
 
 		if (is_lic()===true)
 		{
@@ -1131,4 +1139,3 @@ audio.preload = 'auto';
 audio.src = 'https://raw.githubusercontent.com/Crasher69/lowadi/master/z.mp3';
 audio.play();
 }
-
