@@ -1,16 +1,3 @@
-// ==UserScript==
-// @name Прогон_TEST
-// @description Бот для браузерной игры Lowadi
-// @author HumanoID
-// @license Mozilla Public License Version 2.0
-// @version 2.0.10
-// @include https://www.lowadi.com/*
-// @run-at      document-end
-// @grant none
-// ==/UserScript==
-
-
-
 
 console.log("-- START --");
 // Опция для настройки количества дней при записи в КСК.
