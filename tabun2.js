@@ -534,7 +534,7 @@ function d8()
 function d9()
 {
 	console.log("Eat Error = "+eatError);
-	if (eatError>4) d10();
+	if (eatError>4 || tolst=== 1) d10();
 	else {
 		if (chevalAge > 5) {
 		
