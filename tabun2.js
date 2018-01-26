@@ -362,15 +362,17 @@ function usualProg()
 
 function j_run()
 {
-
+	console.log('j_run');
 	if ($('.action.action-style-4.panser.action-disabled').length === 0)
 	{
+	console.log('groom random pos');	
 	let x = $('#form-do-groom')[0][2];
 	let y = $('#form-do-groom')[0][3];
 	$(x).val(randpos());
 	$(y).val(randpos());
 	
 		setTimeout(function() {
+			console.log('GROOM SUBMIT');
 			$('#form-do-groom').submit();
 			new Action.Cheval(this, '/doGroom').send();
 		},100);
@@ -383,7 +385,7 @@ function j_run()
 
 function j2()
 {
-
+	console.log('j2');
 	setTimeout(doEatNorm, 100);
 	setTimeout(function(){ if ($('.action.action-style-4.allaiter.action-disabled').length===0) j2(); else j3(); }, 300);
 }
@@ -391,9 +393,10 @@ function j2()
 
 function j3()
 {
+	console.log('j3');
 	if ($('#boutonCoucher.action-disabled').length === 0)
 	{
-	
+	console.log('SLEEP FORM');
 	let x = $('#form-do-night')[0][2];
 	let y = $('#form-do-night')[0][3];
 	$(x).val(randpos());
