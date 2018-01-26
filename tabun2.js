@@ -366,10 +366,10 @@ function j_run()
 	if ($('.action.action-style-4.panser.action-disabled').length === 0)
 	{
 	console.log('groom random pos');	
-	let x = $('#form-do-groom')[0][2];
-	let y = $('#form-do-groom')[0][3];
-	$(x).val(randpos());
-	$(y).val(randpos());
+	//let x = $('#form-do-groom')[0][2];
+	//let y = $('#form-do-groom')[0][3];
+	//$(x).val(randpos());
+	//$(y).val(randpos());
 	
 		setTimeout(function() {
 			console.log('GROOM SUBMIT');
