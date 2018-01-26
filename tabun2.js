@@ -515,10 +515,10 @@ function d8()
 	else {
 		if ($('.action.action-style-4.panser.action-disabled').length === 0)
 		{
-			let x = $('#form-do-groom')[0][2];
-			let y = $('#form-do-groom')[0][3];
-			$(x).val(randpos());
-			$(y).val(randpos());
+			//let x = $('#form-do-groom')[0][2];
+			//let y = $('#form-do-groom')[0][3];
+			//$(x).val(randpos());
+			//$(y).val(randpos());
 			
 			$('#form-do-groom').submit();
 			new Action.Cheval(this, '/doGroom').send();
