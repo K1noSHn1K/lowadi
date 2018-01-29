@@ -1,13 +1,7 @@
+
 console.log("-- START --");
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
-
-/* Возможные значения:
-0 - 1 день
-1 - 3 дня
-2 - 10 дней
-3 - 30 дней
-4 - 60 дней */
 
 var SPEED = 100; // Скорость прогона. Время прибавки к базовым задержкам, мс
 var groomError = 0;
@@ -325,8 +319,6 @@ function usualProg()
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле
 	if (horse=='3')
 	{
-		localStorage.setItem("horse_status", "0");
-		horse_href = localStorage.getItem("horse_id");
 		setTimeout(j_run, 500+SPEED);
 	}
 	else
@@ -417,6 +409,8 @@ function j3()
 
 function j4()
 {
+	localStorage.setItem("horse_status", "0");
+	horse_href = localStorage.getItem("horse_id");
 	setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href; }, 300);
 }
 
