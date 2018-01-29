@@ -1,4 +1,3 @@
-
 console.log("-- START --");
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
@@ -296,18 +295,18 @@ if (/www.lowadi.com\/elevage\/chevaux\/choisirNoms\?jument=/.test(window.locatio
 // Запись в КСК
 function checkKSK()
 {
-	if ($('.odd.highlight').length>5) 
+	if ($('.odd.highlight').length>5)
 	{
 		console.log('ksk loaded');
 		setTimeout(eqCenterReg2, 300+SPEED);
 	}
-	else setTimeout(checkKSK, 100);	
-	
+	else setTimeout(checkKSK, 100);
+
 }
 
 if (/www.lowadi.com\/elevage\/chevaux\/centreInscription\?id=/.test(window.location.href))
 {
-	setTimeout(function() {location.reload(); },15000);	
+	setTimeout(function() {location.reload(); },15000);
 	setTimeout(checkKSK, 300+SPEED);
 }
 
@@ -341,8 +340,8 @@ function usualProg()
 			d[0].click();
 		}
 		var pause = 0;
-		
-		
+
+
 		// Запись в КСК
 		if (/elevage\/chevaux\/centreInscription\?id=/.test(document.body.innerHTML))
 		{
@@ -351,9 +350,9 @@ function usualProg()
 			setTimeout(eqCenterReg, pause);
 			return;
 		}
-		
+
 		console.time('ALL_TIME');
-		setTimeout(start_d1, 500);
+		setTimeout(start_d1, 400);
 		setTimeout(function() {location.reload(); },12000);
 	}
 }
@@ -365,12 +364,14 @@ function j_run()
 	console.log('j_run');
 	if ($('.action.action-style-4.panser.action-disabled').length === 0)
 	{
-	console.log('groom random pos');	
-	//let x = $('#form-do-groom')[0][2];
-	//let y = $('#form-do-groom')[0][3];
-	//$(x).val(randpos());
-	//$(y).val(randpos());
-	
+	console.log('groom random pos');
+
+    if ($('#form-do-groom')[0][2]!==undefined && $('#form-do-groom')[0][3]!==undefined) {
+	let x = $('#form-do-groom')[0][2];
+	let y = $('#form-do-groom')[0][3];
+	$(x).val(randpos());
+	$(y).val(randpos());
+    }
 		setTimeout(function() {
 			console.log('GROOM SUBMIT');
 			$('#form-do-groom').submit();
@@ -396,20 +397,23 @@ function j3()
 	console.log('j3');
 	if ($('#boutonCoucher.action-disabled').length === 0)
 	{
+
+     if ($('#form-do-night')[0][2]!==undefined && $('#form-do-night')[0][3]!==undefined) {
 	console.log('SLEEP FORM');
 	let x = $('#form-do-night')[0][2];
 	let y = $('#form-do-night')[0][3];
 	$(x).val(randpos());
-	$(y).val(randpos());	
-	
+	$(y).val(randpos());
+     }
+
 		setTimeout(function() {
 			$('#form-do-night').submit();
-			new Action.Cheval(this, '/doNight').send();
+			//new Action.Cheval(this, '/doNight').send();
 		},100);
 		setTimeout(function() {if ($('#boutonCoucher.action-disabled').length === 0) j3(); else j4(); }, 500+SPEED);
 	}
 	else setTimeout(j4, 100+SPEED);
-}			
+}
 
 function j4()
 {
@@ -420,7 +424,7 @@ function j4()
 
 function start_d1()
 {
-	
+
 	//Случка
 	if ($("#reproduction-wrapper:contains('Покрыть')").text()!=="" && ($("#slchkbx").prop("checked")) && $('.saillir').hasClass('action-disabled')===false && chevalEnergie>64)
 	{
@@ -430,7 +434,7 @@ function start_d1()
 			setTimeout(sluchka, 200+SPEED);
 		}
 		else setTimeout(sluchka, 100);
-		
+
 		setTimeout(d_secret, 400+SPEED);
 	}
 	else
@@ -438,12 +442,26 @@ function start_d1()
 }
 
 function d_secret()
-{			 
-	
-	setTimeout(groom2(),100);
-	setTimeout(stroke2(),200);
-	setTimeout(drink2(),350);
-	setTimeout(d3, 450);
+{
+    var pause = 0;
+    if ($('.action.action-style-4.panser.action-disabled').length === 0)
+    {
+        setTimeout(groom2,pause);
+    }
+    else
+    if ($('.action.action-style-4.caresser.action-disabled').length === 0)
+    {
+        pause = pause+100;
+        setTimeout(stroke2,pause);
+    }
+	else
+    if ($('.action.action-style-4.boire.action-disabled').length ===0)
+    {
+        pause = pause+100;
+        setTimeout(drink2,pause);
+    }
+
+	setTimeout(d3, pause+100);
 }
 
 
@@ -464,19 +482,19 @@ function d4()
 	if ($('.action.action-style-4.panser.action-disabled').length === 0)
 	{
 		console.log('Second groom');
-		setTimeout(groom2(),80);
+		setTimeout(groom2,100);
 	}
 	if ($('.action.action-style-4.caresser.action-disabled').length === 0){
 		console.log('Second stroke');
-		setTimeout(stroke2(),100);
+		setTimeout(stroke2,150);
 	}
-	setTimeout(d5(),150);
-}		
+	setTimeout(d5(),200);
+}
 
 // Корм
 function d5()
 {
-	
+
 	console.log('d5');
 	if (chevalAge > 5) {
 	let x = $('#feeding')[0][2];
@@ -484,12 +502,11 @@ function d5()
 	$(x).val(randpos());
 	$(y).val(randpos());
 	}
-	
+
 	console.log("Eat Norm");
 	setTimeout(doEatNorm, getRandomPause(100, 200));
-	//setTimeout( function() { if (($('.nourrir-entame').length == 0 && tolst===0) && chevalAge > 5) d5(); else d6(); }, 300+SPEED);
-	setTimeout(d7, 500+SPEED);
-	
+	setTimeout(d7, 400+SPEED);
+
 }
 
 
@@ -503,8 +520,8 @@ function d7()
 	else
 	{
 		setTimeout(function() { if (chevalEnergie<18 || chevalSante<80)
-			$('#form-do-eat-treat-mash').submit(); 
-			new Action.Cheval(this, '/doEatTreat').send();
+			$('#form-do-eat-treat-mash').submit();
+		//	new Action.Cheval(this, '/doEatTreat').send();
 		}, 100);
 		setTimeout(d8, getRandomPause(200, 300)+SPEED);
 	}
@@ -518,13 +535,14 @@ function d8()
 	else {
 		if ($('.action.action-style-4.panser.action-disabled').length === 0)
 		{
-			//let x = $('#form-do-groom')[0][2];
-			//let y = $('#form-do-groom')[0][3];
-			//$(x).val(randpos());
-			//$(y).val(randpos());
-			
+            if ($('#form-do-groom')[0][2]!==undefined && $('#form-do-groom')[0][3]!==undefined) {
+			let x = $('#form-do-groom')[0][2];
+			let y = $('#form-do-groom')[0][3];
+			$(x).val(randpos());
+			$(y).val(randpos());
+            }
 			$('#form-do-groom').submit();
-			new Action.Cheval(this, '/doGroom').send();
+			//new Action.Cheval(this, '/doGroom').send();
 			setTimeout(function(){
 				if ($('.action.action-style-4.panser.action-disabled').length === 0) {groomError++; d8(); }
 				else d9();
@@ -541,29 +559,29 @@ function d9()
 	if (eatError>4 || tolst === 1) d10();
 	else {
 		if (chevalAge > 5) {
-		
+
 			let x = $('#feeding')[0][2];
 			let y = $('#feeding')[0][3];
 			$(x).val(randpos());
 			$(y).val(randpos());
-			
+
 			console.log("Hays = "+hayToGive()+"Oats = "+oatsToGive());
 			if ((hayToGive()!==0 || oatsToGive()!==0 && tolst===0))
 			{
 				setTimeout(doEatNorm, 100+SPEED);
-				setTimeout(function() {if ((hayToGive()!==0 || oatsToGive()!==0 && tolst===0) && chevalAge > 5) {eatError++; d9();} else d10();}, 400+SPEED*2);
-			} 
+				setTimeout(function() {if ((hayToGive()!==0 || oatsToGive()!==0 && tolst===0) && chevalAge > 5) {eatError++; d9();} else d10();}, 300+SPEED*2);
+			}
 			else d10();
-		}	
-		else 
+		}
+		else
 		{
 			if ($('.action.action-style-4.allaiter.action-disabled').length===0)  {
 				setTimeout(doEatNorm, 100+SPEED);
-				setTimeout(function() { if ($('.action.action-style-4.allaiter.action-disabled').length===0) {eatError++; d9(); }else d10(); }, 300+SPEED*2);	
+				setTimeout(function() { if ($('.action.action-style-4.allaiter.action-disabled').length===0) {eatError++; d9(); }else d10(); }, 300+SPEED*2);
 			}
-			else d10();	
+			else d10();
 		}
-	}	
+	}
 }
 
 // Спать
@@ -572,15 +590,15 @@ function d10()
 	console.log('D10 - SLEEP');
 	if ($('#boutonCoucher.action-disabled').length === 0)
 	{
-	
-	let x = $('#form-do-night')[0][2];
-	let y = $('#form-do-night')[0][3];
-	$(x).val(randpos());
-	$(y).val(randpos());
-	
+    if ($('#form-do-night')[0][2]!==undefined && $('#form-do-night')[0][3]!==undefined) {
+        let x = $('#form-do-night')[0][2];
+        let y = $('#form-do-night')[0][3];
+        $(x).val(randpos());
+        $(y).val(randpos());
+    }
 		setTimeout(function() {
 			$('#form-do-night').submit();
-			new Action.Cheval(this, '/doNight').send();
+			//new Action.Cheval(this, '/doNight').send();
 		},100);
 		setTimeout(function() {if ($('#boutonCoucher.action-disabled').length === 0) { d10(); } else d11(); }, getRandomPause(200, 300)+SPEED);
 	}
@@ -591,7 +609,7 @@ function d10()
 function d11()
 {
 	console.timeEnd('ALL_TIME');
-	setTimeout(prev, 200);
+	setTimeout(prev, 100);
 }
 
 
@@ -632,7 +650,7 @@ function checkReg()
 	if (document.body.innerHTML.indexOf('ascendant.gif')>0)
 	setTimeout(eqCenterReg3, 200+SPEED);
 	else setTimeout(checkReg, 200+SPEED);
-	
+
 }
 
 function eqCenterReg3()
@@ -698,13 +716,13 @@ function doEatNorm()
 		hay = 20-hayGiven();
 		oats = 15-oatsGiven();
 	}
-	
+
 	$('#haySlider-sliderHidden').val(hay);
 	$('#oatsSlider-sliderHidden').val(oats);
 
 
-	$('#feeding').submit(); 
-	new Action.Cheval(this, '/doEat').send();	
+	$('#feeding').submit();
+	new Action.Cheval(this, '/doEat').send();
 }
 // Вычисление необходимой нормы сена
 function hayToGive()/////////
@@ -793,28 +811,28 @@ function lesson()
 	if (d !== null)
 	{
 		//d.click();
-		$("#boutonMissionEquus").submit();  
+		$("#boutonMissionEquus").submit();
 		new Action.Cheval(null, '/doCentreMission', {params:'id='+chevalId}).send();
 	}
 	d = document.getElementById('boutonMissionMontagne');
 	if (d !== null)
 	{
 		//d.click();
-		$("#boutonMissionMontagne").submit();  
+		$("#boutonMissionMontagne").submit();
 		new Action.Cheval(null, '/doCentreMission', {params:'id='+chevalId}).send();
 	}
 	d = document.getElementById('boutonMissionForet');
 	if (d !== null)
 	{
 		// d.click();
-		$("#boutonMissionForet").submit();  
-		new Action.Cheval(null, '/doCentreMission', {params:'id='+chevalId}).send();  
+		$("#boutonMissionForet").submit();
+		new Action.Cheval(null, '/doCentreMission', {params:'id='+chevalId}).send();
 	}
 	d = document.getElementById('boutonMissionPlage');
 	if (d !== null)
 	{
 		//  d.click();
-		$("#boutonMissionPlage").submit();  
+		$("#boutonMissionPlage").submit();
 		new Action.Cheval(null, '/doCentreMission', {params:'id='+chevalId}).send();
 	}
 }
@@ -973,7 +991,7 @@ id:	chevalId,
 action:	"save",
 type:	"public",
 price:	SL_option
-	});		
+	});
 }
 
 function sluchka()
@@ -1167,7 +1185,7 @@ function randpos()
 function groom2()
 {
 	var str = $("#form-do-groom").serialize();
-	str = str.replace(new RegExp('form-do-groom', 'g'), ''); 
+	str = str.replace(new RegExp('form-do-groom', 'g'), '');
 	str = str.replace('=0&', '='+randpos()+'&');
 	str = str.substring(0, str.length - 1);
 	str = str+randpos();
@@ -1176,14 +1194,14 @@ function groom2()
 
 	$.post("https://www.lowadi.com/elevage/chevaux/doGroom", str);
 
-} 
+}
 
 
 
 function stroke2()
 {
 	var str = $("#form-do-stroke").serialize();
-	str = str.replace(new RegExp('form-do-stroke', 'g'), ''); 
+	str = str.replace(new RegExp('form-do-stroke', 'g'), '');
 	str = str.replace('=0&', '='+randpos()+'&');
 	str = str.substring(0, str.length - 1);
 	str = str+randpos();
@@ -1198,7 +1216,7 @@ function stroke2()
 function drink2()
 {
 	var str = $("#form-do-drink").serialize();
-	str = str.replace(new RegExp('form-do-drink', 'g'), ''); 
+	str = str.replace(new RegExp('form-do-drink', 'g'), '');
 	str = str.replace('=0&', '='+randpos()+'&');
 	str = str.substring(0, str.length - 1);
 	str = str+randpos();
