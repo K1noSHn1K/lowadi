@@ -1,3 +1,14 @@
+// ==UserScript==
+// @name Прогон_TEST
+// @description Бот для браузерной игры Lowadi
+// @author HumanoID
+// @license Mozilla Public License Version 2.0
+// @version 2.0.10
+// @include https://www.lowadi.com/*
+// @run-at      document-end
+// @grant none
+// ==/UserScript==
+
 console.log("-- START --");
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
@@ -69,6 +80,7 @@ function murmurhash(key, seed) {
 
 function is_lic()
 {
+	/* Logins */
 	/* Logins */
 	var l = ["3366366428", "828860414", "606006511", "3707997714", "2360671979", "1726329166", "3711373824", "32343049", "661228372", "2936927281", "1431427892", "1846378644", "304662001", "1161099852", "1878884375", "492940438", "2349692518", "2290652864", "409624594", "3583044381", "4002633189", "2400030474", "168364849", "2699251275", "3047797807", "576883550", "30978012", "586036770", "549146730", "3525182426", "3998243183", "814745076", "1652390262", "847179424", "1569475330", "96465151", "304541404", "2671962595", "2785536398", "2595068121", "2912178197", "2835493391", "2234626590", "1499734799", "2584907164", "3903733344"];
 	var myhash = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
@@ -325,8 +337,6 @@ function usualProg()
 	// Статус 3 означает, что жеребенок переименован, идем обратно к родившей кобыле
 	if (horse=='3')
 	{
-		localStorage.setItem("horse_status", "0");
-		horse_href = localStorage.getItem("horse_id");
 		setTimeout(j_run, 500+SPEED);
 	}
 	else
@@ -417,6 +427,8 @@ function j3()
 
 function j4()
 {
+	localStorage.setItem("horse_status", "0");
+	horse_href = localStorage.getItem("horse_id");
 	setTimeout(function() { location.href="http://www.lowadi.com/elevage/chevaux/cheval?id="+horse_href; }, 300);
 }
 
