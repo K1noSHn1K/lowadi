@@ -1,24 +1,7 @@
-// ==UserScript==
-// @name Прогон_TEST
-// @description Бот для браузерной игры Lowadi
-// @author HumanoID
-// @license Mozilla Public License Version 2.0
-// @version 2.0.10
-// @include https://www.lowadi.com/*
-// @run-at      document-end
-// @grant none
-// ==/UserScript==
 
 console.log("-- START --");
 // Опция для настройки количества дней при записи в КСК.
 var KCK_option = 3;
-
-/* Возможные значения:
-0 - 1 день
-1 - 3 дня
-2 - 10 дней
-3 - 30 дней
-4 - 60 дней */
 
 var SPEED = 100; // Скорость прогона. Время прибавки к базовым задержкам, мс
 var groomError = 0;
@@ -81,8 +64,8 @@ function murmurhash(key, seed) {
 function is_lic()
 {
 	/* Logins */
-	/* Logins */
-	var l = ["3366366428", "828860414", "606006511", "3707997714", "2360671979", "1726329166", "3711373824", "32343049", "661228372", "2936927281", "1431427892", "1846378644", "304662001", "1161099852", "1878884375", "492940438", "2349692518", "2290652864", "409624594", "3583044381", "4002633189", "2400030474", "168364849", "2699251275", "3047797807", "576883550", "30978012", "586036770", "549146730", "3525182426", "3998243183", "814745076", "1652390262", "847179424", "1569475330", "96465151", "304541404", "2671962595", "2785536398", "2595068121", "2912178197", "2835493391", "2234626590", "1499734799", "2584907164", "3903733344"];
+var l = ["3366366428", "828860414", "606006511", "3707997714", "2360671979", "1726329166", "3711373824", "32343049", "661228372", "2936927281", "1431427892", "1846378644", "304662001", "1161099852", "1878884375", "492940438", "2349692518", "2290652864", "409624594", "3583044381", "4002633189", "2400030474", "168364849", "2699251275", "3047797807", "576883550", "30978012", "586036770", "549146730", "3525182426", "3998243183", "814745076", "1652390262", "847179424", "1569475330", "96465151", "304541404", "2671962595", "2785536398", "2595068121", "2912178197", "2835493391", "2234626590", "1499734799", "2584907164", "3903733344"];
+	
 	var myhash = murmurhash(document.getElementsByClassName('forumAvatar')[0].alt, 5);
 	var lic = false;
 
@@ -376,7 +359,7 @@ function j_run()
 	{
 	console.log('groom random pos');
 
-    if ($('#form-do-groom')[0][2]!==undefined && $('#form-do-groom')[0][3]!==undefined) {
+    if ($('#form-do-groom')[0]!==undefined) {
 	let x = $('#form-do-groom')[0][2];
 	let y = $('#form-do-groom')[0][3];
 	$(x).val(randpos());
@@ -408,7 +391,7 @@ function j3()
 	if ($('#boutonCoucher.action-disabled').length === 0)
 	{
 
-     if ($('#form-do-night')[0][2]!==undefined && $('#form-do-night')[0][3]!==undefined) {
+     if ($('#form-do-night')[0]!==undefined) {
 	console.log('SLEEP FORM');
 	let x = $('#form-do-night')[0][2];
 	let y = $('#form-do-night')[0][3];
@@ -545,9 +528,9 @@ function d8()
 	console.log('Groom Error = '+groomError);
 	if (groomError>6) d9();
 	else {
-		if ($('.action.action-style-4.panser.action-disabled').length === 0)
+		if ($('#boutonPanser').hasClass('action-disabled')===false)
 		{
-            if ($('#form-do-groom')[0][2]!==undefined && $('#form-do-groom')[0][3]!==undefined) {
+            if ($('#form-do-groom')[0]!==undefined) {
 			let x = $('#form-do-groom')[0][2];
 			let y = $('#form-do-groom')[0][3];
 			$(x).val(randpos());
@@ -556,7 +539,7 @@ function d8()
 			$('#form-do-groom').submit();
 			new Action.Cheval(this, '/doGroom').send();
 			setTimeout(function(){
-				if ($('.action.action-style-4.panser.action-disabled').length === 0) {groomError++; d8(); }
+				if ($('#boutonPanser').hasClass('action-disabled')===false) {groomError++; d8(); }
 				else d9();
 			},300+SPEED);
 		}
@@ -602,7 +585,7 @@ function d10()
 	console.log('D10 - SLEEP');
 	if ($('#boutonCoucher.action-disabled').length === 0)
 	{
-    if ($('#form-do-night')[0][2]!==undefined && $('#form-do-night')[0][3]!==undefined) {
+    if ($('#form-do-night')[0]!==undefined) {
         let x = $('#form-do-night')[0][2];
         let y = $('#form-do-night')[0][3];
         $(x).val(randpos());
@@ -610,7 +593,7 @@ function d10()
     }
 		setTimeout(function() {
 			$('#form-do-night').submit();
-			new Action.Cheval(this, '/doNight').send();
+			//new Action.Cheval(this, '/doNight').send();
 		},100);
 		setTimeout(function() {if ($('#boutonCoucher.action-disabled').length === 0) { d10(); } else d11(); }, getRandomPause(200, 300)+SPEED);
 	}
@@ -1238,4 +1221,3 @@ function drink2()
 	$.post("https://www.lowadi.com/elevage/chevaux/doDrink", str);
 	new Action.Cheval(this, '/doDrink').send();
 }
-
