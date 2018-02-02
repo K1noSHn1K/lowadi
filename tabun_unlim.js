@@ -391,7 +391,7 @@ function j3()
 
 		setTimeout(function() {
 			$('#form-do-night').submit();
-			//new Action.Cheval(this, '/doNight').send();
+			new Action.Cheval(this, '/doNight').send();
 		},100);
 		setTimeout(function() {if ($('#boutonCoucher.action-disabled').length === 0) j3(); else j4(); }, 500+SPEED);
 	}
@@ -506,7 +506,7 @@ function d7()
 	{
 		setTimeout(function() { if (chevalEnergie<18 || chevalSante<80)
 			$('#form-do-eat-treat-mash').submit();
-		//	new Action.Cheval(this, '/doEatTreat').send();
+			new Action.Cheval(this, '/doEatTreat').send();
 		}, 100);
 		setTimeout(d8, getRandomPause(200, 300)+SPEED);
 	}
@@ -527,7 +527,7 @@ function d8()
 			$(y).val(randpos());
             }
 			$('#form-do-groom').submit();
-			//new Action.Cheval(this, '/doGroom').send();
+			new Action.Cheval(this, '/doGroom').send();
 			setTimeout(function(){
 				if ($('.action.action-style-4.panser.action-disabled').length === 0) {groomError++; d8(); }
 				else d9();
@@ -583,7 +583,7 @@ function d10()
     }
 		setTimeout(function() {
 			$('#form-do-night').submit();
-			//new Action.Cheval(this, '/doNight').send();
+			new Action.Cheval(this, '/doNight').send();
 		},100);
 		setTimeout(function() {if ($('#boutonCoucher.action-disabled').length === 0) { d10(); } else d11(); }, getRandomPause(200, 300)+SPEED);
 	}
