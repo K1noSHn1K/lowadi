@@ -515,7 +515,7 @@ function d7()
 	{
 		setTimeout(function() { if (chevalEnergie<18 || chevalSante<80)
 			$('#form-do-eat-treat-mash').submit();
-		//	new Action.Cheval(this, '/doEatTreat').send();
+			new Action.Cheval(this, '/doEatTreat').send();
 		}, 100);
 		setTimeout(d8, getRandomPause(200, 300)+SPEED);
 	}
@@ -536,7 +536,7 @@ function d8()
 			$(y).val(randpos());
             }
 			$('#form-do-groom').submit();
-			//new Action.Cheval(this, '/doGroom').send();
+			new Action.Cheval(this, '/doGroom').send();
 			setTimeout(function(){
 				if ($('.action.action-style-4.panser.action-disabled').length === 0) {groomError++; d8(); }
 				else d9();
