@@ -63,7 +63,7 @@ function murmurhash(key, seed) {
 
 function is_lic()
 {
-	return true;
+return true;
 
 }
 
@@ -349,7 +349,7 @@ function j_run()
 	{
 	console.log('groom random pos');
 
-    if ($('#form-do-groom')[0][2]!==undefined && $('#form-do-groom')[0][3]!==undefined) {
+    if ($('#form-do-groom')[0]!==undefined) {
 	let x = $('#form-do-groom')[0][2];
 	let y = $('#form-do-groom')[0][3];
 	$(x).val(randpos());
@@ -381,7 +381,7 @@ function j3()
 	if ($('#boutonCoucher.action-disabled').length === 0)
 	{
 
-     if ($('#form-do-night')[0][2]!==undefined && $('#form-do-night')[0][3]!==undefined) {
+     if ($('#form-do-night')[0]!==undefined) {
 	console.log('SLEEP FORM');
 	let x = $('#form-do-night')[0][2];
 	let y = $('#form-do-night')[0][3];
@@ -391,7 +391,7 @@ function j3()
 
 		setTimeout(function() {
 			$('#form-do-night').submit();
-			new Action.Cheval(this, '/doNight').send();
+			//new Action.Cheval(this, '/doNight').send();
 		},100);
 		setTimeout(function() {if ($('#boutonCoucher.action-disabled').length === 0) j3(); else j4(); }, 500+SPEED);
 	}
@@ -518,9 +518,9 @@ function d8()
 	console.log('Groom Error = '+groomError);
 	if (groomError>6) d9();
 	else {
-		if ($('.action.action-style-4.panser.action-disabled').length === 0)
+		if ($('#boutonPanser').hasClass('action-disabled')===false)
 		{
-            if ($('#form-do-groom')[0][2]!==undefined && $('#form-do-groom')[0][3]!==undefined) {
+            if ($('#form-do-groom')[0]!==undefined) {
 			let x = $('#form-do-groom')[0][2];
 			let y = $('#form-do-groom')[0][3];
 			$(x).val(randpos());
@@ -529,7 +529,7 @@ function d8()
 			$('#form-do-groom').submit();
 			new Action.Cheval(this, '/doGroom').send();
 			setTimeout(function(){
-				if ($('.action.action-style-4.panser.action-disabled').length === 0) {groomError++; d8(); }
+				if ($('#boutonPanser').hasClass('action-disabled')===false) {groomError++; d8(); }
 				else d9();
 			},300+SPEED);
 		}
@@ -575,7 +575,7 @@ function d10()
 	console.log('D10 - SLEEP');
 	if ($('#boutonCoucher.action-disabled').length === 0)
 	{
-    if ($('#form-do-night')[0][2]!==undefined && $('#form-do-night')[0][3]!==undefined) {
+    if ($('#form-do-night')[0]!==undefined) {
         let x = $('#form-do-night')[0][2];
         let y = $('#form-do-night')[0][3];
         $(x).val(randpos());
@@ -583,7 +583,7 @@ function d10()
     }
 		setTimeout(function() {
 			$('#form-do-night').submit();
-			new Action.Cheval(this, '/doNight').send();
+			//new Action.Cheval(this, '/doNight').send();
 		},100);
 		setTimeout(function() {if ($('#boutonCoucher.action-disabled').length === 0) { d10(); } else d11(); }, getRandomPause(200, 300)+SPEED);
 	}
@@ -1211,4 +1211,3 @@ function drink2()
 	$.post("https://www.lowadi.com/elevage/chevaux/doDrink", str);
 	new Action.Cheval(this, '/doDrink').send();
 }
-
