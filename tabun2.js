@@ -527,7 +527,7 @@ function d8()
 	console.log('Groom Error = '+groomError);
 	if (groomError>6) d9();
 	else {
-		if ($('.action.action-style-4.panser.action-disabled').length === 0)
+		if ($('#boutonPanser').hasClass('action-disabled')===false)
 		{
             if ($('#form-do-groom')[0]!==undefined) {
 			let x = $('#form-do-groom')[0][2];
@@ -538,7 +538,7 @@ function d8()
 			$('#form-do-groom').submit();
 			new Action.Cheval(this, '/doGroom').send();
 			setTimeout(function(){
-				if ($('.action.action-style-4.panser.action-disabled').length === 0) {groomError++; d8(); }
+				if ($('#boutonPanser').hasClass('action-disabled')===false) {groomError++; d8(); }
 				else d9();
 			},300+SPEED);
 		}
