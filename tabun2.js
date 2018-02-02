@@ -358,7 +358,7 @@ function j_run()
 	{
 	console.log('groom random pos');
 
-    if ($('#form-do-groom')[0][2]!==undefined && $('#form-do-groom')[0][3]!==undefined) {
+    if ($('#form-do-groom')[0]!==undefined) {
 	let x = $('#form-do-groom')[0][2];
 	let y = $('#form-do-groom')[0][3];
 	$(x).val(randpos());
@@ -390,7 +390,7 @@ function j3()
 	if ($('#boutonCoucher.action-disabled').length === 0)
 	{
 
-     if ($('#form-do-night')[0][2]!==undefined && $('#form-do-night')[0][3]!==undefined) {
+     if ($('#form-do-night')[0]!==undefined) {
 	console.log('SLEEP FORM');
 	let x = $('#form-do-night')[0][2];
 	let y = $('#form-do-night')[0][3];
@@ -529,7 +529,7 @@ function d8()
 	else {
 		if ($('.action.action-style-4.panser.action-disabled').length === 0)
 		{
-            if ($('#form-do-groom')[0][2]!==undefined && $('#form-do-groom')[0][3]!==undefined) {
+            if ($('#form-do-groom')[0]!==undefined) {
 			let x = $('#form-do-groom')[0][2];
 			let y = $('#form-do-groom')[0][3];
 			$(x).val(randpos());
@@ -584,7 +584,7 @@ function d10()
 	console.log('D10 - SLEEP');
 	if ($('#boutonCoucher.action-disabled').length === 0)
 	{
-    if ($('#form-do-night')[0][2]!==undefined && $('#form-do-night')[0][3]!==undefined) {
+    if ($('#form-do-night')[0]!==undefined) {
         let x = $('#form-do-night')[0][2];
         let y = $('#form-do-night')[0][3];
         $(x).val(randpos());
