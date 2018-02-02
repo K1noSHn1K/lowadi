@@ -72,7 +72,6 @@ function is_lic()
 	{
 		if (l[h] == myhash) lic = true;
 	}
-	if (unlim === true) lic = true;
 	return lic;
 
 }
